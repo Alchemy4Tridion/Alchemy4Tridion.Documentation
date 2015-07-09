@@ -20,4 +20,6 @@ The documentation uses Sandcastle Help File Builder w/ MAML contextual content.
 
 [SHFB Project Site](https://github.com/EWSoftware/SHFB)
 
-[MAML Guide](http://ewsoftware.github.io/XMLCommentsGuide/html/4268757F-CE8D-4E6D-8502-4F7F2E22DDA3.htm)
+[Xml Comments Guide (for commenting the code)](http://ewsoftware.github.io/XMLCommentsGuide/html/4268757F-CE8D-4E6D-8502-4F7F2E22DDA3.htm)
+
+[MAML Guide (for contextual content pages)](http://ewsoftware.github.io/MAMLGuide/html/303c996a-2911-4c08-b492-6496c82b3edb.htm)
