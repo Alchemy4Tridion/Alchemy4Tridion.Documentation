@@ -9,10 +9,16 @@
     <Topic id="c7b3af6b-3f51-46d8-a792-d46a805805e1" visible="True" title="Using the HelloWorld NuGet Sample" />
     <Topic id="d9c1d722-3006-4bf7-9a61-5a7bcb46fa86" visible="True" title="Step By Step From Alchemy4Tridion.Plugin Package" />
   </Topic>
-  <Topic id="7400d041-29f1-44be-8a02-436384cf14d5" visible="True" isExpanded="true" title="Configuration (a4t.xml)">
-    <Topic id="a155bb48-95ab-49c9-9b61-ebcc119dc2dd" visible="True" isSelected="true" title="Custom Configuration" />
+  <Topic id="c1dded74-cd52-4494-bad8-e2b895bc9cf5" visible="True" title="Plugin Anatomy">
+    <Topic id="a155bb48-95ab-49c9-9b61-ebcc119dc2dd" visible="True" title="Custom Configuration Settings" />
+    <Topic id="e0b2cb35-1944-426e-b9ce-9becacd452b2" visible="True" title="Static File Tokens" />
   </Topic>
-  <Topic id="45d144a5-84d5-4e68-8269-4a103068f59b" visible="True" title="GUI Extensions" />
+  <Topic id="e48e8917-e3ff-4190-80dc-3fb9096ffa87" visible="True" title="Plugin Types">
+    <Topic id="a3ce173c-2569-4784-89d3-3f7e9d958a96" visible="True" title="GUI Extensions" />
+    <Topic id="b709ff1d-f7f7-4fa2-8527-9c00c3793ea2" visible="True" title="Event System Extensions" />
+    <Topic id="4a5e7880-b639-4039-8efc-8d4ff537c036" visible="True" title="Content Extensions" />
+    <Topic id="397afef7-a7fd-4424-9d44-091f9b9c6acf" visible="True" title="DXA Extensions" />
+  </Topic>
   <Topic id="c6caa4cb-dd4a-4fa1-b919-f2d5ef947bec" visible="True" title="Version History">
     <HelpKeywords>
       <HelpKeyword index="K" term="version, history" />
@@ -23,4 +29,5 @@
       </HelpKeywords>
     </Topic>
   </Topic>
+  <Topic id="ebcfaa62-0ff1-4d4e-ad9e-fa730e4903e9" visible="True" isSelected="true" apiParentMode="InsertBefore" />
 </Topics>

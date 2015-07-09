@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<topic id="45d144a5-84d5-4e68-8269-4a103068f59b" revisionNumber="1">
-  <developerOrientationDocument
+<topic id="ebcfaa62-0ff1-4d4e-ad9e-fa730e4903e9" revisionNumber="1">
+  <developerTroubleshootingDocument
     xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
     xmlns:xlink="http://www.w3.org/1999/xlink">
 
@@ -11,16 +11,27 @@
     -->
 
     <introduction>
-      <para>Required introduction</para>
+      <!-- Uncomment this to generate an outline of the section and sub-section
+           titles.  Specify a numeric value as the inner text to limit it to
+           a specific number of sub-topics when creating the outline.  Specify
+           zero (0) to limit it to top-level sections only.  -->
+      <!-- <autoOutline /> -->
+
+      <para>Troubleshooting Guide to be written...</para>
     </introduction>
 
-    <!-- <inThisSection>Optional description of content in this section</inThisSection> -->
-
-    <!-- <reference>Optional reference section</reference> -->
-
-    <!-- <relatedSections>Optional related sections info</relatedSections> -->
-
-    <!-- <externalResources>Optional external resources section</externalResources> -->
+    <!-- Zero or more sections.  These are collapsible.  If using
+         <autoOutline />, add an address attribute to identify it and specify
+         a title so that it can be jumped to with a hyperlink. -->
+    <section address="Section1">
+      <title></title>
+      <content>
+        <!-- Uncomment this to create a sub-section outline
+        <autoOutline /> -->
+        <para></para>
+        <!-- <procedure>Optional procedures.  See How To document for procedure layout example.</procedure> -->
+      </content>
+    </section>
 
     <relatedTopics>
       <!-- One or more of the following:
@@ -55,5 +66,5 @@
       <codeEntityReference>M:TestDoc.TestClass.SecondMethod(System.Int32,System.String)</codeEntityReference>
       -->
     </relatedTopics>
-  </developerOrientationDocument>
+  </developerTroubleshootingDocument>
 </topic>
