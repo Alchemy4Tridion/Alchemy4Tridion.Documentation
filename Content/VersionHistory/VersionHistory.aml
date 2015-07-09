@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="c6caa4cb-dd4a-4fa1-b919-f2d5ef947bec" revisionNumber="1">
+	<developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+		<introduction>
+			<para>The topics in this section describe the various changes made to Alchemy4Tridion over the
+life of the project.</para>
+		</introduction>
+
+		<section>
+			<title>Version History</title>
+			<content>
+				<para>Select a version below to see a description of its changes.</para>
+
+				<list class="bullet">
+					<listItem>
+						<para><link xlink:href="36c1c045-3501-4593-ad09-7e73bc31f4ee" /></para>
+					</listItem>
+
+				</list>
+
+			</content>
+		</section>
+
+		<relatedTopics>
+			<link xlink:href="9ef6f690-149d-4574-859b-29c7226a2c4b" />
+		</relatedTopics>
+
+	</developerConceptualDocument>
+</topic>

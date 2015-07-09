@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="c7b3af6b-3f51-46d8-a792-d46a805805e1" revisionNumber="1">
+  <developerWalkthroughDocument
+    xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+    
+    <!--
+    <summary>
+      <para>Optional summary abstract</para>
+    </summary>
+    -->
+
+    <introduction>
+      <para>
+        The following steps use the HelloWorld Nuget package, which will add the necessary files to your 
+        project for a working Hello World type of plugin. This project can be used as a reference point or for 
+        you to extend. If extending, ensure that you change the Service name (in your API Controller), command names, 
+        and give your plugin a valid unique name of its very own. You can also view the source of the HelloWorld 
+        plugin at <externalLink>
+        <linkText>HelloWorld Github Project</linkText>
+        <linkUri>https://github.com/Alchemy4Tridion/Alchemy4Tridion.Plugins.Sample.HelloWorld</linkUri>
+        <linkTarget>_blank</linkTarget>
+      </externalLink>.
+      </para>
+      
+    </introduction>
+    
+
+    <!-- <prerequisites><content>Optional prerequisites info</content></prerequisites> -->
+
+    <!-- One or more procedure or section with procedure -->
+    <procedure>
+      <title>Creating the Hello World Plugin</title>
+      <steps class="ordered">
+        <step>
+          <content>
+            <para>
+              Create a new Class Library project in Visual Studio. Note that the HelloWorld nuget package will install 
+              content files using your project's namespace.
+            </para>
+          </content>
+        </step>
+        <step>
+          <content>
+            <para>In the Package Manager console type the following:</para>
+            <code>
+              Install-Package Alchemy4Tridion.Sample.HelloWorld -Pre
+            </code>
+            <alert class="note">
+              <para>
+                Only once has Alchemy4Tridion come out of public beta testing will version 1.0 be available without
+                the "-Pre" flag.
+              </para>
+            </alert>
+            <para>
+              Alternatively, you can also right click your class library project use the "Manage Nuget Packages" 
+              option to search and install the Alchemy4Tridion.Sample.HelloWorld package (make sure the prerelease
+              filter option is selected).
+            </para>
+          </content>
+        </step>
+        <step>
+          <content>
+            <para>
+              Build the solution. You will be prompted to upload the plugin to the store. At this stage, 
+              we'll choose to cancel this upload and do this step manually.
+            </para>
+          </content>
+        </step>
+        <step>
+          <content>
+            <para>
+              Go to the Alchemy page in your Content Management Explorer (see above) and click on the Plugins tab. 
+              This takes you to a screen which has a drop target that can accept your plugin. Assuming you made a debug build, 
+              you should find it in the <localUri>/bin/Debug</localUri> folder of your solution. Locate this file 
+              and drag/drop it onto the target. You'll get a Message Center dialog letting you know whether the 
+              plugin was installed successfully or not.
+            </para>
+            <alert class="caution">
+              <para>
+                Since this plugin has not been uploaded to the WebStore it is considered a development plugin. Be mindful
+                of anyother plugins that may already be installed as if your plugin doesn't have a unique name,
+                it'll get an error that its already installed.
+              </para>
+            </alert>
+          </content>
+        </step>
+        <step>
+          <content>
+            <para>
+              Plugins do require a page reload in order for them to show up in the Tridion GUI. After installing 
+              (or uninstalling) a plugin, a reload icon will appear at the top bar of the Alchemy UI. You can either 
+              click that or use your browser's Reload Page button.
+            </para>
+          </content>
+        </step>
+        <step>
+          <content>
+            <para>
+              Go to the Content Explorer view and notice the new Hello World button in the ribbon bar and the 
+              Hello World item in the context menu.
+            </para>
+            <alert class="note">
+              <para>
+                Tridion GUI cache can be a tricky beast sometimes.  The Alchemy4Tridion framework will automatically
+                recycle application pools as well as increment the System.config's modification attribute, however
+                its been noted that sometimes the cache just won't clear for particular files, and you may have to
+                clear your browser's cache manually.
+              </para>
+              <para>
+                If you don't see the desired results, you may have just experienced this issue.
+              </para>
+            </alert>
+          </content>
+        </step>
+        <step>
+          <content>
+            <para>
+              Pat yourself on the back. You just created an Alchemy4Tridion plugin!
+            </para>
+          </content>
+        </step>
+      </steps>
+      <!-- <conclusion>Optional conclusion</conclusion> -->
+    </procedure>
+
+
+    <nextSteps>
+      <content>
+        <para>
+          If you chose to use the HelloWorld sample as the base of your project, make sure to keep note that
+          when updating to a newer version via NuGet, the <localUri>/Controllers/ServiceController.cs</localUri>
+          and <localUri>AlchemyPlugin.cs</localUri> file will be updated (you'll be prompted if you want your
+          local file to be replaced).
+        </para>
+        <para>
+          You should also remove the HelloWorld nuget package (make sure to leave the Alchemy4Tridion.Plugins package)
+          if you intend on using this as a real plugin so that other files won't get overwritten during updates.
+        </para>
+      </content>
+    </nextSteps>
+   
+
+    <relatedTopics>
+    </relatedTopics>
+  </developerWalkthroughDocument>
+</topic>
