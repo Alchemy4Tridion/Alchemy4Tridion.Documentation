@@ -62,31 +62,32 @@ For plugin development, please check out information on Alchemy4Tridion.Plugins.
 For contributing to the Alchemy4Tridion framework, please check out information on Alchemy4Tridion.Core.</ProjectSummary>
     <NamespaceSummaries>
       <NamespaceSummaryItem name="Alchemy4Tridion.Plugins" isDocumented="True" />
-<NamespaceSummaryItem name="Alchemy4Tridion.Plugins.GUI (Group)" isGroup="True" isDocumented="True">The Alchemy4Tridion.Plugins.GUI contains everything needed for working with Tridion GUI Extensions.</NamespaceSummaryItem>
-<NamespaceSummaryItem name="Alchemy4Tridion.Plugins.Info" isDocumented="True">The Alchemy4Tridion.Plugins.Info namespace contains utilities for working with a plugin's A4T.xml file.</NamespaceSummaryItem>
-<NamespaceSummaryItem name="(global)" isDocumented="False" />
-<NamespaceSummaryItem name="Alchemy4Tridion.Core (Group)" isGroup="True" isDocumented="True">The Alchemhy4Tridion.Core library is responsible for configuring, installing, uninstalling, and providing some concrete functionality to the plugin framework.</NamespaceSummaryItem>
-<NamespaceSummaryItem name="Alchemy4Tridion.Core.Configuration (Group)" isGroup="True" isDocumented="True">The Configuration namespace contains various helpers and utilities for working with the Alchemy Editor configuration, the Alchemy configuration, and other configs on the server.</NamespaceSummaryItem>
-<NamespaceSummaryItem name="Alchemy4Tridion.Core.Configuration" isDocumented="True" />
-<NamespaceSummaryItem name="Alchemy4Tridion.Core.Configuration.Editor" isDocumented="True" />
-<NamespaceSummaryItem name="Alchemy4Tridion.Core.Configuration.Editor.Elements" isDocumented="True" />
-<NamespaceSummaryItem name="Alchemy4Tridion.Core.Configuration.Main" isDocumented="True" />
-<NamespaceSummaryItem name="Alchemy4Tridion.Core.Controllers" isDocumented="True" />
-<NamespaceSummaryItem name="Alchemy4Tridion.Core.Extensions (Group)" isGroup="True" isDocumented="True">Extension Methods used by the various API's to add functionality.</NamespaceSummaryItem>
-<NamespaceSummaryItem name="Alchemy4Tridion.Core.Extensions.Controllers" isDocumented="True" />
-<NamespaceSummaryItem name="Alchemy4Tridion.Core.Extensions.Plugins" isDocumented="True" />
-<NamespaceSummaryItem name="Alchemy4Tridion.Core.Installation" isDocumented="True" />
-<NamespaceSummaryItem name="Alchemy4Tridion.Core.Plugins" isDocumented="True" />
-<NamespaceSummaryItem name="Alchemy4Tridion.Core.Plugins.Services" isDocumented="True" />
-<NamespaceSummaryItem name="Alchemy4Tridion.Core.Utilities" isDocumented="True" />
-<NamespaceSummaryItem name="Alchemy4Tridion.Plugins (Group)" isGroup="True" isDocumented="True">The Alchemy4Tridion.Plugins is the main API that you will use to build plugins with.  You can add this library and namespace into your class library project via the "Alchemy4Tridion.Plugin" package by running:
+      <NamespaceSummaryItem name="Alchemy4Tridion.Plugins.GUI (Group)" isGroup="True" isDocumented="True">The Alchemy4Tridion.Plugins.GUI contains everything needed for working with Tridion GUI Extensions.</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="Alchemy4Tridion.Plugins.Info" isDocumented="True">The Alchemy4Tridion.Plugins.Info namespace contains utilities for working with a plugin's A4T.xml file.</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="(global)" isDocumented="False" />
+      <NamespaceSummaryItem name="Alchemy4Tridion.Core (Group)" isGroup="True" isDocumented="True">The Alchemhy4Tridion.Core library is responsible for configuring, installing, uninstalling, and providing some concrete functionality to the plugin framework.</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="Alchemy4Tridion.Core.Configuration (Group)" isGroup="True" isDocumented="True">The Configuration namespace contains various helpers and utilities for working with the Alchemy Editor configuration, the Alchemy configuration, and other configs on the server.</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="Alchemy4Tridion.Core.Configuration" isDocumented="True" />
+      <NamespaceSummaryItem name="Alchemy4Tridion.Core.Configuration.Editor" isDocumented="True" />
+      <NamespaceSummaryItem name="Alchemy4Tridion.Core.Configuration.Editor.Elements" isDocumented="True" />
+      <NamespaceSummaryItem name="Alchemy4Tridion.Core.Configuration.Main" isDocumented="True" />
+      <NamespaceSummaryItem name="Alchemy4Tridion.Core.Controllers" isDocumented="True" />
+      <NamespaceSummaryItem name="Alchemy4Tridion.Core.Extensions (Group)" isGroup="True" isDocumented="True">Extension Methods used by the various API's to add functionality.</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="Alchemy4Tridion.Core.Extensions.Controllers" isDocumented="True" />
+      <NamespaceSummaryItem name="Alchemy4Tridion.Core.Extensions.Plugins" isDocumented="True" />
+      <NamespaceSummaryItem name="Alchemy4Tridion.Core.Installation" isDocumented="True" />
+      <NamespaceSummaryItem name="Alchemy4Tridion.Core.Plugins" isDocumented="True" />
+      <NamespaceSummaryItem name="Alchemy4Tridion.Core.Plugins.Services" isDocumented="True" />
+      <NamespaceSummaryItem name="Alchemy4Tridion.Core.Utilities" isDocumented="True" />
+      <NamespaceSummaryItem name="Alchemy4Tridion.Plugins (Group)" isGroup="True" isDocumented="True">The Alchemy4Tridion.Plugins is the main API that you will use to build plugins with.  You can add this library and namespace into your class library project via the "Alchemy4Tridion.Plugin" package by running:
 
 &lt;blockquote&gt;Install-Package Alchemy4Tridion.Plugin -Pre&lt;/blockquote&gt;
 
 Note that the "-Pre" tag is used to pull the prerelease version.</NamespaceSummaryItem>
-<NamespaceSummaryItem name="Alchemy4Tridion.Plugins.GUI.Configuration" isDocumented="True" />
-<NamespaceSummaryItem name="Alchemy4Tridion.Plugins.GUI.Configuration.Elements" isDocumented="True" />
-<NamespaceSummaryItem name="Alchemy4Tridion.Plugins.GUI.Configuration.Extensions" isDocumented="True" /></NamespaceSummaries>
+      <NamespaceSummaryItem name="Alchemy4Tridion.Plugins.GUI.Configuration" isDocumented="True" />
+      <NamespaceSummaryItem name="Alchemy4Tridion.Plugins.GUI.Configuration.Elements" isDocumented="True" />
+      <NamespaceSummaryItem name="Alchemy4Tridion.Plugins.GUI.Configuration.Extensions" isDocumented="True" />
+    </NamespaceSummaries>
     <RootNamespaceTitle>API Reference</RootNamespaceTitle>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
@@ -134,6 +135,7 @@ Note that the "-Pre" tag is used to pull the prerelease version.</NamespaceSumma
     <None Include="Content\PluginStructure\StaticFileParsedTokens.aml" />
     <None Include="Content\QuickStart\HelloWorldSample.aml" />
     <None Include="Content\QuickStart\StepByStepFromScratch.aml" />
+    <None Include="Content\Reference1.aml" />
     <None Include="Content\TroubleShooting\Troubleshooting.aml" />
     <None Include="Content\VersionHistory\v0.5.0.0.aml" />
     <None Include="Content\VersionHistory\VersionHistory.aml" />

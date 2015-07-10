@@ -52,6 +52,14 @@
                   the slideout left navigation. Or try going visting <fictitiousUri>http://localhost/SDL/#app=wcm&amp;entry=alchemy</fictitiousUri> 
                   If you are pre-SP1, you will find the Alchemy entry the Option Panels of the Home screen.
                 </para>
+                <alert class="warning">
+                  <para>
+                    If you are upgrading from version 0.4.2, you will first have to uninstall the 0.4.2 version. If you've
+                    accidently attempted to install a later version first and ran into an error, you'll need to <legacyBold>Repair</legacyBold>
+                    the 0.4.2 project, and then <legacyBold>Uninstall</legacyBold>.  You'll then be able to install
+                    0.5 successfully.
+                  </para>
+                </alert>
               </content>
             </step>
           </steps>
