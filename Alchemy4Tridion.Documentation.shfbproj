@@ -49,8 +49,8 @@
     <IncludeFavorites>True</IncludeFavorites>
     <BinaryTOC>True</BinaryTOC>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\..\..\Projects\Content Bloom\Products\Alchemy4Tridion\Core\trunk\Alchemy4Tridion.Plugins\Alchemy4Tridion.Plugins.csproj" />
-      <DocumentationSource sourceFile="..\..\..\Projects\Content Bloom\Products\Alchemy4Tridion\Core\trunk\Alchemy4Tridion.Core\Alchemy4Tridion.Core.csproj" />
+      <DocumentationSource sourceFile="..\Alchemy4Tridion\Alchemy4Tridion.Plugins\Alchemy4Tridion.Plugins.csproj" />
+      <DocumentationSource sourceFile="..\..\..\..\..\code\Alchemy4Tridion\Core\trunk\Alchemy4Tridion.Core\Alchemy4Tridion.Core.csproj" />
     </DocumentationSources>
     <FeedbackEMailAddress>alchemy%40contentbloom.com</FeedbackEMailAddress>
     <CopyrightText>Copyright &amp;#169%3b 2015 Content Bloom</CopyrightText>
@@ -153,6 +153,14 @@ Note that the "-Pre" tag is used to pull the prerelease version.</NamespaceSumma
       <ImageId>alchemy_dark</ImageId>
       <AlternateText>alchemy dark</AlternateText>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <Name>System.Web.Extensions</Name>
+      <AssemblyName>System.Web.Extensions.dll</AssemblyName>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Web.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <!-- Import the SHFB build targets -->
   <Import Project="$(SHFBROOT)\SandcastleHelpFileBuilder.targets" />
