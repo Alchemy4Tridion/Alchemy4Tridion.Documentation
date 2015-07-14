@@ -79,7 +79,7 @@
             <alert class="caution">
               <para>
                 Since this plugin has not been uploaded to the Webstore it is considered a development plugin. Be mindful
-                of any other plugins that may already be installed, if your plugin doesn't have a unique name
+                of any other plugins that may already be installed; if your plugin doesn't have a unique name
                 it will get an error saying it is already installed.
               </para>
             </alert>
