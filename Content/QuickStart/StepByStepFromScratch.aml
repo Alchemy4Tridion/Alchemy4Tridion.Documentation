@@ -108,15 +108,15 @@
         <step>
           <content>
             <para>
-              If you want to upload your project to the web store, complete the dialog that pops up after supplying your 
-              credentials that you used to register to the web store with.
+              If you want to upload your project to the Webstore, complete the dialog that pops up after supplying your 
+              credentials that you used to register to the Webstore with.
             </para>
           </content>
         </step>
         <step>
           <content>
             <para>
-              If you want to test your plugin directly w/o uploading to the web store, find your 
+              If you want to test your plugin directly w/o uploading to the Webstore, find your 
               .a4t file in the /bin/Debug/ folder of your project (assuming you build under the Debug target). 
               You can drag and drop this in the "Plugins" tab of the Alchemy UI.
             </para>
