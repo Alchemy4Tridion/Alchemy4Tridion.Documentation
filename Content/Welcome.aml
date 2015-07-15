@@ -3,15 +3,15 @@
 	<developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
 		<introduction>
 			<para>Welcome to the Alchemy4Tridion Plugin Author and Development Guide!  This guide is to be used
-      as a reference of not only the API documentation for the framework but to serve as a guideline with
+      not only as a reference for the framework API documentation, but also to serve as a guideline with
       examples and walkthroughs.</para>
 		</introduction>
 
 		<section>
 			<title>Getting Started as a Plugin Author</title>
 			<content>
-				<para>Development of plugins for Alchemy is done using Visual Studio (tested so far with 2013 or higher)
-        and the Alchemy4Tridion NuGet packages, which contains not only the framework but build tools as well
+				<para>Development of plugins for Alchemy is done using Visual Studio (tested with VS2013 and subsequent versions)
+        and the Alchemy4Tridion NuGet packages. These packages contain the framework along with build tools that will allow you 
         to package the plugin in the format and structure that the system is expecting.  To get you up and running,
         follow the walk throughs and quick start guides contained on this page.  To become an Alchemy Ninja, fully meditate
         on all examples and API documentation found on this site.
@@ -31,31 +31,33 @@
           <steps class="ordered">
             <step>
               <content>
-                <para>Go to http://www.alchemywebstore.com/ and (register and) log in.</para>
+                <para>Go to http://www.alchemywebstore.com/ and log in, or register if this is your first visit.</para>
               </content>
             </step>
             <step>
               <content>
-                <para>Look in the Help menu for the download link, and download the MSI. (Installer download requires you to be logged in.)</para>
+                <para>Look in the Help menu for the download link and download the MSI.</para>
               </content>
             </step>
             <step>
               <content>
                 <para>Run the MSI on your Tridion server(s). Note that when prompted for a Window's admin credentials,
-                this is completely OPTIONAL. The core functionality of Alchemy does not require this. You'll get an error message saying that impersonation is required if using any advanced feature or plugin that requires administrator privileges (as of 0.4.2 release only the Servicer Plugin uses impersonation).</para>
+                this is completely OPTIONAL. The core functionality of Alchemy does not require this information. 
+                You'll get an error message saying that impersonation is required if you are attempting to use any advanced feature or 
+                plugin that requires administrator privileges (as of 0.4.2 release only the Servicer Plugin uses impersonation).</para>
               </content>
             </step>
             <step>
               <content>
                 <para>
                   Open the Content Management Explorer in your browser. Verify that there is now an Alchemy entry in
-                  the slideout left navigation. Or try going visting <fictitiousUri>http://localhost/SDL/#app=wcm&amp;entry=alchemy</fictitiousUri> 
-                  If you are pre-SP1, you will find the Alchemy entry the Option Panels of the Home screen.
+                  the slideout left navigation. Or try hitting <fictitiousUri>http://localhost/SDL/#app=wcm&amp;entry=alchemy</fictitiousUri> 
+                  If you are using pre-SP1 versions of Tridion, you will find the Alchemy entry in the Option Panels of the Home screen.
                 </para>
                 <alert class="warning">
                   <para>
                     If you are upgrading from version 0.4.2, you will first have to uninstall the 0.4.2 version. If you've
-                    accidently attempted to install a later version first and ran into an error, you'll need to <legacyBold>Repair</legacyBold>
+                    attempted to install a later version first and run into an error, you'll need to <legacyBold>Repair</legacyBold>
                     the 0.4.2 project, and then <legacyBold>Uninstall</legacyBold>.  You'll then be able to install
                     0.5 successfully.
                   </para>
@@ -81,11 +83,10 @@
     </section>
 
     <section>
-      <title>Creation a plugin using the NuGet 'Alchemy4Tridion.Plugin' package</title>
+      <title>Creating your own original plugin</title>
       <content>
         <para>
-          If you are building a plugin from scratch, the bare minimum you'll need is the Alchemy4Tridion.Plugin NuGet
-          package, which contains the base framework and build tools needed.
+          Use this guide to build an original Alchemy plugin using the NuGet 'Alchemy4Tridion.Plugin' package.
         </para>
         <para>
           <link xlink:href="d9c1d722-3006-4bf7-9a61-5a7bcb46fa86">View Walk Through</link>
@@ -102,42 +103,42 @@
         <list class="ordered">
           <listItem>
             <para>
-              <legacyBold>Installing from the Web Store.</legacyBold> If you are on a network that is allowed to
-              view http://www.alchemywebstore.com and your CMS server also has rights to communicate with the Web Store,
-              then you'll be able to browse plugins from the Web Store tab of the Alchemy4Tridion GUI.
+              <legacyBold>Installing from the Webstore</legacyBold> If you are on a network that is able to
+              view http://www.alchemywebstore.com and your CMS server has rights to communicate with the Webstore,
+              then you'll be able to browse plugins from the "Webstore" tab of the Alchemy4Tridion GUI.
             </para>
             <para>
               Once you find the plugin or plugins of your dream, just click the <command>Install</command> link
               and the plugin will automatically be installed.  You should see a notificaiton in the Message Center letting
-              you know that the plugin has been installed successfully or not.  Make sure to reload your browser's window
-              in order to see the new plugin in Tridion.
+              you know that the plugin has been installed successfully.  Make sure to reload your browser window
+              to see the new plugin in Tridion.
             </para>
           </listItem>
           <listItem>
             <para>
-              <legacyBold>Downloading from the Web Store.</legacyBold> If your CMS server blocks communication to the Web Store,
+              <legacyBold>Downloading from the Webstore</legacyBold> If your CMS server blocks communication to the Webstore,
               or if the network you are on blocks you from viewing http://www.alchemywebstore.com, you can always download
-              the A4T plugin package from the Web Store directly (of course if the web store is blocked you'll have to do it
+              the A4T plugin package from the Webstore directly (of course if the Webstore is blocked you'll have to do it
               when you have connection).
             </para>
             <para>
               When you have the A4T file, go to the Alchemy4Tridion GUI and select the Plugins tab.  Just drag and drop
               the A4T file onto the page and you should see a notification popup from the Message Center letting you know
-              the status of your plugin installation. Make sure to reload your browser's window
-              in order to see the new plugin in Tridion.
+              the status of your plugin installation. Make sure to reload your browser window
+              to see the new plugin in Tridion.
             </para>
           </listItem>
           <listItem>
             <para>
-              <legacyBold>Developer Plugin Install.</legacyBold> This works just like the manual download. When you build
-              your a plugin in Visual Studio, the plugin's A4T file will be in your output directory.  Just drag and drop
+              <legacyBold>Developer Plugin Install</legacyBold> This works just like the manual download. When you build
+              a plugin in Visual Studio the plugin's A4T file will be in your output directory.  Just drag and drop
               the A4T file to the Plugins tab of the Alchemy4Tridion GUI.
             </para>
             <alert class="caution">
               <para>
-                As developer plugins did not come from the Web Store, they have not been validated by Alchemy and as such
-                may have a duplicate name as an already installed plugin.  They also do not contain a valid key from
-                the Web Store and may show warnings that the plugin has a developer plugin status.
+                As developer plugins did not come from the Webstore, they have not been validated by Alchemy and as such
+                may have the same name as an already installed plugin.  They also do not contain a valid key from
+                the Webstore and may show warnings that the plugin has a developer plugin status.
               </para>
             </alert>
           </listItem>

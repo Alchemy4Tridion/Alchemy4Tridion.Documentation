@@ -13,9 +13,9 @@
     <introduction>
       <para>
         The following steps use the HelloWorld Nuget package, which will add the necessary files to your 
-        project for a working Hello World type of plugin. This project can be used as a reference point or for 
+        project for a working Hello World plugin. This project can be used as a reference point or for 
         you to extend. If extending, ensure that you change the Service name (in your API Controller), command names, 
-        and give your plugin a valid unique name of its very own. You can also view the source of the HelloWorld 
+        and give your plugin a valid unique name of its own. You can also view the source of the HelloWorld 
         plugin at <externalLink>
         <linkText>HelloWorld Github Project</linkText>
         <linkUri>https://github.com/Alchemy4Tridion/Alchemy4Tridion.Plugins.Sample.HelloWorld</linkUri>
@@ -48,12 +48,12 @@
             </code>
             <alert class="note">
               <para>
-                Only once has Alchemy4Tridion come out of public beta testing will version 1.0 be available without
+                Only once Alchemy4Tridion has come out of public beta testing will version 1.0 be available without
                 the "-Pre" flag.
               </para>
             </alert>
             <para>
-              Alternatively, you can also right click your class library project use the "Manage Nuget Packages" 
+              Alternatively, you can also right click your class library project and use the "Manage Nuget Packages" 
               option to search and install the Alchemy4Tridion.Sample.HelloWorld package (make sure the prerelease
               filter option is selected).
             </para>
@@ -63,24 +63,24 @@
           <content>
             <para>
               Build the solution. You will be prompted to upload the plugin to the store. At this stage, 
-              we'll choose to cancel this upload and do this step manually.
+              choose to cancel the upload. In the next step we will install the plugin manually.
             </para>
           </content>
         </step>
         <step>
           <content>
             <para>
-              Go to the Alchemy page in your Content Management Explorer (see above) and click on the Plugins tab. 
-              This takes you to a screen which has a drop target that can accept your plugin. Assuming you made a debug build, 
+              Go to the Alchemy page in your Content Management Explorer and click on the Plugins tab. 
+              This takes you to a screen which has a drop target that can accept your plugin. Assuming you built in debug mode, 
               you should find it in the <localUri>/bin/Debug</localUri> folder of your solution. Locate this file 
               and drag/drop it onto the target. You'll get a Message Center dialog letting you know whether the 
               plugin was installed successfully or not.
             </para>
             <alert class="caution">
               <para>
-                Since this plugin has not been uploaded to the WebStore it is considered a development plugin. Be mindful
-                of anyother plugins that may already be installed as if your plugin doesn't have a unique name,
-                it'll get an error that its already installed.
+                Since this plugin has not been uploaded to the Webstore it is considered a development plugin. Be mindful
+                of any other plugins that may already be installed; if your plugin doesn't have a unique name
+                it will get an error saying it is already installed.
               </para>
             </alert>
           </content>
@@ -88,9 +88,9 @@
         <step>
           <content>
             <para>
-              Plugins do require a page reload in order for them to show up in the Tridion GUI. After installing 
-              (or uninstalling) a plugin, a reload icon will appear at the top bar of the Alchemy UI. You can either 
-              click that or use your browser's Reload Page button.
+              Plugins require a page reload to show up in the Tridion GUI. After installing 
+              (or uninstalling) a plugin, a reload icon will appear in the top bar of the Alchemy UI, near where your username is displayed. 
+              You can either click this or use your browser's refresh button.
             </para>
           </content>
         </step>
@@ -102,9 +102,9 @@
             </para>
             <alert class="note">
               <para>
-                Tridion GUI cache can be a tricky beast sometimes.  The Alchemy4Tridion framework will automatically
+                Tridion GUI cache can be a tricky at timess.  The Alchemy4Tridion framework will automatically
                 recycle application pools as well as increment the System.config's modification attribute, however
-                its been noted that sometimes the cache just won't clear for particular files, and you may have to
+                it has been noted that sometimes the cache just won't clear for particular files, and you may have to
                 clear your browser's cache manually.
               </para>
               <para>
@@ -135,7 +135,7 @@
         </para>
         <para>
           You should also remove the HelloWorld nuget package (make sure to leave the Alchemy4Tridion.Plugins package)
-          if you intend on using this as a real plugin so that other files won't get overwritten during updates.
+          if you intend on using this as a real plugin so that other files don't get overwritten during updates.
         </para>
       </content>
     </nextSteps>

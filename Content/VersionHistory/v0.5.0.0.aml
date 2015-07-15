@@ -32,7 +32,7 @@
           </listItem>
           <listItem>
             <para>
-              Url's on the Web Store are now hashtag-less! So once where a page may have been /#/plugins/categories, you can
+              Url's on the Webstore are now hashtag-less! So once where a page may have been /#/plugins/categories, you can
               now view it at /plugins/categories.  Note that this is a breaking change if you had bookmarked or linked
               to any pages using the old hashtag style url's.
             </para>

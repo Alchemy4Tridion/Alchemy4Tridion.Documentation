@@ -203,7 +203,7 @@
           </listItem>
           <listItem>
             <para>
-              Configure a4t.xml, Build, Upload to Web Store, Install/Deploy.
+              Configure a4t.xml, Build, Upload to Webstore, Install/Deploy.
             </para>
             <para>
               These last steps are the same regardless of the type of plugin you are building.

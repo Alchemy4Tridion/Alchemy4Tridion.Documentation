@@ -34,11 +34,11 @@
           <content>
             <para>In the Package Manager console type the following:</para>
             <code>
-              Install-Package Alchemy4Tridion.Sample.HelloWorld -Pre
+              Install-Package Alchemy4Tridion.Plugin - Pre
             </code>
             <alert class="note">
               <para>
-                Only once has Alchemy4Tridion come out of public beta testing will version 1.0 be available without
+                Only once Alchemy4Tridion has come out of public beta testing will version 1.0 be available without
                 the "-Pre" flag.
               </para>
             </alert>
@@ -55,7 +55,7 @@
               Rename the installed ServiceController to your liking. In the 2nd argument of the 
               AlchemyRoutePrefixAttribute on the controller, feel free to rename "Service" as well. Note that this 
               is the name that you'll use in your JavaScript to call your service. If you do not require a web 
-              service for your plugin, go ahead and delete ServiceController.
+              service for your plugin delete ServiceController.
             </para>
           </content>
         </step>
@@ -75,7 +75,7 @@
               }
             </code>
             <para>
-              This is your plugin class, and is the entry for the framework to discover your plugin.  That only
+              This is your plugin class, and is the entry for the framework to discover your plugin.  The only
               requirement for this class is that it extends AlchemyPluginBase.
             </para>
           </content>
@@ -84,9 +84,9 @@
           <content>
             <para>
               Add any static files that your plugin needs (JavaScript, CSS, images, .ascx controls, .aspx views, etc) 
-              under a /Static/ or /Assets/ folder in your project. Note that you can organize your static files anyway 
+              under a /Static/ or /Assets/ folder in your project. Note that you can organize your static files any way 
               you want within the static folder, but at build time the plugin package will put them in specific folders 
-              (ie all of your JavaScript files will end up in /assets/js/ of the plugin package).
+              (e.g. all JavaScript files will end up in /assets/js/ of the plugin package).
             </para>
           </content>
         </step>
@@ -108,23 +108,23 @@
         <step>
           <content>
             <para>
-              If you want to upload your project to the web store, complete the dialog that pops up after supplying your 
-              credentials that you used to register to the web store with.
+              If you want to upload your project to the Webstore, complete the dialog that pops up after supplying your Webstore 
+              credentials.
             </para>
           </content>
         </step>
         <step>
           <content>
             <para>
-              If you want to test your plugin directly w/o uploading to the web store, find your 
-              .a4t file in the /bin/Debug/ folder of your project (assuming you build under the Debug target). 
-              You can drag and drop this in the "Plugins" tab of the Alchemy UI.
+              If you want to test your plugin directly without uploading to the Webstore, find the 
+              .a4t file in the /bin/Debug/ folder of your project (assuming you built under the Debug target). 
+              You can drag and drop this to the "Plugins" tab of the Alchemy UI.
             </para>
             <alert class="caution">
               <para>
-                Since this plugin has not been uploaded to the WebStore it is considered a development plugin. Be mindful
-                of anyother plugins that may already be installed as if your plugin doesn't have a unique name,
-                it'll get an error that its already installed.
+                Since this plugin has not been uploaded to the Webstore it is considered a development plugin. Be mindful
+                of any other plugins that may already be installed; if your plugin doesn't have a unique name
+                it will get an error saying it is already installed.
               </para>
             </alert>
           </content>
@@ -132,23 +132,22 @@
         <step>
           <content>
             <para>
-              Plugins do require a page reload in order for them to show up in the Tridion GUI. After installing 
-              (or uninstalling) a plugin, a reload icon will appear at the top bar of the Alchemy UI. You can either 
-              click that or use your browser's Reload Page button.
+              Plugins require a page reload to show up in the Tridion GUI. After installing
+              (or uninstalling) a plugin, a reload icon will appear in the top bar of the Alchemy UI, near where your username is displayed.
+              You can either click this or use your browser's refresh button.
             </para>
           </content>
         </step>
         <step>
           <content>
             <para>
-              Go to the Content Explorer view and notice the new Hello World button in the ribbon bar and the
-              Hello World item in the context menu.
+              Your plugin is now installed and any changes to the GUI should now be visible in the CME.
             </para>
             <alert class="note">
               <para>
-                Tridion GUI cache can be a tricky beast sometimes.  The Alchemy4Tridion framework will automatically
+                Tridion GUI cache can be a tricky at timess.  The Alchemy4Tridion framework will automatically
                 recycle application pools as well as increment the System.config's modification attribute, however
-                its been noted that sometimes the cache just won't clear for particular files, and you may have to
+                it has been noted that sometimes the cache just won't clear for particular files, and you may have to
                 clear your browser's cache manually.
               </para>
               <para>
@@ -164,7 +163,7 @@
     <!-- Optional next steps info -->
     <nextSteps>
       <content><para>Now that you know how to build a plugin, continue reading this documentation to
-      further master concrete areas of plugin development.</para></content>
+      further master new areas of plugin development.</para></content>
     </nextSteps>
 
     <relatedTopics>
