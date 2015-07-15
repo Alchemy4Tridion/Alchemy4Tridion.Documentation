@@ -1,0 +1,1351 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alchemy4Tridion.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Alchemy4Tridion.Core.Configuration.Editor.EditorConfiguration">
+            <summary>
+            Represents an editor.config.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Configuration.Editor.EditorConfiguration.ConfigurationNamespace">
+            <summary>
+            The configuration namespace.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Configuration.Editor.EditorConfiguration.ContextMenuNamespace">
+            <summary>
+            The context menu namespace.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Configuration.Editor.EditorConfiguration.ExtensionsNamespace">
+            <summary>
+            The extensions namespace.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Configuration.Editor.EditorConfiguration.MergeNamespace">
+            <summary>
+            The merge namespace.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Configuration.Editor.EditorConfiguration.commands">
+            <summary>
+            The commands section of the editor configuration.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Configuration.Editor.EditorConfiguration.config">
+            <summary>
+            The wrapped XDocument editor config file.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Configuration.Editor.EditorConfiguration.configPath">
+            <summary>
+            The path to the configuration file.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Configuration.Editor.EditorConfiguration.editor">
+            <summary>
+            A Tridion Editor
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Configuration.Editor.EditorConfiguration.editorExtensions">
+            <summary>
+            The editor extension elements.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Configuration.Editor.EditorConfiguration.resources">
+            <summary>
+            The resoures section of the editor configuration
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Configuration.Editor.EditorConfiguration.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="editorName">The name of the editor as configured</param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Configuration.Editor.EditorConfiguration.EditorExtension(System.String)">
+            <summary>
+            Gets the EditorExtension matching the given editor extension's target.
+            </summary>
+            <param name="target">The target of the editor extension.</param>
+            <returns>Null if target not found in the configuration.</returns>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Configuration.Editor.EditorConfiguration.RemoveConfiguration(Alchemy4Tridion.Plugins.IAlchemyPlugin)">
+            <summary>
+            Removes all configuration for a given plugin.
+            </summary>
+            <param name="plugin">The plugin to remove the configuraiton for.</param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Configuration.Editor.EditorConfiguration.Save">
+            <summary>
+            Saves the editor configuration changes.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Configuration.Editor.EditorConfiguration.Resources">
+            <summary>
+            Represents the resources section of the editor configuration
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Configuration.Editor.EditorConfiguration.Commands">
+            <summary>
+            Gets the commands section of the editor configuration.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Configuration.Editor.EditorConfiguration.PluginLibrary">
+            <summary>
+            Gets a reference to the plugin library.
+            </summary>
+        </member>
+        <member name="T:Alchemy4Tridion.Core.Configuration.Editor.EditorUpdater">
+            <summary>
+            Responsible for updating the Editor config with configuration classes from a plugin.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Configuration.Editor.EditorUpdater.config">
+            <summary>
+            The alchemy editor configuration.
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Configuration.Editor.EditorUpdater.#ctor(Alchemy4Tridion.Core.Configuration.Editor.EditorConfiguration)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="config"></param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Configuration.Editor.EditorUpdater.AddConfigSections(Alchemy4Tridion.Plugins.IAlchemyPlugin)">
+            <summary>
+            Adds config sections to the configuration from classes inherited by IEditorSection.
+            </summary>
+            <param name="plugin">The plugin to add the sections for.</param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Configuration.Editor.EditorUpdater.RemoveConfigSections(Alchemy4Tridion.Plugins.IAlchemyPlugin)">
+            <summary>
+            Removes config sections from the configuration for IEditorSection components.
+            </summary>
+            <param name="plugin">The plugin to remove the config sections for.</param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Configuration.Editor.EditorUpdater.Save">
+            <summary>
+            Saves the updated editor configuration file.
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Configuration.Editor.EditorUpdater.AddResourceGroup(Alchemy4Tridion.Plugins.GUI.Configuration.ResourceGroup)">
+            <summary>
+            Adds a resource group to the config.
+            </summary>
+            <param name="group"></param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Configuration.Editor.EditorUpdater.AddEditorExtension(Alchemy4Tridion.Plugins.GUI.Configuration.Extensions.ExtensionConfigBase)">
+            <summary>
+            Adds an editor extension to the config.
+            </summary>
+            <param name="extension">The extension configuration to add.</param>
+        </member>
+        <member name="T:Alchemy4Tridion.Core.Configuration.Editor.Elements.CommandsElement">
+            <summary>
+            Represents the <commands /> element that contains command sets.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Configuration.Editor.Elements.CommandsElement.element">
+            <summary>
+            The wrapped element.
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Configuration.Editor.Elements.CommandsElement.#ctor(System.Xml.Linq.XElement,Alchemy4Tridion.Core.Configuration.Editor.EditorConfiguration)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="element"></param>
+            <param name="config"></param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Configuration.Editor.Elements.CommandsElement.AddCommandSet(Alchemy4Tridion.Plugins.GUI.Configuration.CommandSet)">
+            <summary>
+            Adds a command set to the commands element.
+            </summary>
+            <param name="commandSet"></param>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Configuration.Editor.Elements.CommandsElement.Config">
+            <summary>
+            Gets the editor configuration that this element belongs to.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:Alchemy4Tridion.Core.Configuration.Editor.Elements.EditorExtension" -->
+        <member name="F:Alchemy4Tridion.Core.Configuration.Editor.Elements.EditorExtension.config">
+            <summary>
+            The editor configuration that this element is a part of.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Configuration.Editor.Elements.EditorExtension.element">
+            <summary>
+            The wrapped element.
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Configuration.Editor.Elements.EditorExtension.#ctor(System.Xml.Linq.XElement,Alchemy4Tridion.Core.Configuration.Editor.EditorConfiguration)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="element">The element that this class represents.</param>
+            <param name="config">The editor configuration.</param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Configuration.Editor.Elements.EditorExtension.AddCommandExtension(Alchemy4Tridion.Plugins.GUI.Configuration.CommandExtension)">
+            <summary>
+            Adds a command extension to the editor extension element.
+            </summary>
+            <param name="extension">The command extension to add.</param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Configuration.Editor.Elements.EditorExtension.AddExtension(Alchemy4Tridion.Plugins.GUI.Configuration.Extensions.ExtensionConfigBase)">
+            <summary>
+            Adds an extension to the editor extension element.
+            </summary>
+            <param name="extension">The extension to add.</param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Alchemy4Tridion.Core.Configuration.Editor.Elements.EditorExtension.ConfigureApplySection(Alchemy4Tridion.Plugins.GUI.Configuration.Extensions.ExtensionConfigBase,System.Xml.Linq.XElement)" -->
+        <member name="M:Alchemy4Tridion.Core.Configuration.Editor.Elements.EditorExtension.ConfigureContextMenu(Alchemy4Tridion.Plugins.GUI.Configuration.ContextMenuExtension,System.Xml.Linq.XElement)">
+            <summary>
+            Configures the element as a contextmenu extension.
+            </summary>
+            <param name="extension">The context menu extension.</param>
+            <param name="element">The element to add.</param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Configuration.Editor.Elements.EditorExtension.ConfigureRibbonToolbar(Alchemy4Tridion.Plugins.GUI.Configuration.RibbonToolbarExtension,System.Xml.Linq.XElement)">
+            <summary>
+            Configures the element as a ribbontoolbar extension
+            </summary>
+            <param name="extension"></param>
+            <param name="element"></param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Configuration.Editor.Elements.EditorExtension.ConfigureTabPage(Alchemy4Tridion.Plugins.GUI.Configuration.TabPageExtension,System.Xml.Linq.XElement)">
+            <summary>
+            Configures the extension xml specific for a tabpage extension.
+            </summary>
+            <param name="extension"></param>
+            <param name="element"></param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Configuration.Editor.Elements.EditorExtension.AddContextMenuItems(System.Collections.Generic.IEnumerable{Alchemy4Tridion.Plugins.GUI.Configuration.Elements.ContextMenuItem},System.Xml.Linq.XElement)">
+            <summary>
+            Adds context menu items to an element.
+            </summary>
+            <param name="items">The items to add.</param>
+            <param name="element">The element to add them to.</param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Configuration.Editor.Elements.EditorExtension.GetDependencyName(Alchemy4Tridion.Plugins.GUI.Configuration.Elements.Dependency,Alchemy4Tridion.Plugins.GUI.Configuration.Extensions.ExtensionConfigBase)">
+            <summary>
+            Gets a dependency's name.
+            </summary>
+            <param name="dependency"></param>
+            <param name="extension"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Configuration.Editor.Elements.EditorExtension.Config">
+            <summary>
+            Gets the editor configuration that this element belongs to.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Configuration.Editor.Elements.EditorExtension.EditorSections">
+            <summary>
+            Gets a reference to the registered editor sections. Just an alias for Config.PluginLibrary.EditorSections.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Configuration.Editor.Elements.ExtensionGroupsElement._element">
+            <summary>
+            The wrapped element.
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Configuration.Editor.Elements.ExtensionGroupsElement.#ctor(System.Xml.Linq.XElement)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="element"></param>
+        </member>
+        <member name="T:Alchemy4Tridion.Core.Configuration.Editor.Elements.ResourcesElement">
+            <summary>
+            Represents the <resources /> element of the editor configuration.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Configuration.Editor.Elements.ResourcesElement.config">
+            <summary>
+            The editor configuration that that this element belongs to.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Configuration.Editor.Elements.ResourcesElement.element">
+            <summary>
+            The wrapped element.
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Configuration.Editor.Elements.ResourcesElement.#ctor(System.Xml.Linq.XElement,Alchemy4Tridion.Core.Configuration.Editor.EditorConfiguration)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="element"></param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Configuration.Editor.Elements.ResourcesElement.AddExtensionGroup(Alchemy4Tridion.Plugins.GUI.Configuration.ExtensionGroup)">
+            <summary>
+            Adds an extension group to the resources.
+            </summary>
+            <param name="group">The extension group to add.</param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Configuration.Editor.Elements.ResourcesElement.AddGroup(Alchemy4Tridion.Plugins.GUI.Configuration.ResourceGroup)">
+            <summary>
+            Adds a group to the resources.
+            </summary>
+            <param name="group"></param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Configuration.Editor.Elements.ResourcesElement.HasExtensionGroup(Alchemy4Tridion.Plugins.GUI.Configuration.ExtensionGroup)">
+            <summary>
+            Gets whether or not the configuration already has an existing extension group in it.
+            </summary>
+            <param name="group">The group to check for (uses FullName for check).</param>
+            <returns>True if it already exists.</returns>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Configuration.Editor.Elements.ResourcesElement.HasGroup(Alchemy4Tridion.Plugins.GUI.Configuration.ResourceGroup)">
+            <summary>
+            Gets whether or not the configuration already has an existing group in it.
+            </summary>
+            <param name="group">The group to check for (uses FullName for check).</param>
+            <returns>True if it already exists.</returns>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Configuration.Editor.Elements.ResourcesElement.GetInsertAfterValue(Alchemy4Tridion.Plugins.GUI.Configuration.IEditorSection,Alchemy4Tridion.Plugins.GUI.Configuration.Elements.ExtensionGroupInsertAfter)">
+            <summary>
+            Gets the insert after value of the extension group.
+            </summary>
+            <param name="section"></param>
+            <param name="insertAfter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Configuration.Editor.Elements.ResourcesElement.GetFileLocation(Alchemy4Tridion.Plugins.GUI.Configuration.Elements.File,Alchemy4Tridion.Plugins.IAlchemyPlugin)">
+            <summary>
+            Gets a file location.
+            </summary>
+            <param name="file"></param>
+            <param name="pluginName"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Configuration.Editor.Elements.ResourcesElement.Cache">
+            <summary>
+            Gets or sets whether or not Alchemy caches resources.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Configuration.Editor.Elements.ResourcesElement.Config">
+            <summary>
+            Gets the editor configuration that this element belongs to.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Configuration.Editor.Elements.ResourcesElement.EditorSections">
+            <summary>
+            Gets a reference to the registered editor sections. Just an alias for Config.PluginLibrary.EditorSections.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Configuration.Editor.Elements.ResourcesElement.ExtensionGroups">
+            <summary>
+            Gets the extention groups section of resources element.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Configuration.Editor.Elements.ResourcesElement.Filters">
+            <summary>
+            Gets or sets the filters element.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Configuration.Editor.Elements.ResourcesElement.Groups">
+            <summary>
+            Gets the groups of the groups section.
+            </summary>
+        </member>
+        <member name="T:Alchemy4Tridion.Core.Configuration.Main.AlchemyConfig">
+            <summary>
+            Represents the main Alchemy configuration file.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Configuration.Main.AlchemyConfig._config">
+            <summary>
+            The wrapped XDocument editor config file.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Configuration.Main.AlchemyConfig._configPath">
+            <summary>
+            The path where the alchemy configuration file lives.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Configuration.Main.AlchemyConfig._impersonation">
+            <summary>
+            The impersation section of the config.
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Configuration.Main.AlchemyConfig.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="configPath">Optional path string to specify where the alchemy config lives.</param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Configuration.Main.AlchemyConfig.Save">
+            <summary>
+            Saves the underlying configuration.
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Configuration.Main.AlchemyConfig.EncryptIfNeeded">
+            <summary>
+            Encrypts any secured parts of the configuration if needed.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Configuration.Main.AlchemyConfig.Impersonation">
+            <summary>
+            Gets the impersonation section of the main alchemy configuration.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Configuration.Main.AlchemyConfig.IsImpersonationSet">
+            <summary>
+            Gets whether or not the Alchemy.config has impersonation set.
+            </summary>
+        </member>
+        <member name="T:Alchemy4Tridion.Core.Configuration.Main.ImpersonationUser">
+            <summary>
+            Represents the impersonation element within the main Alchemy configuration.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Configuration.Main.ImpersonationUser._element">
+            <summary>
+            The underlying element <impersonation />
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Configuration.Main.ImpersonationUser.#ctor(System.Xml.Linq.XElement)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="element"></param>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Configuration.Main.ImpersonationUser.Domain">
+            <summary>
+            Gets the domain of the impersonation user.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Configuration.Main.ImpersonationUser.Password">
+            <summary>
+            Gets the password of the impersonation user.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Configuration.Main.ImpersonationUser.Username">
+            <summary>
+            Gets the username of the impersonation user.
+            </summary>
+        </member>
+        <member name="T:Alchemy4Tridion.Core.Configuration.SystemConfig">
+            <summary>
+            Represents utilities for interacting with the /WebRoot/Configuration/System.config file.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Configuration.SystemConfig._configPath">
+            <summary>
+            The configuration path to System.config.
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Configuration.SystemConfig.AddAlchemyEditor(System.String)">
+            <summary>
+            Adds the Alchemy Editor section to the system.config file.
+            </summary>
+            <param name="installPath"></param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Configuration.SystemConfig.RemoveAlchemyEditor(System.String)">
+            <summary>
+            Removes the Alchemy Editor section from the system.config file.
+            </summary>
+            <param name="installPath"></param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Configuration.SystemConfig.IncrementModification">
+            <summary>
+            Increments the modification attribute in System.config and saves the file.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Configuration.SystemConfig.ConfigPath">
+            <summary>
+            Gets the configuration path to System.config.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Configuration.SystemConfig.Config">
+            <summary>
+            Gets the system configuration (not cached, loaded each call).
+            </summary>
+        </member>
+        <member name="T:Alchemy4Tridion.Core.Controllers.PluginController">
+            <summary>
+            Controller for functionality for specific plugins
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Controllers.PluginController.library">
+            <summary>
+            The plugin library.
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Controllers.PluginController.#ctor(Alchemy4Tridion.Core.Plugins.IPluginLibrary)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="library">Plugin library to be injected</param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Controllers.PluginController.GetSettings(System.String)">
+            <summary>
+            Gets the settings of a particular plugin. Only gets the settings that are marked to be read
+            by the client.
+            </summary>
+            <param name="pluginName">The name of the plugin.</param>
+            <returns>A json result containing the items.</returns>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Controllers.PluginController.AddSettingProperties(System.Collections.Generic.IDictionary{System.String,System.Object},Alchemy4Tridion.Plugins.Info.IPluginSettings,System.Boolean)">
+            <summary>
+            Adds setting values to a level of the returned json object.
+            </summary>
+            <param name="config"></param>
+            <param name="settings"></param>
+            <param name="ignoreHasChildElementsAttribute"></param>
+        </member>
+        <member name="T:Alchemy4Tridion.Core.Extensions.Controllers.WebApiControllerExtensions">
+            <summary>
+            Extension methods for webapi controllers used directly in A4T (not plugin controllers).
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Extensions.Controllers.WebApiControllerExtensions.RecycleApplicationDomain(System.Web.Http.ApiController)">
+            <summary>
+            Recyles the application domain. Originally we were recycling the app pool of IIS but some users
+            were having issues with this... so now we are just modifying the Web.Config of Alchemy.
+            </summary>
+            <param name="controller">The controller we are extending.</param>
+        </member>
+        <member name="T:Alchemy4Tridion.Core.Extensions.Plugins.PluginExtensionMethods">
+            <summary>
+            Extension methods for plugins.
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Extensions.Plugins.PluginExtensionMethods.EncryptSettings(Alchemy4Tridion.Plugins.IAlchemyPlugin)">
+            <summary>
+            Encrypts settings that are flagged to be encrypted in the custom configuration of an a4t.xml file.
+            </summary>
+            <param name="plugin">The plugin to encrypt the settings for.</param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Extensions.Plugins.PluginExtensionMethods.EncryptSettings(Alchemy4Tridion.Plugins.Info.IPluginSettings)">
+            <summary>
+            Encrypts a level of a given plugin settings (only settings that are flagged to be encrypted).
+            </summary>
+            <param name="settings"></param>
+        </member>
+        <member name="T:Alchemy4Tridion.Core.Installation.CustomActions">
+            <summary>
+            Custom Actions for when Alchemy4Tridion is installed.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Installation.CustomActions._serverManager">
+            <summary>
+            The server manager instance used to manage the Alchemy App, Pool, and Virtual Directory.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Installation.CustomActions._targetDirectory">
+            <summary>
+            The target directory path that Alchemy was installed in.
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Installation.CustomActions.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Installation.CustomActions.Uninstall(System.Collections.IDictionary)">
+            <summary>
+            Uninstall custom action.
+            </summary>
+            <param name="savedState"></param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Installation.CustomActions.CreateAlchemyIISItems">
+            <summary>
+            Creates the Application Pool, Application, and Virtual Directory required by Alchemy.
+            </summary>
+            <remarks>
+            Only creates them if they don't already exist.
+            </remarks>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Installation.CustomActions.InstallAlchemy">
+            <summary>
+            Installs and configures all necessary Alchemy items.
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Installation.CustomActions.RemoveAlchemyIISItems">
+            <summary>
+            Removes any Alchemy IIS items only if they already exist.
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Installation.CustomActions.UninstallAlchemy">
+            <summary>
+            Uninstalls and removes all related Alchemy items and configuration.
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Installation.CustomActions.GetTridionSite">
+            <summary>
+            Gets the Tridion IIS Site
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Installation.CustomActions.SaveAlchemyAdminUserInfo">
+            <summary>
+            Saves the admin impersonation user information to the alchemy config.
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Installation.CustomActions.SetAlchemyFolderSecurities(System.String)">
+            <summary>
+            Sets appropriate write permissions on a folder that Network Service has access to.
+            </summary>
+            <param name="folder"></param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Installation.CustomActions.SetAlchemyWebConfigSecurity">
+            <summary>
+            Adds security settings to Web.config.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Installation.CustomActions.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Installation.CustomActions.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Installation.CustomActions.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Installation.CustomActions.AdminDomain">
+            <summary>
+            Gets the impersonation administrative user's domain.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Installation.CustomActions.AdminPassword">
+            <summary>
+            Gets the impersonation administrative user's password.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Installation.CustomActions.AdminUser">
+            <summary>
+            Gets the impersonation administrative user's name.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Installation.CustomActions.TargetDirectory">
+            <summary>
+            Gets the target directory path that Alchemy was stalled in.
+            </summary>
+        </member>
+        <member name="T:Alchemy4Tridion.Core.Installation.IJsProxyGenerator">
+            <summary>
+            Generates a JavaScript proxy that can be used to communicate with the plugin's webapi controllres.
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Installation.IJsProxyGenerator.GenerateProxies(Alchemy4Tridion.Plugins.IAlchemyPlugin)">
+            <summary>
+            Generates proxies for the given plugin.
+            </summary>
+            <param name="plugin">The plugin to generate proxies for.</param>
+        </member>
+        <member name="T:Alchemy4Tridion.Core.Installation.ITokenParser">
+            <summary>
+            Interface for a service that will find and replace tokens in a given text.
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Installation.ITokenParser.Get(System.String)">
+            <summary>
+            Gets the value of a given token, or an empty string if the token doesn't exist.
+            </summary>
+            <param name="token">The name of the token to get the value for.</param>
+            <returns>The value, or an empty string if token wasn't found.</returns>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Installation.ITokenParser.ParseFile(System.String)">
+            <summary>
+            Parses a given file and replaces all tokens inside of it.
+            </summary>
+            <param name="filePath">The path to parse.</param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Installation.ITokenParser.ParseText(System.String)">
+            <summary>
+            Parses a given text for all tokens and replaces them.
+            </summary>
+            <param name="text">The text to parse.</param>
+            <returns>The parsed text with all token replacements.</returns>
+        </member>
+        <member name="T:Alchemy4Tridion.Core.Installation.JsProxyGenerator">
+             <summary>
+             Generates a JavaScript proxy that can be used to communicate with the plugin's webapi controllres.
+             </summary>
+             <example>
+             js usage: 
+             Alchemy.Plugins.PluginName.Api.Servicer.doSomethingCool(var1, var2, postOjbect)
+                 .then(function (resp) {
+             });
+            
+             proxy output example:
+             Alchemy.Plugins.Servicer.Api.Servicer.doSomethingCool = function (var1, var2, postObject) {
+                 return qwest.post("{0}/{1}".format(var1, var2), postObject); 
+             };
+             </example>
+             <remarks>
+             Overloaded methods not supported currently.
+             Only get, post, put and delete verbs supported.
+             </remarks>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Installation.JsProxyGenerator.plugin">
+            <summary>
+            The alchemy plugin currently being used to generate the proxy for.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Installation.JsProxyGenerator.sb">
+            <summary>
+            The string builder used to create the javascript with.
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Installation.JsProxyGenerator.GenerateProxies(Alchemy4Tridion.Plugins.IAlchemyPlugin)">
+            <summary>
+            Generates proxies for the given plugin.
+            </summary>
+            <param name="plugin">The plugin to generate proxies for.</param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Installation.JsProxyGenerator.GenerateProxyForControllerType(System.Type)">
+            <summary>
+            Generates the proxy info for a given webapi controller Type.
+            </summary>
+            <param name="controllerType">The Type of the webapi controller.</param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Installation.JsProxyGenerator.GenerateProxyForSettings(Alchemy4Tridion.Plugins.IAlchemyPlugin)">
+            <summary>
+            Generates the JavaScript to get the custom configuration settings of the plugin.
+            </summary>
+            <param name="plugin"></param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Installation.JsProxyGenerator.GenerateFooter">
+            <summary>
+            Generates the bottom of the javascript proxy.
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Installation.JsProxyGenerator.GenerateHeader">
+            <summary>
+            Generates the top of the javascript proxy.
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Installation.JsProxyGenerator.GenerateJavaScriptMethod(System.String,System.String,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Generate the JavaScript that can be used as the proxy to communicate with your webap controller's action method.
+            </summary>
+            <param name="serviceName"></param>
+            <param name="methodName"></param>
+            <param name="verb"></param>
+            <param name="templateString"></param>
+            <param name="parameters"></param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Installation.JsProxyGenerator.GetHttpMethodAttributes(System.Reflection.MethodInfo)">
+            <summary>
+            Gets a list of action http method provider attributes that a method contains.
+            </summary>
+            <param name="method">The method to get the attributes for.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Installation.JsProxyGenerator.GetMethodVerb(System.Collections.Generic.IEnumerable{System.Web.Http.Controllers.IActionHttpMethodProvider})">
+            <summary>
+            Gets the best verb for the js proxy to use.  Prefers to use GET if available, then POST.  Else uses Delete or Put.
+            </summary>
+            <param name="verbs"></param>
+            <returns>The best method verb to use for the js proxy.</returns>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Installation.JsProxyGenerator.GetTemplateString(Alchemy4Tridion.Plugins.AlchemyRoutePrefixAttribute,System.Web.Http.RouteAttribute,System.Collections.Generic.IEnumerable{System.String},System.Boolean)">
+            <summary>
+            Gets the Template Url string to use as the js proxy call to the web service.
+            </summary>
+            <param name="prefix">The route prefix attribute on the webapi controller.</param>
+            <param name="route">The route attribute on the webapi controller.</param>
+            <param name="parameters">The parameters on the controller's method we're proxying.</param>
+            <param name="isVerbPostOrPut">Whether or not verb is a post or put method.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Installation.JsProxyGenerator.RegisterNamespaces(System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            Creates the JS that is responsible for registering the proxy's namespaces.
+            </summary>
+            <param name="controllerTypes">The webapi controller types to generate the namespaces for.</param>
+        </member>
+        <member name="T:Alchemy4Tridion.Core.Installation.TokenParser">
+            <summary>
+            Token parser for finding and replacing string tokens matching ${TokenName} syntax.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Installation.TokenParser.plugin">
+            <summary>
+            Reference to the plugin which is the context of what's being parsed.
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Installation.TokenParser.#cctor">
+            <summary>
+            Static constructor, initializes the tokens and the pattern used.
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Installation.TokenParser.#ctor(Alchemy4Tridion.Plugins.IAlchemyPlugin)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="plugin">The plugin as context of what to parse for.</param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Installation.TokenParser.Get(System.String)">
+            <summary>
+            Gets the value of a given token, or an empty string if the token doesn't exist.
+            </summary>
+            <param name="token">The name of the token to get the value for.</param>
+            <returns>The value, or an empty string if token wasn't found.</returns>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Installation.TokenParser.ParseFile(System.String)">
+            <summary>
+            Parses a given file and replaces all tokens inside of it.
+            </summary>
+            <param name="filePath">The path to parse.</param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Installation.TokenParser.ParseText(System.String)">
+            <summary>
+            Parses a given text for all tokens and replaces them.
+            </summary>
+            <param name="text">The text to parse.</param>
+            <returns>The parsed text with all token replacements.</returns>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Installation.TokenParser.TokenPattern">
+            <summary>
+            Gets or sets the regex token pattern that will be used to retrieve tokens from a given input text.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Installation.TokenParser.Tokens">
+            <summary>
+            Gets or sets the list of tokens that this parser can handle and the functions to return the correct values.
+            </summary>
+        </member>
+        <member name="T:Alchemy4Tridion.Core.Plugins.IPluginInstaller">
+            <summary>
+            Interface for a plugin installer. Plugin installers handle the installation of new plugins.
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Plugins.IPluginInstaller.Install(System.String)">
+            <summary>
+            Installs a plugin.
+            </summary>
+            <param name="pluginPackagePath">The path to the .a4t install file.</param>
+            <exception cref="T:Alchemy4Tridion.Core.Plugins.PluginExistsException">Thrown if the plugin is already installed.</exception>
+            <returns>The instance of IAlchemyPlugin that was installed.</returns>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Plugins.IPluginInstaller.PluginLibrary">
+            <summary>
+            Gets or sets a reference to the Plugin Library.
+            </summary>
+        </member>
+        <member name="T:Alchemy4Tridion.Core.Plugins.IPluginLibrary">
+            <summary>
+            Interface for a library of plugins installed in Tridion.
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Plugins.IPluginLibrary.GetPlugin(System.String)">
+            <summary>
+            Gets a plugin by it's name (case insensitive).
+            </summary>
+            <param name="pluginName">The name of the plugin to search for.</param>
+            <returns>The plugin with matched name, or null if none was found.</returns>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Plugins.IPluginLibrary.Install(System.String)">
+            <summary>
+            Installs a new plugin.
+            </summary>
+            <param name="pluginPackagePath">The path of the plugin file to install.</param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Plugins.IPluginLibrary.Uninstall(System.String)">
+            <summary>
+            Uninstalls a plugin.
+            </summary>
+            <param name="pluginName">The name of the plugin to uninstall.</param>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Plugins.IPluginLibrary.ControllerTypes">
+            <summary>
+            Gets a list of webapi controller types that implement IAlchemyService.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Plugins.IPluginLibrary.Installer">
+            <summary>
+            Gets a reference to the plugin installer service.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Plugins.IPluginLibrary.EditorSections">
+            <summary>
+            Gets the collection of registered editor sections.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Plugins.IPluginLibrary.Plugins">
+            <summary>
+            Gets the collection of plugins that are available.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Plugins.IPluginLibrary.PluginsPath">
+            <summary>
+            Gets the path to where plugins are installed.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Plugins.IPluginLibrary.GetServiceLocatorForPlugin">
+            <summary>
+            Gets the service locator factory delegate used for attaching IPluginServiceLocator instances onto plugins.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Plugins.IPluginLibrary.Uninstaller">
+            <summary>
+            Gets a reference to the plugin uninstaller service.
+            </summary>
+        </member>
+        <member name="T:Alchemy4Tridion.Core.Plugins.IPluginUninstaller">
+            <summary>
+            Interface for a service that uninstalls plugins.
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Plugins.IPluginUninstaller.DeletePluginFolder(System.String)">
+            <summary>
+            Deletes the plugin folder.
+            </summary>
+            <param name="pluginName">The name of the plugin to delete the folder for.</param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Plugins.IPluginUninstaller.Uninstall(System.String)">
+            <summary>
+            Uninstalls an Alchemy plugin by its given name.
+            </summary>
+            <param name="pluginName">The name of the plugin.</param>
+            <returns>The removed plugin.</returns>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Plugins.IPluginUninstaller.Uninstall(Alchemy4Tridion.Plugins.IAlchemyPlugin)">
+            <summary>
+            Uninstalls an alchemy plugin.
+            </summary>
+            <param name="plugin">The plugin to remove.</param>
+            <returns>The removed plugin.</returns>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Plugins.IPluginUninstaller.PluginLibrary">
+            <summary>
+            Gets or sets the reference to the plugin library.
+            </summary>
+        </member>
+        <member name="T:Alchemy4Tridion.Core.Plugins.PluginInstaller">
+            <summary>
+            Service responsible for installing new plugins from a .a4t plugin archive file.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Plugins.PluginInstaller.config">
+            <summary>
+            Reference to the Alchemy Editor configuration.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Plugins.PluginInstaller.configUpdater">
+            <summary>
+            Reference to the service responsible for updating th editor configuration.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Plugins.PluginInstaller.jsProxyGenerator">
+            <summary>
+            The service used to generate js proxies for web api controllers.
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Plugins.PluginInstaller.#ctor(Alchemy4Tridion.Core.Configuration.Editor.EditorConfiguration,Alchemy4Tridion.Core.Installation.IJsProxyGenerator)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="configuration">The reference to the editor configuration.</param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Plugins.PluginInstaller.Install(System.String)">
+            <summary>
+            Installs a plugin.
+            </summary>
+            <param name="pluginPackagePath">The plugin archive package to install.</param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Plugins.PluginInstaller.Cleanup(System.String,Alchemy4Tridion.WebStore.Plugins.PluginInfo,System.Boolean)">
+            <summary>
+            Peform any cleanup needed from installation of the plugin.
+            </summary>
+            <param name="pluginPackagePath">The path to the plugin package .a4t file.</param>
+            <param name="info">Info about the plugin if needed.</param>
+            <param name="successfulInstall">Whether or not this cleanup is happening after a successful install.</param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Plugins.PluginInstaller.ConfigureGuiExtensions(Alchemy4Tridion.Plugins.IAlchemyPlugin)">
+            <summary>
+            Configures any gui extensions that the plugin contains.
+            </summary>
+            <param name="plugin"></param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Plugins.PluginInstaller.CreatePluginDirectory(Alchemy4Tridion.WebStore.Plugins.PluginInfo)">
+            <summary>
+            Creates the new plugin directory. Throws an exception if it already exists.
+            </summary>
+            <param name="info">The plugin info.</param>
+            <returns>The path to the newly created directory.</returns>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Plugins.PluginInstaller.GetAlchemyPlugin(System.String,Alchemy4Tridion.WebStore.Plugins.PluginInfo)">
+            <summary>
+            Gets a reference of IAlchemyPlugin from assemblies located in the bin folder of the plugin path.
+            </summary>
+            <param name="pluginPath">The path of the plugin.</param>
+            <param name="info">The plugin info.</param>
+            <returns>A registered IAlchemy plugin found in the assemblies.</returns>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Plugins.PluginInstaller.GetPluginInfo(System.String)">
+            <summary>
+            Extracts information about the plugin from the plugin package archive file.
+            </summary>
+            <param name="pluginPackagePath">The path to the .a4t file.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Plugins.PluginInstaller.ParseTokensInStaticFiles(Alchemy4Tridion.Plugins.IAlchemyPlugin)">
+            <summary>
+            Parses tokens in static files. Currently only handles css and js in their default package locations.
+            </summary>
+            <param name="plugin">The plugin to parse the files for.</param>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Plugins.PluginInstaller.PluginLibrary">
+            <summary>
+            Gets or sets a reference to the PluginLibrary.
+            </summary>
+        </member>
+        <member name="T:Alchemy4Tridion.Core.Plugins.PluginLibrary">
+            <summary>
+            Represents a collection of plugins that are installed on Tridion as well as functionality to install and uninstall them.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Plugins.PluginLibrary.catalog">
+            <summary>
+            The catalog that contains a collection of other catalog types.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Plugins.PluginLibrary.container">
+            <summary>
+            The composition container that has all info about plugins.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Plugins.PluginLibrary.directories">
+            <summary>
+            The directory catalog that points to the plugins folder.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Plugins.PluginLibrary.editorSections">
+            <summary>
+            The gui extension editor sections.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Plugins.PluginLibrary.installer">
+            <summary>
+            The installer instance of the plugin.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Plugins.PluginLibrary.uninstaller">
+            <summary>
+            The uninstaller instance of the plugin.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Plugins.PluginLibrary.plugins">
+            <summary>
+            The installed plugins.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Plugins.PluginLibrary.pluginsPath">
+            <summary>
+            The path where plugins are installed.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Plugins.PluginLibrary.pluginServiceLocatorFactory">
+            <summary>
+            The service locatory factory.
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Plugins.PluginLibrary.#ctor(Alchemy4Tridion.Core.Plugins.IPluginInstaller,Alchemy4Tridion.Core.Plugins.IPluginUninstaller,System.Func{Alchemy4Tridion.Plugins.IAlchemyPlugin,Alchemy4Tridion.Plugins.IPluginServiceLocator})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="installer"></param>
+            <param name="uninstaller"></param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Plugins.PluginLibrary.GetPlugin(System.String)">
+            <summary>
+            Gets a plugin by it's name (case insensitive).
+            </summary>
+            <param name="pluginName">The name of the plugin to search for.</param>
+            <returns>The plugin with matched name, or null if none was found.</returns>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Plugins.PluginLibrary.Install(System.String)">
+            <summary>
+            Installs a new plugin.
+            </summary>
+            <param name="pluginPackagePath">The path to the .a4t plugin file to install.</param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Plugins.PluginLibrary.Uninstall(System.String)">
+            <summary>
+            Uninstalls a plugin.
+            </summary>
+            <param name="pluginName">The name of the plugin to uninstall.</param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Plugins.PluginLibrary.Uninstall(Alchemy4Tridion.Plugins.IAlchemyPlugin)">
+            <summary>
+            Uninstalls a plugin.
+            </summary>
+            <param name="pluginToRemove">The plugin to remove.</param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Plugins.PluginLibrary.InitializePlugins(System.Collections.Generic.IEnumerable{Alchemy4Tridion.Plugins.IAlchemyPlugin})">
+            <summary>
+            Initializes the installed plugins. This is only called on initialization of the library.
+            Plugins during installation should be initialized by the Installer service.
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Plugins.PluginLibrary.LoadFromPluginDirectories">
+            <summary>
+            Loads dlls from all the plugin directories and adds the directory catalogs to the aggregate catalog.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Plugins.PluginLibrary.ControllerTypes">
+            <summary>
+            Gets a list of webapi controller types that implement IAlchemyService.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Plugins.PluginLibrary.EditorSections">
+            <summary>
+            Gets the collection of registered editor sections.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Plugins.PluginLibrary.Installer">
+            <summary>
+            Gets a reference to the plugin installer service.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Plugins.PluginLibrary.Plugins">
+            <summary>
+            Gets the collection of plugins that are available.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Plugins.PluginLibrary.PluginsPath">
+            <summary>
+            Gets the path to where plugins are installed.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Plugins.PluginLibrary.GetServiceLocatorForPlugin">
+            <summary>
+            Gets the plugin service locator factory that will attach services onto the plugins.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Plugins.PluginLibrary.Uninstaller">
+            <summary>
+            Gets a reference to the plugin uninstaller service.
+            </summary>
+        </member>
+        <member name="T:Alchemy4Tridion.Core.Plugins.PluginUninstaller">
+            <summary>
+            Service for uninstalling plugins.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Plugins.PluginUninstaller.config">
+            <summary>
+            Reference to the Alchemy Editor configuration.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Plugins.PluginUninstaller.configUpdater">
+            <summary>
+            Reference to the service responsible for updating th editor configuration.
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Plugins.PluginUninstaller.#ctor(Alchemy4Tridion.Core.Configuration.Editor.EditorConfiguration)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Plugins.PluginUninstaller.DeletePluginFolder(System.String)">
+            <summary>
+            Deletes the plugin folder.
+            </summary>
+            <param name="pluginName">The name of the plugin to delete the folder for.</param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Plugins.PluginUninstaller.Uninstall(System.String)">
+            <summary>
+            Uninstalls an Alchemy plugin by its given name.
+            </summary>
+            <param name="pluginName">The name of the plugin.</param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Plugins.PluginUninstaller.Uninstall(Alchemy4Tridion.Plugins.IAlchemyPlugin)">
+            <summary>
+            Uninstalls an alchemy plugin.
+            </summary>
+            <param name="plugin">The plugin to remove.</param>
+            <returns>The removed plugin.</returns>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Plugins.PluginUninstaller.DeleteDirectory(System.String)">
+            <summary>
+            Deletes a directory recursively. Fix for errors when using Directory.Delete(path, true).
+            </summary>
+            <param name="path"></param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Plugins.PluginUninstaller.MoveLibraryFiles(System.String)">
+            <summary>
+            Due to the files being locked we'll just move them for now to a temporary folder.
+            </summary>
+            <param name="pluginFolderPath">The folder path of where the plugin files resides.</param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Plugins.PluginUninstaller.RemoveGuiConfiguration(Alchemy4Tridion.Plugins.IAlchemyPlugin)">
+            <summary>
+            Removes the configurations that were created by any GUI extensions for the given plugin.
+            </summary>
+            <param name="plugin">The plugin to remove the </param>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Plugins.PluginUninstaller.PluginLibrary">
+            <summary>
+            Gets or sets the reference to the plugin library.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Plugins.Services.SettingsEncryptorService.ClientSettingsType">
+            <summary>
+            Gets or sets the type that the client settings should be deserialized to with the GetClientSettings method.
+            </summary>
+        </member>
+        <member name="T:Alchemy4Tridion.Core.Providers.AlchemyDirectRouteProvider">
+            <summary>
+            Alchemy DirectRouteProvider ensures attribute based routing on AlchemyApiController's to have
+            consistent route prefixes of /Plugins/{PluginName}/api/{optionServiceName}/{route}
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Providers.AlchemyDirectRouteProvider.GetRoutePrefix(System.Web.Http.Controllers.HttpControllerDescriptor)">
+            <summary>
+            Gets the route prefix.
+            </summary>
+            <param name="controllerDescriptor"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Providers.AlchemyDirectRouteProvider.GetControllerServiceName(Alchemy4Tridion.Plugins.AlchemyRoutePrefixAttribute)">
+            <summary>
+            Gets the service name from the alchemy route prefix attribute.
+            </summary>
+            <param name="attribute"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Providers.AlchemyDirectRouteProvider.GetPluginName(System.Web.Http.Controllers.HttpControllerDescriptor)">
+            <summary>
+            Gets the plugin's name based on the filepath to where the assembly is installed.
+            </summary>
+            <param name="controllerDescriptor"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Alchemy4Tridion.Core.Utilities.Impersonator">
+            <summary>
+            Impersonation of a user. Allows to execute code under another
+            user context.
+            Please note that the account that instantiates the Impersonator class
+            needs to have the 'Act as part of operating system' privilege set.
+            </summary>
+            <remarks>	
+            This class is based on the information in the Microsoft knowledge base
+            article http://support.microsoft.com/default.aspx?scid=kb;en-us;Q306158
+            
+            Encapsulate an instance into a using-directive like e.g.:
+            
+            	...
+            	using ( new Impersonator( "myUsername", "myDomainname", "myPassword" ) )
+            	{
+            		...
+            		[code that executes under the new context]
+            		...
+            	}
+            	...
+            
+            Please contact the author Uwe Keim (mailto:uwe.keim@zeta-software.de)
+            for questions regarding this class.
+            </remarks>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Utilities.Impersonator.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Constructor. Starts the impersonation with the given credentials.
+            Please note that the account that instantiates the Impersonator class
+            needs to have the 'Act as part of operating system' privilege set.
+            </summary>
+            <param name="userName">The name of the user to act as.</param>
+            <param name="domainName">The domain name of the user to act as.</param>
+            <param name="password">The password of the user to act as.</param>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Utilities.Impersonator._tridionWebInstallPath">
+            <summary>
+            The physical location where the Tridion web site was installed.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Utilities.Impersonator._tridionBaseRegistryKey">
+            <summary>
+            The base Tridion registry key.
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Utilities.Impersonator.ImpersonateValidUser(System.String,System.String,System.String)">
+            <summary>
+            Does the actual impersonation.
+            </summary>
+            <param name="userName">The name of the user to act as.</param>
+            <param name="domainName">The domain name of the user to act as.</param>
+            <param name="password">The password of the user to act as.</param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Utilities.Impersonator.UndoImpersonation">
+            <summary>
+            Reverts the impersonation.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Utilities.Impersonator.TridionWebInstallPath">
+            <summary>
+            Gets the physical location where the Tridion web site was installed.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Utilities.Impersonator.TridionBaseRegistryKey">
+            <summary>
+            Gets the base Tridion registry key.
+            </summary>
+        </member>
+        <member name="T:Alchemy4Tridion.Core.Utilities.TridionGlobals">
+            <summary>
+            Utility helpers containing global Tridion elements such as paths and IIS identifiers.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Utilities.TridionGlobals._applicationHostWcmManifestPath">
+            <summary>
+            The physical path to the wcm application host manifest xml file.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Utilities.TridionGlobals._tridionBaseRegistryKey">
+            <summary>
+            The base Tridion registry key.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Utilities.TridionGlobals._tridionInstallPath">
+            <summary>
+            The physical location where Tridion was installed.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Utilities.TridionGlobals._tridionWebInstallPath">
+            <summary>
+            The physical location where the Tridion web site was installed.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Utilities.TridionGlobals.ApplicationHostWcmManifestPath">
+            <summary>
+            Gets the physical path to the wcm application host manifest file.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Utilities.TridionGlobals.TridionBaseRegistryKey">
+            <summary>
+            Gets the base Tridion registry key.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Utilities.TridionGlobals.TridionInstallPath">
+            <summary>
+            Gets the physical location where Tridion was installed.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Utilities.TridionGlobals.TridionWebInstallPath">
+            <summary>
+            Gets the physical location where the Tridion web site was installed.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Utilities.TridionGlobals.TridionWebSiteId">
+            <summary>
+            Gets the name of the site that SDL Tridion is running under.
+            </summary>
+        </member>
+    </members>
+</doc>

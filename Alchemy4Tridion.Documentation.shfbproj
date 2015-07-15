@@ -49,8 +49,10 @@
     <IncludeFavorites>True</IncludeFavorites>
     <BinaryTOC>True</BinaryTOC>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\..\..\Projects\Content Bloom\Products\Alchemy4Tridion\Core\trunk\Alchemy4Tridion.Plugins\Alchemy4Tridion.Plugins.csproj" />
-      <DocumentationSource sourceFile="..\..\..\Projects\Content Bloom\Products\Alchemy4Tridion\Core\trunk\Alchemy4Tridion.Core\Alchemy4Tridion.Core.csproj" />
+      <DocumentationSource sourceFile="ProjectReferences\Alchemy4Tridion.Core.dll" />
+      <DocumentationSource sourceFile="ProjectReferences\Alchemy4Tridion.Core.xml" />
+      <DocumentationSource sourceFile="ProjectReferences\Alchemy4Tridion.Plugins.dll" />
+      <DocumentationSource sourceFile="ProjectReferences\Alchemy4Tridion.Plugins.xml" />
     </DocumentationSources>
     <FeedbackEMailAddress>alchemy%40contentbloom.com</FeedbackEMailAddress>
     <CopyrightText>Copyright &amp;#169%3b 2015 Content Bloom</CopyrightText>
@@ -128,6 +130,7 @@ Note that the "-Pre" tag is used to pull the prerelease version.</NamespaceSumma
     <None Include="Content\Extensions\DXA\DxaIndex.aml" />
     <None Include="Content\Extensions\EventSystem\EventSystemIndex.aml" />
     <None Include="Content\Extensions\Extensions.aml" />
+    <None Include="Content\Extensions\GUI\ContextMenus.aml" />
     <None Include="Content\Extensions\GUI\GuiIndex.aml" />
     <None Include="Content\PluginStructure\Configuration.aml" />
     <None Include="Content\PluginStructure\CustomConfiguration.aml" />
