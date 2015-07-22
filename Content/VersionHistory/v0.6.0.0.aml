@@ -47,17 +47,13 @@
           </listItem>
           <listItem>
             <para>
-              Url's on the Webstore are now hashtag-less! So once where a page may have been /#/plugins/categories, you can
-              now view it at /plugins/categories.  Note that this is a breaking change if you had bookmarked or linked
-              to any pages using the old hashtag style url's.
+              Auto created NuGet package classes gone!
             </para>
-          </listItem>
-          <listItem>
             <alert class="warning">
               <para>
-                <codeInline>Alchemy4Tridion.Plugin</codeInline> package no longer contains automatically
+                The <codeInline>Alchemy4Tridion.Plugin</codeInline> package no longer contains automatically
                 created classes that inherit from AlchemyPluginBase and AlchemyApiController.  Having a class
-                that inherits AlchemyPluginBase is mandatory, and you'll have to add a controller if you
+                that inherits AlchemyPluginBase is mandatory so its a must that you add one yourself now, and you'll have to add a controller if you
                 want to use web services.
               </para>
             </alert>
