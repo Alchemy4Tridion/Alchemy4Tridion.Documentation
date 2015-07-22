@@ -28,6 +28,8 @@
           <linkTarget>_blank</linkTarget>
         </externalLink> plugin project.
       </para>
+
+      <autoOutline />
     </introduction>
 
     <!-- Add one or more top-level section elements.  These are collapsible.
@@ -207,6 +209,45 @@
             </para>
             <para>
               These last steps are the same regardless of the type of plugin you are building.
+            </para>
+          </listItem>
+        </list>
+      </content>
+    </section>
+
+    <section address="GuiExtensionTypes">
+      <title>GUI Extension Types</title>
+      <content>
+        <para>The following GUI Extension Types are currently supported by the Alchemy4Tridion framework.</para>
+        <list class="nobullet">
+          <listItem>
+            <para>
+              <link xlink:href="7a08abe0-5cb5-414d-9644-1e856c8bebae">Resource Groups</link>
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              Command Sets
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              Extension Groups
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              Ribbon Toolbar Extensions
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              Context Menu Extensions
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              Tab Page Extensions
             </para>
           </listItem>
         </list>

@@ -57,6 +57,11 @@
               is the name that you'll use in your JavaScript to call your service. If you do not require a web 
               service for your plugin delete ServiceController.
             </para>
+            <alert class="important">
+              <para>
+                As of the 0.6 release, the ServiceController class is no longer included in the NuGet package.
+              </para>
+            </alert>
           </content>
         </step>
         <step>
@@ -78,6 +83,14 @@
               This is your plugin class, and is the entry for the framework to discover your plugin.  The only
               requirement for this class is that it extends AlchemyPluginBase.
             </para>
+            <alert class="warning">
+              <para>
+                As of 0.6, the AlchemyPlugin.cs class is no longer included in the NuGet package.  If not using the Alchemy4Tridion Developer Pack, you'll have to create this class manually.  If you attempt to build the project without creating this class, the build will fail and you will see an appropriate error message.
+              </para>
+              <para>
+                If you are using the Plugin Project templates from the developer pack, this class is automatically included.
+              </para>
+            </alert>
           </content>
         </step>
         <step>

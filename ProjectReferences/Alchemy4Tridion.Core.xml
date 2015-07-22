@@ -171,6 +171,11 @@
             Gets the editor configuration that this element belongs to.
             </summary>
         </member>
+        <member name="P:Alchemy4Tridion.Core.Configuration.Editor.Elements.CommandsElement.EditorSections">
+            <summary>
+            Gets a reference to the registered editor sections. Just an alias for Config.PluginLibrary.EditorSections.
+            </summary>
+        </member>
         <!-- Badly formed XML comment ignored for member "T:Alchemy4Tridion.Core.Configuration.Editor.Elements.EditorExtension" -->
         <member name="F:Alchemy4Tridion.Core.Configuration.Editor.Elements.EditorExtension.config">
             <summary>
@@ -211,7 +216,9 @@
         </member>
         <member name="M:Alchemy4Tridion.Core.Configuration.Editor.Elements.EditorExtension.ConfigureRibbonToolbar(Alchemy4Tridion.Plugins.GUI.Configuration.RibbonToolbarExtension,System.Xml.Linq.XElement)">
             <summary>
-            Configures the element as a ribbontoolbar extension
+            Configures the element as a ribbontoolbar extension.  If the RibbonToolbarExtension's
+            Group property is not null, will set that element. Otherwise, will use the Title
+            and Command (and IsSmallButton if true) properties.
             </summary>
             <param name="extension"></param>
             <param name="element"></param>
@@ -593,9 +600,9 @@
             </summary>
             <param name="folder"></param>
         </member>
-        <member name="M:Alchemy4Tridion.Core.Installation.CustomActions.SetAlchemyWebConfigSecurity">
+        <member name="M:Alchemy4Tridion.Core.Installation.CustomActions.SetAlchemyFileSecurity(System.String)">
             <summary>
-            Adds security settings to Web.config.
+            Adds security settings to a file so that Alchemy has permissions to modify it.
             </summary>
         </member>
         <member name="F:Alchemy4Tridion.Core.Installation.CustomActions.components">
@@ -1340,6 +1347,11 @@
         <member name="P:Alchemy4Tridion.Core.Utilities.TridionGlobals.TridionWebInstallPath">
             <summary>
             Gets the physical location where the Tridion web site was installed.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Utilities.TridionGlobals.TridionWebRootPath">
+            <summary>
+            Gets the absolute physical file path to the Tridion WebRoot folder. ie: <c>C:\Program Files (x86)\Tridion\web\WebUI\WebRoot\</c>
             </summary>
         </member>
         <member name="P:Alchemy4Tridion.Core.Utilities.TridionGlobals.TridionWebSiteId">

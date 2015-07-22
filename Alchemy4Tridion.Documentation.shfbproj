@@ -117,6 +117,7 @@ Note that the "-Pre" tag is used to pull the prerelease version.</NamespaceSumma
     <Folder Include="Content\Extensions\EventSystem" />
     <Folder Include="Content\Extensions\Content" />
     <Folder Include="Content\Extensions\DXA" />
+    <Folder Include="Content\Extensions\GUI\Types" />
     <Folder Include="Content\TroubleShooting" />
     <Folder Include="Content\PluginStructure" />
     <Folder Include="Content\Web Store" />
@@ -132,15 +133,17 @@ Note that the "-Pre" tag is used to pull the prerelease version.</NamespaceSumma
     <None Include="Content\Extensions\Extensions.aml" />
     <None Include="Content\Extensions\GUI\ContextMenus.aml" />
     <None Include="Content\Extensions\GUI\GuiIndex.aml" />
+    <None Include="Content\Extensions\GUI\Types\ResourceGroups.aml" />
     <None Include="Content\PluginStructure\Configuration.aml" />
     <None Include="Content\PluginStructure\CustomConfiguration.aml" />
     <None Include="Content\PluginStructure\PluginAnatomy.aml" />
     <None Include="Content\PluginStructure\StaticFileParsedTokens.aml" />
     <None Include="Content\QuickStart\HelloWorldSample.aml" />
     <None Include="Content\QuickStart\StepByStepFromScratch.aml" />
-    <None Include="Content\Reference1.aml" />
+    <None Include="Content\QuickStart\StepByStepWithProjectTemplate.aml" />
     <None Include="Content\TroubleShooting\Troubleshooting.aml" />
     <None Include="Content\VersionHistory\v0.5.0.0.aml" />
+    <None Include="Content\VersionHistory\v0.6.0.0.aml" />
     <None Include="Content\VersionHistory\VersionHistory.aml" />
     <None Include="Content\Web Store\WebStore.aml" />
     <None Include="Content\Welcome.aml" />

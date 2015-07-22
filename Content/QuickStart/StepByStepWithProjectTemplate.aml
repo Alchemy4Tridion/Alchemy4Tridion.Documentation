@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="4527f168-8e5c-4bfc-85f3-02cb8924d981" revisionNumber="1">
+  <developerWalkthroughDocument
+    xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <!--
+    <summary>
+      <para>Optional summary abstract</para>
+    </summary>
+    -->
+
+    <introduction>
+      <!-- Uncomment this to generate an outline of the section and sub-section
+           titles.  Specify a numeric value as the inner text to limit it to
+           a specific number of sub-topics when creating the outline.  Specify
+           zero (0) to limit it to top-level sections only.  -->
+      <!-- <autoOutline /> -->
+
+      <para>
+        Developing a plugin from the ground up is as simple as using the "Plugin Project" template from the <externalLink>
+        <linkText>Alchemy4Tridion Developer Pack</linkText>
+        <linkUri>https://visualstudiogallery.msdn.microsoft.com/7a86be6e-4e8a-46f2-85d0-b7ad0bc60c5b</linkUri>
+        <linkTarget>_blank</linkTarget>
+      </externalLink> and ensuring you have some core classes.
+      </para>
+      <para>
+        This guide assumes you have already installed the developer pack.
+      </para>
+    </introduction>
+
+    <!-- <prerequisites><content>Optional prerequisites info</content></prerequisites> -->
+
+    <!-- One or more procedure or section with procedure -->
+    <procedure>
+      <title>Create an Alchemy4Tridion Plugin with the Plugin Project Template</title>
+      <steps class="ordered">
+        <step>
+          <content>
+            <para>Create a new "Plugin Project" project in Visual Studio. You should see this in the "A4T" category in the "Add New Project" dialog.</para>
+          </content>
+        </step>
+        <step>
+          <content>
+            <para>
+              Select a unique name for your plugin in the "Plugin Name" dialog that appears next.  This is the name that will be displayed in both the Webstore as well as the list of installed plugins when in Tridion.  You can leave the checkbox checked if you wish to verify that the name has not yet been taken in the Webstore.
+            </para>
+            <alert class="caution">
+              <para>
+                Although this step can verify that the name is not yet taken, it does not actually register your plugin within the Webstore yet. (This happens when you build the project.)
+              </para>
+            </alert>
+          </content>
+        </step>
+        <step>
+          <content>
+            <para>
+              Add any static files that your plugin needs (JavaScript, CSS, images, .ascx controls, .aspx views, etc)
+              under a /Static/ or /Assets/ folder in your project. Note that you can organize your static files any way
+              you want within the static folder, but at build time the plugin package will put them in specific folders
+              (e.g. all JavaScript files will end up in /assets/js/ of the plugin package).
+            </para>
+            <para>
+              For JavaScript commands, you can use the "JavaScript Command" item templates that will appear in the "A4T/GUI" category when in the "Add New Item" dialog.
+            </para>
+          </content>
+        </step>
+        <step>
+          <content>
+            <para>
+              Add any Config classes that represent configuration elements of the traditional Editor.config file.
+              (covered by another topic in this documentation).
+            </para>
+            <para>
+              You can use the item templates found in the "A4T/GUI" category when in the "Add New Item" dialog.
+            </para>
+          </content>
+        </step>
+        <step>
+          <content>
+            <para>
+              Build your project in Visual Studio.
+            </para>
+          </content>
+        </step>
+        <step>
+          <content>
+            <para>
+              If you want to upload your project to the Webstore, complete the dialog that pops up after supplying your Webstore
+              credentials.
+            </para>
+          </content>
+        </step>
+        <step>
+          <content>
+            <para>
+              If you want to test your plugin directly without uploading to the Webstore, find the
+              .a4t file in the /bin/Debug/ folder of your project (assuming you built under the Debug target).
+              You can drag and drop this to the "Plugins" tab of the Alchemy UI.
+            </para>
+            <alert class="caution">
+              <para>
+                Since this plugin has not been uploaded to the Webstore it is considered a development plugin. Be mindful
+                of any other plugins that may already be installed; if your plugin doesn't have a unique name
+                it will get an error saying it is already installed.
+              </para>
+            </alert>
+          </content>
+        </step>
+        <step>
+          <content>
+            <para>
+              Plugins require a page reload to show up in the Tridion GUI. After installing
+              (or uninstalling) a plugin, a reload icon will appear in the top bar of the Alchemy UI, near where your username is displayed.
+              You can either click this or use your browser's refresh button.
+            </para>
+          </content>
+        </step>
+        <step>
+          <content>
+            <para>
+              Your plugin is now installed and any changes to the GUI should now be visible in the CME.
+            </para>
+          </content>
+        </step>
+      </steps>
+      <!-- <conclusion>Optional conclusion</conclusion> -->
+    </procedure>
+
+    <nextSteps>
+      <content>
+        <para>
+          Now that you know how to build a plugin, continue reading this documentation to
+          further master new areas of plugin development.
+        </para>
+      </content>
+    </nextSteps>
+
+
+    <relatedTopics>
+      <externalLink>
+        <linkText>Alchemy4Tridion Developer Pack</linkText>
+        <linkUri>https://visualstudiogallery.msdn.microsoft.com/7a86be6e-4e8a-46f2-85d0-b7ad0bc60c5b</linkUri>
+        <linkTarget>_blank</linkTarget>
+      </externalLink>
+      <!-- One or more of the following:
+           - A local link
+           - An external link
+           - A code entity reference
+
+      <link xlink:href="Other Topic's ID">Link text</link>
+      <externalLink>
+          <linkText>Link text</linkText>
+          <linkAlternateText>Optional alternate link text</linkAlternateText>
+          <linkUri>URI</linkUri>
+      </externalLink>
+      <codeEntityReference>API member ID</codeEntityReference>
+
+      Examples:
+
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8278">Some other topic</link>
+
+      <externalLink>
+          <linkText>SHFB on GitHub</linkText>
+          <linkAlternateText>Go to GitHub</linkAlternateText>
+          <linkUri>https://GitHub.com/EWSoftware/SHFB</linkUri>
+      </externalLink>
+
+      <codeEntityReference>T:TestDoc.TestClass</codeEntityReference>
+      <codeEntityReference>P:TestDoc.TestClass.SomeProperty</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor(System.String,System.Int32)</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.ToString</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.FirstMethod</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.SecondMethod(System.Int32,System.String)</codeEntityReference>
+      -->
+    </relatedTopics>
+  </developerWalkthroughDocument>
+</topic>

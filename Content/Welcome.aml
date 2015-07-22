@@ -69,6 +69,22 @@
     </section>
 
     <section>
+      <title>Installing the Alchemy4Tridion Developer Pack</title>
+      <content>
+        <para>
+          The <externalLink>
+            <linkText>Alchemy4Tridion Developer Pack</linkText>
+            <linkUri>https://visualstudiogallery.msdn.microsoft.com/7a86be6e-4e8a-46f2-85d0-b7ad0bc60c5b</linkUri>
+            <linkTarget>_blank</linkTarget>
+          </externalLink> is a Visual Studio Extension that contains a set of Project Templates, Item Templates, and tools for working with Alchemy4Tridion and Tridion projects. It is not required for development within Alchemy but can prove to be very helpful and get your projects developed even faster.  
+        </para>
+        <para>
+          The project templates included make use of the NuGet packages mentioned below.
+        </para>
+      </content>
+    </section>
+
+    <section>
       <title>Creating a plugin using the NuGet 'HelloWorld' package</title>
       <content>
         <para>
@@ -82,7 +98,7 @@
     </section>
 
     <section>
-      <title>Creating your own original plugin</title>
+      <title>Creating a plugin from scratch using the NuGet plugin package</title>
       <content>
         <para>
           Use this guide to build an original Alchemy plugin using the NuGet 'Alchemy4Tridion.Plugin' package.
@@ -93,6 +109,22 @@
       </content>
     </section>
 
+    <section>
+      <title>Creating a plugin from scratch using the Alchemy4Tridion Developer Pack</title>
+      <content>
+        <para>
+          Use this guide to create an original Alchemy plugin using the project template included in the <externalLink>
+          <linkText>Alchemy4Tridion Developer Pack</linkText>
+          <linkUri>https://visualstudiogallery.msdn.microsoft.com/7a86be6e-4e8a-46f2-85d0-b7ad0bc60c5b</linkUri>
+          <linkTarget>_blank</linkTarget>
+        </externalLink>.
+        </para>
+        <para>
+          <link xlink:href="4527f168-8e5c-4bfc-85f3-02cb8924d981">View walk through</link>
+        </para>
+      </content>
+    </section>
+    
     <section>
       <title>Installing Plugins</title>
       <content>
