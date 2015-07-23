@@ -138,6 +138,7 @@ Note that the "-Pre" tag is used to pull the prerelease version.</NamespaceSumma
     <None Include="Content\PluginStructure\CustomConfiguration.aml" />
     <None Include="Content\PluginStructure\PluginAnatomy.aml" />
     <None Include="Content\PluginStructure\StaticFileParsedTokens.aml" />
+    <None Include="Content\PluginStructure\WebServices.aml" />
     <None Include="Content\QuickStart\HelloWorldSample.aml" />
     <None Include="Content\QuickStart\StepByStepFromScratch.aml" />
     <None Include="Content\QuickStart\StepByStepWithProjectTemplate.aml" />

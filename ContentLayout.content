@@ -7,12 +7,13 @@
   </Topic>
   <Topic id="3b46c328-162e-4b6c-a753-f00a61ba70a7" visible="True" noFile="true" isExpanded="true" title="Quick Start Guides">
     <Topic id="c7b3af6b-3f51-46d8-a792-d46a805805e1" visible="True" title="Using the HelloWorld NuGet Sample" />
-    <Topic id="d9c1d722-3006-4bf7-9a61-5a7bcb46fa86" visible="True" isSelected="true" title="Step By Step From Alchemy4Tridion.Plugin Package" />
+    <Topic id="d9c1d722-3006-4bf7-9a61-5a7bcb46fa86" visible="True" title="Step By Step From Alchemy4Tridion.Plugin Package" />
     <Topic id="4527f168-8e5c-4bfc-85f3-02cb8924d981" visible="True" title="Step By Step From Visual Studio &quot;Plugin Project&quot; Template" />
   </Topic>
-  <Topic id="c1dded74-cd52-4494-bad8-e2b895bc9cf5" visible="True" title="Plugin Anatomy">
+  <Topic id="c1dded74-cd52-4494-bad8-e2b895bc9cf5" visible="True" isExpanded="true" title="Plugin Anatomy">
     <Topic id="a155bb48-95ab-49c9-9b61-ebcc119dc2dd" visible="True" title="Custom Configuration Settings" />
     <Topic id="e0b2cb35-1944-426e-b9ce-9becacd452b2" visible="True" title="Static File Tokens" />
+    <Topic id="ac68b3d0-f4af-49b5-8a3e-32b4d4472b86" visible="True" isSelected="true" title="Web Services" />
   </Topic>
   <Topic id="e48e8917-e3ff-4190-80dc-3fb9096ffa87" visible="True" isExpanded="true" title="Plugin Types">
     <Topic id="a3ce173c-2569-4784-89d3-3f7e9d958a96" visible="True" isExpanded="true" title="GUI Extensions">

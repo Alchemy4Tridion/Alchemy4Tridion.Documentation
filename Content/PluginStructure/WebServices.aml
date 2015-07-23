@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="ac68b3d0-f4af-49b5-8a3e-32b4d4472b86" revisionNumber="1">
+  <developerWalkthroughDocument
+    xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+    
+    <!--
+    <summary>
+      <para>Optional summary abstract</para>
+    </summary>
+    -->
+
+    <introduction>
+      
+      <para>
+        Plugins may contain Web Services that allow your client code (or other extension points) to communicate with.  While traditional Anguilla utilized WCF for the development of web services that can be consumed by your extensions, Alchemy4Tridion takes advantage of WebAPI controllers for their ease of use, both in creation and consuming.  A4T also generates a JavaScript proxy for you that allows you to consume your controller's actions without having to add any additional AJAX libraries to your code.
+      </para>
+    </introduction>
+
+    <!-- <prerequisites><content>Optional prerequisites info</content></prerequisites> -->
+
+    <!-- One or more procedure or section with procedure -->
+    <procedure>
+      <title>Creating a WebAPI Controller</title>
+      <steps class="ordered">
+        <step>
+          <content>
+            <para>
+              In your plugin project, add a new class that inherits from <codeEntityReference  qualifyHint="true">T:Alchemy4Tridion.Plugins.AlchemyApiController</codeEntityReference>. You can name your class whatever you want.
+            </para>
+            <alert class="note">
+              <para>
+              If you are using the <externalLink>
+                <linkText>Alchemy4Tridion Developer Pack</linkText>
+                <linkUri>https://visualstudiogallery.msdn.microsoft.com/7a86be6e-4e8a-46f2-85d0-b7ad0bc60c5b</linkUri>
+                <linkTarget>_blank</linkTarget>
+              </externalLink>, you can use the "Alchemy Api Controller" item template found in the "A4T" category when in the "Add New Item" dialog.
+              </para>
+            </alert>
+          </content>
+        </step>
+        <step>
+          <content>
+            <para>
+              You can add an optional service name to your controller by adding a <codeEntityReference>T:Alchemy4Tridion.Plugins.AlchemyRoutePrefixAttribute</codeEntityReference> to your controller's class. A service name is used in the generation of the url routes to your controller as well as in the automatically created JavaScript proxy. A service name is typically used to dinstinguish between two different controllers.
+            </para>
+            <alert class="tip">
+              <para>
+                Remember, the AlchemyRoutePrefixAttribute is completely optional.
+              </para>
+            </alert>
+            <code language="c#">
+              using Alchemy4Tridion.Plugins;
+              using System;
+              using System.Net;
+              using System.Net.Http;
+              using System.Web.Http;
+
+              [AlchemyRoutePrefix("MyService")]
+              public class MyController : AlchemyApiController
+              {
+              
+              }
+            </code>
+            <para>
+              Assuming that the above controller was a part of a plugin named <legacyItalic>MyPlugin</legacyItalic>, url's to your actions would begin with <codeInline>/Alchemy/Plugins/MyPlugin/api/MyService</codeInline>, and the generated JavaScript proxies would be attached to the automatically generated <codeInline>Alchemy.Plugins.MyPlugin.Api.MyService</codeInline> object.
+            </para>
+            <para>
+              If the above controller did not contain the attribute, the url's to the actions would begin with <codeInline>/Alchemy/Plugins/MyPlugin/api</codeInline> and the attached proxy functions would go to the <codeInline>Alchemy.Plugins.MyPlugin.Api</codeInline> object.
+            </para>
+          </content>
+        </step>
+        <step>
+          <content>
+            <para>
+              Next you'll add methods that represent the actions that can be consumed.  This works the same as standard WebApi development, only your actions should always have a <legacyBold>Verb</legacyBold> Attribute and a <legacyBold>RouteAttribute</legacyBold> attached to it (the proxy makes use of these and there's a custom route table generator that requires it).
+            </para>
+            <code language="c#">
+              [HttpGet]
+              [Route("hello")]
+              public string Hello()
+              {
+                  return "Hello World";
+              }
+            </code>
+            <para>
+              Assuming the controller's class was decorated with the <codeInline>[AlchemyRoutePrefix("MyService")]</codeInline> attribute, a route would be created that accepts GET requests with a url of <codeInline>/Alchemy/Plugins/MyPlugin/api/MyService/hello</codeInline>, which would return a response that had the body of "Hello World".  If the automatically generated JavaScript proxy was used, it would be utilized via <codeInline>Alchemy.Plugins.MyPlugin.Api.MyService.hello();</codeInline>.
+            </para>
+            <para>
+              If the controller's class did not have the <codeInline>AlchemyRoutePrefixAttribute</codeInline>, the url to this action would be <codeInline>/Alchemy/Plugins/MyPlugin/api/hello</codeInline> and the proxy would be utilized via <codeInline>Alchemy.Plugins.MyPlugin.Api.hello();</codeInline>.
+            </para>
+          </content>
+        </step>
+      </steps>
+      <!-- <conclusion>Optional conclusion</conclusion> -->
+    </procedure>
+
+    <!-- Optional additional procedure or section with procedure -->
+    <section address="RouteVariables">
+      <title>Route Variables</title>
+      <content>
+        <para>
+          You can also have dynamic routes that accepts variables that will be constructed from the given url.
+        </para>
+        <alert class="important">
+          <para>
+            Although Web API controllers support both route parameters and query string parameters, the WebApi JavaScript proxy currently does not support query string params so avoid using them if you wish to call your controllers with it.  As an alternative, you can create a binding model and a submit a POST for any additional variables you need to pass to your controller.
+          </para>
+        </alert>
+        <procedure>
+          <title>Adding Route Parameters</title>
+          <steps class="ordered">
+            <step>
+              <content>
+                <para>Add a <codeInline>RouteAttribute</codeInline> to your action methods that you wish to have a parameters for and define your parameters in the url template string.
+                </para>
+                <code language="c#">
+                  [HttpGet]
+                  [Route("hello/{helloName}")]
+                  public string Hello()
+                  {
+
+                  }
+                </code>
+              </content>
+            </step>
+            <step>
+              <content>
+                <para>
+                  Add arguments to your method that match the name in your given url template string.
+                </para>
+                <code language="c#">
+                  [HttpGet]
+                  [Route("hello/{helloName}")]
+                  public string Hello(string helloName)
+                  {
+                      return "Hello " + helloName;
+                  }
+                </code>
+                <alert class="tip">
+                  <para>
+                    You can have multiple route parameters in your route. The order that they are defined in the url template does not have to match the order that they appear as arguments in the method definition.  Only the names matter.
+                  </para>
+                </alert>
+              </content>
+            </step>
+            <step>
+              <content>
+                <para>
+                  You can access your controller's action using the generated JavaScript proxy.
+                </para>
+                <code language="js">
+                  Alchemy.Plugins.MyPlugin.Api.hello("AlchemyDeveloper")
+                    .success(function (greeting) {
+                      alert(greeting);
+                    });
+                </code>
+              </content>
+            </step>
+          </steps>
+          <!-- <conclusion>Optional conclusion</conclusion> -->
+        </procedure>
+      </content>
+    </section>
+
+    <section address="BindingModels">
+      <title>Binding Models for POST Requests</title>
+      <content>
+        <para>
+          If you need to submit complex data such as a values from a submitted form, a complex JSON object, or just a lot of possible configuration values, it would be better to submit a POST request using a model that the values can bind to.
+        </para>
+        <procedure>
+          <title>Creating a Binding Model and POSTing</title>
+          <steps class="ordered">
+            <step>
+              <content>
+                <para>
+                  Create a C# class (POCO) that represents the data that will be submitted to your action.
+                </para>
+                <code language="c#">
+                  public class PersonModel
+                  {
+                      public string FirstName { get; set; }
+                      public string LastName { get; set; }
+                      public int Age { get; set; }
+                      public string Bio { get; set; }
+                  }
+                </code>
+              </content>
+            </step>
+            <step>
+              <content>
+                <para>
+                  Add a <codeInline>HttpPostAttribute</codeInline> and a <codeInline>RouteAttribute</codeInline> to your action method. Add the model type as the argument to the action method.
+                </para>
+                <code language="c#">
+                  [HttpPost]
+                  [Route("hello")]
+                  public string Hello(PersonModel person)
+                  {
+                      SaveBioData(person);
+                      
+                      return String.Format("Hello {0} {1}! Your data has been saved!", person.FirstName, person.LastName);
+                  }
+                </code>
+              </content>
+            </step>
+            <step>
+              <content>
+                <para>
+                  Call your new action with the generated JavaScript proxy.
+                </para>
+                <code language="js">
+                  Alchemy.Plugins.MyPlugin.Api.hello({
+                    firstName: "Alex",
+                    lastName: "Klock",
+                    age: 100,
+                    bio: "A4T Lover"
+                  }).success(function (greeting) {
+                    alert(greeting);
+                  });
+                </code>
+              </content>
+            </step>
+            <step>
+              <content>
+                <para>
+                  If needed, you can combine route parameters with a binding model.  When doing so, the binding model must be the last argument supplied in the action method (the proxied JavaScript expects it to be the last one).
+                </para>
+                <code language="c#">
+                  [HttpPost]
+                  [Route("greetings/{greetingType}/{fromName}/hello")]
+                  public string Hello(string fromName, string greetingType, PersonModel person)
+                  {
+                  SaveBioData(person);
+
+                  return String.Format("{0} {1} {2}! From {3}!",
+                      greetingType,
+                      person.FirstName,
+                      person.LastName,
+                      fromName);
+                  }
+                </code>
+                <para>
+                  Calling your action from the JavaScript proxy would add the model object at the end as well.
+                </para>
+                <code language="js">
+                  Alchemy.Plugins.MyPlugin.Api.hello("Hello", "Content Bloom", {
+                  firstName: "Alex",
+                  lastName: "Klock",
+                  age: 100,
+                  bio: "A4T Lover"
+                  }).success(function (greeting) {
+                  alert(greeting);
+                  });
+                </code>
+              </content>
+            </step>
+          </steps>
+        </procedure>
+      </content>
+    </section>
+    
+    <section address="JavaScriptProxy">
+      <title>Adding the JavaScript WebApi Proxy to a Resource Group</title>
+      <content>
+        <para>
+          In order to use the JavaScript Proxy in your other script files within your resource group, you'll have to call the <codeEntityReference>M:Alchemy4Tridion.Plugins.GUI.Configuration.ResourceGroup.AddWebApiProxy</codeEntityReference> method from within the resource group's constructor. See the <link xlink:href="7a08abe0-5cb5-414d-9644-1e856c8bebae#WebApiProxy">Resource Group Section</link> for more information.
+        </para>
+        <code language="c#">
+          public MyResourceGroup()
+          {
+          AddFile("MyScript.js");
+          AddWebApiProxy();
+          }
+        </code>
+      </content>
+    </section>
+
+    <section address="JavaScriptProxyUsage">
+      <title>Using the WebApi JavaScript Proxy</title>
+      <content>
+        <para>
+          Once the JavaScript proxy has been added, files within your resource group may begin to use the automatically generated script.  The script offers a couple of different flavors of dealing with ajax calls to your web service. The full namespace of the proxy is built using a combination of your plugin's name and whether or not your controller contains a service name (see above).
+        </para>
+      </content>
+      <sections>
+        <section>
+          <title>Error First Callback Style</title>
+          <content>
+            <para>
+              The first style of dealing with communicating with your webservices is to use the error first callback style.  This means that you will pass in a callback function as the last argument of your function call, which will contain two parameters.  The first is an error object, which if it returns <codeInline>null</codeInline> or <codeInline>undefined</codeInline> means there was no error, otherwise it'll contain the error itself.  The second parameter is the response object (which will be set if there's no error).
+            </para>
+            <code language="js">
+              var service = Alchemy.Plugins.MyPlugin.Api;
+              
+              service.doSomethingCool(function (error, response) {
+                  if (error) {
+                      console.error(error);
+                  } else {
+                      alert("We have success! " + response);
+                  }
+              });
+            </code>
+            <para>
+              As mentioned, the callback should always go last, after any route parameters and post data.
+            </para>
+            <code language="js">
+              service.postSomethingCool("Article", { header: "Header", isNew: true }, function (error, response) {
+                  if (error) {
+                  
+                  } else {
+                  
+                  }
+              });
+            </code>
+          </content>
+        </section>
+        <section>
+          <title>Promise Pattern</title>
+          <content>
+            <para>
+              If no callback function is passed to your proxy method, then the method will return a promise. Alchemy4Tridion promises contain three methods that you can stack: <codeInline>success</codeInline>, <codeInline>error</codeInline>, and <codeInline>complete</codeInline>.  The success will be called on successfull response status code, the errors will be called if there is an error status code, and the complete will be called no matter what.  If you have both a <codeInline>success</codeInline> and a <codeInline>complete</codeInline>, they will both be called.  A good way of thinking of them is as a <codeInline>try/catch/finally</codeInline> block.
+            </para>
+            <code language="js">
+              service.doSomethingCool()
+                  .success(function (response) {
+                      alert("I was successful!");
+                  })
+                  .error(function (errorCode, errorObject) {
+                      alert("I was an error!");
+                  })
+                  .complete(function () {
+                      alert("I get called at the end no matter what!");
+                  });
+            </code>
+          </content>
+        </section>
+      </sections>
+    </section>
+
+    <!-- Optional next steps info
+    <nextSteps>
+      <content><para>Next steps info goes here</para></content>
+    </nextSteps>
+    -->
+
+    <relatedTopics>
+      <link xlink:href="7a08abe0-5cb5-414d-9644-1e856c8bebae">Resource Groups</link>
+      <codeEntityReference qualifyHint="true">T:Alchemy4Tridion.Plugins.AlchemyApiController</codeEntityReference>
+      <codeEntityReference qualifyHint="true">T:Alchemy4Tridion.Plugins.GUI.Configuration.ResourceGroup</codeEntityReference>
+    </relatedTopics>
+  </developerWalkthroughDocument>
+</topic>

@@ -49,7 +49,7 @@
               JavaScript and Stylesheet files contained within your static folder can be added by their filenames directly (remember that even though you can organize your static files any way you chose, your JS and CSS will all end up in specific folders) using the <codeEntityReference>M:Alchemy4Tridion.Plugins.GUI.Configuration.ResourceGroup.AddFile(System.String)</codeEntityReference> method.
             </para>
             <code language="c#">
-              public MyPlugin()
+              public MyResourceGroup()
               {
                   AddFile("MyCommand.js");
                   AddFile("MyStyles.css");
@@ -81,7 +81,7 @@
             </para>
           </content>
         </section>
-        <section>
+        <section address="WebApiProxy">
           <title>Adding the WebApi JavaScript Proxy</title>
           <content>
             <para>
@@ -123,6 +123,7 @@
     <relatedTopics>
       <codeEntityReference qualifyHint="true">T:Alchemy4Tridion.Plugins.GUI.Configuration.ResourceGroup</codeEntityReference>
       <codeEntityReference qualifyHint="true">T:Alchemy4Tridion.Plugins.GUI.Configuration.Elements.Dependencies</codeEntityReference>
+    
       <externalLink>
         <linkText>Hello World Plugin Sample</linkText>
         <linkUri>https://github.com/Alchemy4Tridion/Alchemy4Tridion.Plugins.Sample.HelloWorld</linkUri>
