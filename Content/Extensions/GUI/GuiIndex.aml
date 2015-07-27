@@ -107,7 +107,7 @@
             </code>
             <alert class="tip">
               <para>
-                In the above example, it is assumed that you crated a command with the name of "MyCommand" via JavaScript
+                In the above example, it is assumed that you created a command with the name of "MyCommand" via JavaScript
                 in the previous step. Note that no Implements is required as long as you add commands to the
                 default namespace of Alchemy.Plugins.YourPluginName.Commands.CommandName. If you've created your
                 namespace for the command differs, you will have to supply it in the 2nd argument of <codeInline>AddCommand</codeInline>.
