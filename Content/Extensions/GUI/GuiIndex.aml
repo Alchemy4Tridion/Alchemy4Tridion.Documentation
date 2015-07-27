@@ -18,10 +18,10 @@
       <!-- <autoOutline /> -->
 
       <para>
-        GUI Extenions for Alchemy4Tridion are built off of the existing Anguilla framework but contains
-        utilities and tools that help automate a lot of the pain staking tasks that you might of
-        had to deal with before.  One of the main differences in building a GUI Extension for Alchemy4Tridion
-        versus the tradtional way is with how Configuration is dealt with. A good reference point that you can
+        GUI Extenions for Alchemy4Tridion are built off of the existing Anguilla framework but contain
+        utilities and tools that help automate a lot of the pain staking tasks that you might have
+        had to deal with before. One of the main differences in building a GUI Extension for Alchemy4Tridion
+        versus the tradtional way is with how configuration is dealt with. A good reference point that you can
         use as an example is the <externalLink>
           <linkText>Hello World</linkText>
           <linkUri>https://github.com/Alchemy4Tridion/Alchemy4Tridion.Plugins.Sample.HelloWorld</linkUri>
@@ -85,7 +85,7 @@
         <list class="ordered">
           <listItem>
             <para>
-              Add static files to your "Static" or "Assets" folder in your class library project. This includes JavaScript files 
+              Add static files to your "Static" or "Assets" folder in your class library project. This includes JavaScript files
               that represent Commands or functionality for your plugin, StyleSheets to make your extensions look
               good, views or user controls, etc.  This is pretty much the same step that you'd do with a traditional
               extension.
@@ -134,7 +134,7 @@
                   {
                       AddFile("my-js-file.js");
                       AddFile("my-stylesheet.css");
-                      
+
                       Dependencies.AddAlchemyCore();
                   }
               }
@@ -182,13 +182,13 @@
                   {
                       // This is the id which gets put on the html element for this menu (to target with css/js).
                       AssignId = "MyContextMenuId";
-                      
+
                       // The name of this extension
                       Name = "MyName";
-                      
+
                       // Where to add your custom items. In this case it'll be before the refresh icon.
                       InsertBefore = "cm_refresh";
-                      
+
                       AddItem("cm_my_context", "My Context Menu", "MyCommand");
                   }
               }
