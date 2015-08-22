@@ -133,6 +133,7 @@ Note that the "-Pre" tag is used to pull the prerelease version.</NamespaceSumma
     <None Include="Content\Extensions\Extensions.aml" />
     <None Include="Content\Extensions\GUI\ContextMenus.aml" />
     <None Include="Content\Extensions\GUI\GuiIndex.aml" />
+    <None Include="Content\Extensions\GUI\Types\ExtensionGroups.aml" />
     <None Include="Content\Extensions\GUI\Types\ResourceGroups.aml" />
     <None Include="Content\PluginStructure\Configuration.aml" />
     <None Include="Content\PluginStructure\CustomConfiguration.aml" />

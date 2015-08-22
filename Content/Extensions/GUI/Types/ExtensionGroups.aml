@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="12561a8f-a08c-44a3-833b-6463a3b59f41" revisionNumber="1">
+  <developerConceptualDocument
+    xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <!--
+    <summary>
+      <para>Optional summary abstract</para>
+    </summary>
+    -->
+
+    <introduction>
+      <para>
+        <command>Extension Groups</command> are a special extension that allows you to extend any existing <link xlink:href="7a08abe0-5cb5-414d-9644-1e856c8bebae">Resource Group</link> by adding another resource group to it.  This will allow your custom resource group to automatically be loaded anywhere the target <command>Resource Group</command> is used.  You can use this extension to add extra JavaScript or Stylesheets to an existing view or even customize an existing script.
+      </para>
+      <para>
+         An extension group usually includes static files and a resource group.
+      </para>
+      <autoOutline excludeRelatedTopics="0" />
+    </introduction>
+
+
+    <section address="CreateResourceGroup">
+      <title>Creating a Resource Group</title>
+      <content>
+        <para>
+          As an extenion group will inject files into an existing resource group, you'll first need to create a resource group that contains the files that you wish to extend your target with.  See the <link xlink:href="7a08abe0-5cb5-414d-9644-1e856c8bebae">Resource Group</link> guide for more information on creating resource groups.
+        </para>
+      </content>
+    </section>
+
+    <section address="CreateExtensionGroup">
+      <title>Creating an Extension Group</title>
+      <content>
+        <para>
+          Once you have your resource group, the next step is to create an extension group. You can do this by creating a class that inherits from <codeEntityReference qualifyHint="true">T:Alchemy4Tridion.Plugins.GUI.Configuration.ExtensionGroup</codeEntityReference>. Within the constructor of your class, you can add one or more targets of what you want to extend via the <command>AddExtension</command> method. When using this method, you pass in the Type of your resource group in the Type Parameter, and the target resource group you are extending as a string for the first argument.
+        </para>
+        <code language="c#">
+          public class PublicationPanelSearchExtensionGroup : ExtensionGroup
+          {
+              public PublicationPanelSearchExtensionGroup()
+              {
+                  AddExtension&lt;YourResourceGroup&gt;("Tridion.Web.UI.Editors.CME.Views.Popups.Link");
+              }
+          }
+        </code>
+        <para>
+          The above example will create an extension using <command>YourResourceGroup</command> to extend the existing resource group "Tridion.Web.UI.Editors.CME.Views.Popups.Link" (the hyperlink popup).
+        </para>
+        <alert class="note">
+          <para>
+            In a traditional GUI Extension, for extenion groups you would create a resource group config element, an extension group config element, and a &lt;resourceextension /&gt; config element (at the bottom in the &lt;resourceextensions /&gt; element). For Alchemy4Tridion, the <command>resourcextension</command> is automatically created with the <command>extensiongroup</command>.
+          </para>
+        </alert>
+      </content>
+    </section>
+
+    <relatedTopics>
+      <link xlink:href="7a08abe0-5cb5-414d-9644-1e856c8bebae"></link>
+      <codeEntityReference qualifyHint="true">T:Alchemy4Tridion.Plugins.GUI.Configuration.ExtensionGroup</codeEntityReference>
+      <codeEntityReference qualifyHint="true">T:Alchemy4Tridion.Plugins.GUI.Configuration.ResourceGroup</codeEntityReference>
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>

@@ -14,11 +14,12 @@
     <Topic id="a155bb48-95ab-49c9-9b61-ebcc119dc2dd" visible="True" title="Custom Configuration Settings" />
     <Topic id="e0b2cb35-1944-426e-b9ce-9becacd452b2" visible="True" title="Static File Tokens" />
     <Topic id="ac68b3d0-f4af-49b5-8a3e-32b4d4472b86" visible="True" title="Web Services" />
-    <Topic id="2f09fca6-8acd-47df-be42-800a8dd88223" visible="True" isSelected="true" title="Visual Studio Configuration" />
+    <Topic id="2f09fca6-8acd-47df-be42-800a8dd88223" visible="True" title="Visual Studio Configuration" />
   </Topic>
   <Topic id="e48e8917-e3ff-4190-80dc-3fb9096ffa87" visible="True" isExpanded="true" title="Plugin Types">
     <Topic id="a3ce173c-2569-4784-89d3-3f7e9d958a96" visible="True" isExpanded="true" title="GUI Extensions">
       <Topic id="7a08abe0-5cb5-414d-9644-1e856c8bebae" visible="True" title="Resource Groups" />
+      <Topic id="12561a8f-a08c-44a3-833b-6463a3b59f41" visible="True" isSelected="true" title="Extension Groups" />
     </Topic>
     <Topic id="b709ff1d-f7f7-4fa2-8527-9c00c3793ea2" visible="True" title="Event System Extensions" />
     <Topic id="4a5e7880-b639-4039-8efc-8d4ff537c036" visible="True" title="Content Extensions" />
