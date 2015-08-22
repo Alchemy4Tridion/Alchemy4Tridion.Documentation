@@ -40,9 +40,43 @@
             Interface that a plugin's web api controller(s) needs to implement.
             </summary>
         </member>
+        <member name="F:Alchemy4Tridion.Plugins.AlchemyApiController.client">
+            <summary>
+            The session aware core service client.
+            </summary>
+        </member>
         <member name="M:Alchemy4Tridion.Plugins.AlchemyApiController.#ctor">
             <summary>
             Constructor
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Plugins.AlchemyApiController.Dispose(System.Boolean)">
+            <summary>
+            Disposes any resources. This is automatically called at the end of a request.
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="P:Alchemy4Tridion.Plugins.AlchemyApiController.Client">
+            <summary>
+            Gets or sets the session aware core service client. Will automatically create one impersonating the currently
+            logged in user using the default end point (netTcp_2013) if not previously set. This client is dispose safe (and will automatically be
+            disposed of by the ApiController at the end of the request if not already done so, so calling Client.Dispose() is not required).
+            </summary>
+            <remarks>
+            This property is lazily loaded so no core service client is created if the property is never called. Also note that this property
+            is used by the IUserService property.
+            </remarks>
+        </member>
+        <member name="P:Alchemy4Tridion.Plugins.AlchemyApiController.Plugin">
+            <summary>
+            Gets the plugin that is associated with this api controller (use Plugin.Services to get different
+            services available to the context of this plugin).
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Plugins.AlchemyApiController.User">
+            <summary>
+            Gets the service used to get information about the currently logged in user (user making the http request
+            to this web service).
             </summary>
         </member>
         <member name="T:Alchemy4Tridion.Plugins.AlchemyPluginBase">
@@ -154,6 +188,11 @@
         <member name="F:Alchemy4Tridion.Plugins.AlchemyPluginBase.pluginPath">
             <summary>
             The path to where the plugin is installed.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Plugins.AlchemyPluginBase.pluginType">
+            <summary>
+            Gets a reference to the actual plugin type.
             </summary>
         </member>
         <member name="F:Alchemy4Tridion.Plugins.AlchemyPluginBase.services">
@@ -1088,6 +1127,46 @@
             Represents group id's found on the Create tab.
             </summary>
         </member>
+        <member name="T:Alchemy4Tridion.Plugins.GUI.Configuration.Constants.GroupIds.FormatPage">
+            <summary>
+            Represents group id's found on the Format tab.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Plugins.GUI.Configuration.Constants.GroupIds.FormatPage.FormatClipboardGroup">
+            <summary>
+            The group id for the "Clipboard" group found on the Format tab.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Plugins.GUI.Configuration.Constants.GroupIds.FormatPage.FormatFontGroup">
+            <summary>
+            The group id for the "Font" group found on the Format tab.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Plugins.GUI.Configuration.Constants.GroupIds.FormatPage.FormatGeneralGroup">
+            <summary>
+            The group id for the "General" group found on the Format tab.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Plugins.GUI.Configuration.Constants.GroupIds.FormatPage.FormatInsertGroup">
+            <summary>
+            The group id for the "Insert" group found on the Format tab.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Plugins.GUI.Configuration.Constants.GroupIds.FormatPage.FormatManageGroup">
+            <summary>
+            The group id for the "Manage" group found on the Format tab.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Plugins.GUI.Configuration.Constants.GroupIds.FormatPage.FormatParagraphGroup">
+            <summary>
+            The groupid for the "Paragraph" group found on the Format tab.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Plugins.GUI.Configuration.Constants.GroupIds.FormatPage.FormatStyleGroup">
+            <summary>
+            The group id for the "Style" group found on the Format tab.
+            </summary>
+        </member>
         <member name="T:Alchemy4Tridion.Plugins.GUI.Configuration.Constants.GroupIds.HomePage">
             <summary>
             Represents group id's found on the Home tab.
@@ -1837,6 +1916,116 @@
         <member name="P:Alchemy4Tridion.Plugins.AlchemyRoutePrefixAttribute.ServiceName">
             <summary>
             Gets the name of the service.  This is used to generate the routes to your api controllers.
+            </summary>
+        </member>
+        <member name="T:Alchemy4Tridion.Plugins.Security.IUserService">
+            <summary>
+            Interface for getting information on the currently logged in Tridion user's session (the user actually logged
+            into the UI and not what the client may be impersonated as).
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Plugins.Security.IUserService.GetData(System.Boolean)">
+            <summary>
+            Gets a core service user data instance representing the currently logged in user. This object
+            is cached so that subsequent calls to GetUser will not fetch from the core services (unless the
+            reload parameter is set to true).
+            </summary>
+            <param name="reload">Whether or not to get the user directly from core services or use the cached object if available.</param>
+            <returns>The core service user data.</returns>
+        </member>
+        <member name="M:Alchemy4Tridion.Plugins.Security.IUserService.GetName">
+            <summary>
+            Gets the current logged in user's username (does not use core service).
+            </summary>
+            <returns>The username of the user, ie "DOMAIN\MyName".</returns>
+        </member>
+        <member name="M:Alchemy4Tridion.Plugins.Security.IUserService.IsSystemAdministrator">
+            <summary>
+            Gets whether or not the currently logged in user is a Tridion system administrator (uses core service).
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Alchemy4Tridion.Plugins.Clients.SessionAwareCoreServiceEndPoint">
+            <summary>
+            Represents possible end points for a core service client.
+            </summary>
+        </member>
+        <member name="T:Alchemy4Tridion.Plugins.Clients.AlchemySessionAwareCoreServiceClient">
+            <summary>
+            Provides a wrapper of the Tridion SessionAwareCoreServiceClient using a safe implementation of IDisposable.
+            You can use this client inside of a using statement, and calling its Close or Dispose method will safely
+            close out the 
+            </summary>
+            <remarks>
+            Shoutout to Eric Huiza (http://erichuiza.blogspot.com/2013/12/how-to-correctly-dispose-coreservice.html)
+            </remarks>
+        </member>
+        <member name="F:Alchemy4Tridion.Plugins.Clients.AlchemySessionAwareCoreServiceClient.isDisposed">
+            <summary>
+            Whether or not the dispose method has already been called.
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Plugins.Clients.AlchemySessionAwareCoreServiceClient.#ctor">
+            <summary>
+            Creates a new SessionAwareCoreServiceClient using a default endpoint config name of netTcp_2013
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Plugins.Clients.AlchemySessionAwareCoreServiceClient.#ctor(Alchemy4Tridion.Plugins.Clients.SessionAwareCoreServiceEndPoint)">
+            <summary>
+            Creates a new SessionAwareCoreServiceClient using the supplied endpoint.
+            </summary>
+            <param name="endPoint"></param>
+        </member>
+        <member name="M:Alchemy4Tridion.Plugins.Clients.AlchemySessionAwareCoreServiceClient.#ctor(System.String)">
+            <summary>
+            Creates a new SessionAwareCoreServiceClient using the supplied end point configuration name (ie "netTcp_2013").
+            </summary>
+            <param name="endPointConfigurationName"></param>
+        </member>
+        <member name="M:Alchemy4Tridion.Plugins.Clients.AlchemySessionAwareCoreServiceClient.GetEnpointConfigurationName(Alchemy4Tridion.Plugins.Clients.SessionAwareCoreServiceEndPoint)">
+            <summary>
+            Gets the endpoint configuration name, defaulting to "netTcp_2013".
+            </summary>
+            <param name="endPoint"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alchemy4Tridion.Plugins.Clients.AlchemySessionAwareCoreServiceClient.Close">
+            <summary>
+            Hides the underlying client and calls the Dispose method.
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Plugins.Clients.AlchemySessionAwareCoreServiceClient.Dispose">
+            <summary>
+            Implements IDisposable and disposes of the WCF client in a safe manner.
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Plugins.Clients.AlchemySessionAwareCoreServiceClient.Dispose(System.Boolean)">
+            <summary>
+            Disposes the client in a safe manner.
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:Alchemy4Tridion.Plugins.Clients.AlchemySessionAwareCoreServiceClient.Impersonate(System.String)">
+            <summary>
+            Impersonates the client as the given account username. Sets the ImpersonatedUsername as a reference
+            to the last username that was impersonated.
+            </summary>
+            <param name="username">The account username.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Alchemy4Tridion.Plugins.Clients.AlchemySessionAwareCoreServiceClient.Finalize">
+            <summary>
+            Finalizer
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Plugins.Clients.AlchemySessionAwareCoreServiceClient.ClientEndpoint">
+            <summary>
+            Gets which entpoint was used to create this core service client.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Plugins.Clients.AlchemySessionAwareCoreServiceClient.ImpersonatedUsername">
+            <summary>
+            Gets the name of the user that the client was last impersonated with using the Impersonate method.
             </summary>
         </member>
     </members>

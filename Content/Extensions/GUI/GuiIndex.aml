@@ -250,6 +250,11 @@
               Tab Page Extensions
             </para>
           </listItem>
+          <listItem>
+            <para>
+              Command Extensions
+            </para>
+          </listItem>
         </list>
       </content>
     </section>

@@ -736,14 +736,14 @@
             Generates the top of the javascript proxy.
             </summary>
         </member>
-        <member name="M:Alchemy4Tridion.Core.Installation.JsProxyGenerator.GenerateJavaScriptMethod(System.String,System.String,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+        <member name="M:Alchemy4Tridion.Core.Installation.JsProxyGenerator.GenerateJavaScriptMethod(System.String,System.String,System.String,Alchemy4Tridion.Core.Installation.JsProxyGenerator.ParsedTemplateRoute,System.Collections.Generic.IEnumerable{System.String})">
             <summary>
             Generate the JavaScript that can be used as the proxy to communicate with your webap controller's action method.
             </summary>
             <param name="serviceName"></param>
             <param name="methodName"></param>
             <param name="verb"></param>
-            <param name="templateString"></param>
+            <param name="template"></param>
             <param name="parameters"></param>
         </member>
         <member name="M:Alchemy4Tridion.Core.Installation.JsProxyGenerator.GetHttpMethodAttributes(System.Reflection.MethodInfo)">
@@ -775,6 +775,36 @@
             Creates the JS that is responsible for registering the proxy's namespaces.
             </summary>
             <param name="controllerTypes">The webapi controller types to generate the namespaces for.</param>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Installation.JsProxyGenerator.ParsedTemplateRoute.IsPostOrPut">
+            <summary>
+            Gets whether or not this parsing was for a post or put verb.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Installation.JsProxyGenerator.ParsedTemplateRoute.NonRouteParameterIndexes">
+            <summary>
+            Gets the non rounte parameter indexes (in relation to the method declaration).
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Installation.JsProxyGenerator.ParsedTemplateRoute.NonRouteParameters">
+            <summary>
+            Gets or sets the parameters that were not in the route template
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Installation.JsProxyGenerator.ParsedTemplateRoute.RouteParameterIndexes">
+            <summary>
+            Gets the indexes of the route parameters (the index from the method declaration).
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Installation.JsProxyGenerator.ParsedTemplateRoute.RouteParameters">
+            <summary>
+            Gets or sets the route parameters that were found.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Installation.JsProxyGenerator.ParsedTemplateRoute.Template">
+            <summary>
+            Gets or sets the parsed template string value.
+            </summary>
         </member>
         <member name="T:Alchemy4Tridion.Core.Installation.TokenParser">
             <summary>
@@ -856,6 +886,13 @@
             </summary>
             <param name="pluginName">The name of the plugin to search for.</param>
             <returns>The plugin with matched name, or null if none was found.</returns>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Plugins.IPluginLibrary.GetPluginForController(Alchemy4Tridion.Plugins.AlchemyApiController)">
+            <summary>
+            Gets a plugin from the library based on the provided api controller.
+            </summary>
+            <param name="controller"></param>
+            <returns></returns>
         </member>
         <member name="M:Alchemy4Tridion.Core.Plugins.IPluginLibrary.Install(System.String)">
             <summary>
@@ -1028,6 +1065,11 @@
             The composition container that has all info about plugins.
             </summary>
         </member>
+        <member name="F:Alchemy4Tridion.Core.Plugins.PluginLibrary.controllerPlugins">
+            <summary>
+            A cache of api controller types with the assiciated plugin that they belong to.
+            </summary>
+        </member>
         <member name="F:Alchemy4Tridion.Core.Plugins.PluginLibrary.directories">
             <summary>
             The directory catalog that points to the plugins folder.
@@ -1077,6 +1119,13 @@
             <param name="pluginName">The name of the plugin to search for.</param>
             <returns>The plugin with matched name, or null if none was found.</returns>
         </member>
+        <member name="M:Alchemy4Tridion.Core.Plugins.PluginLibrary.GetPluginForController(Alchemy4Tridion.Plugins.AlchemyApiController)">
+            <summary>
+            Gets a plugin from the library based on the provided api controller.
+            </summary>
+            <param name="controller"></param>
+            <returns></returns>
+        </member>
         <member name="M:Alchemy4Tridion.Core.Plugins.PluginLibrary.Install(System.String)">
             <summary>
             Installs a new plugin.
@@ -1088,6 +1137,12 @@
             Uninstalls a plugin.
             </summary>
             <param name="pluginName">The name of the plugin to uninstall.</param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Plugins.PluginLibrary.RemoveFromControllerPluginCache(Alchemy4Tridion.Plugins.IAlchemyPlugin)">
+            <summary>
+            Removes a plugin from the controller plugin lookup cache.
+            </summary>
+            <param name="pluginRemoved"></param>
         </member>
         <member name="M:Alchemy4Tridion.Core.Plugins.PluginLibrary.Uninstall(Alchemy4Tridion.Plugins.IAlchemyPlugin)">
             <summary>
@@ -1207,6 +1262,64 @@
             <summary>
             Gets or sets the type that the client settings should be deserialized to with the GetClientSettings method.
             </summary>
+        </member>
+        <member name="T:Alchemy4Tridion.Core.Plugins.Services.UserService">
+            <summary>
+            Implementation of the IUserService
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Plugins.Services.UserService.controller">
+            <summary>
+            Reference to the api controller that this service is attached to.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Core.Plugins.Services.UserService.userData">
+            <summary>
+            The user data.
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Plugins.Services.UserService.#ctor(Alchemy4Tridion.Plugins.AlchemyApiController)">
+            <summary>
+            Creates a new user service.
+            </summary>
+            <param name="provider"></param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Plugins.Services.UserService.GetData(System.Boolean)">
+            <summary>
+            Gets a core service user data instance representing the currently logged in user. This object
+            is cached so that subsequent calls to GetUser will not fetch from the core services (unless the
+            reload parameter is set to true). If the client is impersonated as a different user, this method
+            will impersonate as the logged in user to get the data, then change the impersonation back automatically.
+            </summary>
+            <param name="reload">Whether or not to get the user directly from core services or use the cached object if available.</param>
+            <returns>The currently logged in user data.</returns>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Plugins.Services.UserService.GetName">
+            <summary>
+            Gets the username of the currently logged in user.
+            </summary>
+            <returns>The username of the user, ie "DOMAIN\MyName".</returns>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Plugins.Services.UserService.IsSystemAdministrator">
+            <summary>
+            Gets whether or not the currently logged in user is a system administrator.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Providers.AlchemyApiControllerActivator.#ctor(Alchemy4Tridion.Core.Plugins.IPluginLibrary)">
+            <summary>
+            Creates a new ALchemyApiControllerActivator
+            </summary>
+            <param name="library"></param>
+        </member>
+        <member name="M:Alchemy4Tridion.Core.Providers.AlchemyApiControllerActivator.Create(System.Net.Http.HttpRequestMessage,System.Web.Http.Controllers.HttpControllerDescriptor,System.Type)">
+            <summary>
+            Creates a new controller.  If this is an AlchemyApiController, attaches some items.
+            </summary>
+            <param name="request"></param>
+            <param name="controllerDescriptor"></param>
+            <param name="controllerType"></param>
+            <returns></returns>
         </member>
         <member name="T:Alchemy4Tridion.Core.Providers.AlchemyDirectRouteProvider">
             <summary>

@@ -15,6 +15,7 @@
       <para>
         Plugins may contain Web Services that allow your client code (or other extension points) to communicate with.  While traditional Anguilla utilized WCF for the development of web services that can be consumed by your extensions, Alchemy4Tridion takes advantage of WebAPI controllers for their ease of use, both in creation and consuming.  A4T also generates a JavaScript proxy for you that allows you to consume your controller's actions without having to add any additional AJAX libraries to your code.
       </para>
+      <autoOutline  />
     </introduction>
 
     <!-- <prerequisites><content>Optional prerequisites info</content></prerequisites> -->
@@ -339,6 +340,74 @@
       </sections>
     </section>
 
+    <section address="CoreService">
+      <title>Using Tridion Core Services</title>
+      <content>
+        <alert class="important">
+          <para>
+            The feature discussed in this section was added in version 0.6.1.
+          </para>
+        </alert>
+        <para>
+          One of the most common things that you'll actually need to create an AlchemyApiController web service for is to communicate with Tridion via the CoreService API.  Working with Core Services in an AlchemyApiController is cake with the <codeEntityReference>P:Alchemy4Tridion.Plugins.AlchemyApiController.Client</codeEntityReference> property.  This property lazilly initiates a new <codeEntityReference>T:Alchemy4Tridion.Plugins.Clients.AlchemySessionAwareCoreServiceClient</codeEntityReference> instance , which is a wrapper of the <command>SessionAwareCoreServiceClient</command> that safely implements <codeEntityReference>T:System.IDisposable</codeEntityReference>.  Not only is calling the <codeEntityReference>M:Alchemy4Tridion.Plugins.Clients.AlchemySessionAwareCoreServiceClient.Dispose</codeEntityReference> method completely safe (no worries about exceptions that would leave your resources open), but the <application>AlchemyApiController</application> will also automatically call the <command>Client</command> property's Dispose method at the end of the request.  If the developer has manually called <command>Dispose</command> there is no issue as it'll also check to see if its already been disposed.
+        </para>
+        <alert class="note">
+          <para>
+            The <command>Client</command> property is lazily initizated, which means the value is actually null until you use this property.
+          </para>
+        </alert>
+              <alert class="note">
+          <para>
+            The <command>Client</command> property is automatically impersonated as the logged in Tridion user making the request.
+          </para>
+        </alert>
+        <alert class="warning">
+          <para>
+            The automatic disposing of the <command>AlchemySessionAwareCoreServiceClient</command> instance only works with what's assigned to the <command>Client</command> property.  If you create your own instances as local variables or as separate members of your controller, you'll have to dispose of those yourself.
+          </para>
+        </alert>
+        <code language="c#" title="AlchemySessionAwareCoreServiceClient Sample">
+          [HttpGet]
+          [Route("schemas/{publicationId}")]
+          public IEnumerable&lt;string&gt; GetAllSchemas(string publicationId)
+          {
+              RepositoryItemsFilterData filterData = new RepositoryItemsFilterData();
+              filterData.ItemTypes = new[]
+	            {
+		              ItemType.Schema
+	            };
+              filterData.Recursive = true;
+              
+              // just an example, in real life we wouldn't use GetList for this as GetListXml would be faster
+              return Client.GetList(publicationId, filterData) 
+                  .Select(item => item.Id)
+                  .ToList();
+              // no need to do Client.Dispose() as it'll automatically be called at the end of the request
+          }
+        </code>
+      </content>
+    </section>
+    
+    <section address="UserInformation">
+      <title>Getting the Tridion User's Information</title>
+      <content>
+        <para>
+          Another common thing to do in web services is to get information about the user making the request. The AlchemyApiController contains the <codeEntityReference>P:Alchemy4Tridion.Plugins.AlchemyApiController.User</codeEntityReference> property for just this reason, which is an instance of <codeEntityReference>T:Alchemy4Tridion.Plugins.Security.IUserService</codeEntityReference>. You can use this property to <codeEntityReference linkText="get the name">M:Alchemy4Tridion.Plugins.Security.IUserService.GetName</codeEntityReference> of the currently logged in Tridion User, to get the <codeEntityReference linkText="get the UserData instance">M:Alchemy4Tridion.Plugins.Security.IUserService.GetData</codeEntityReference> of the user, as well as to check <codeEntityReference linkText="if the user is a system administrator or not">M:Alchemy4Tridion.Plugins.Security.IUserService.IsSystemAdministrator</codeEntityReference>.
+        </para>
+        <code language="c#">
+          [HttpGet]
+          [Route("admins/doStuff")]
+          public bool DoAdminOnly()
+          {
+              if (!User.IsSystemAdministrator())
+              {
+                  throw new Exception("Uh Oh...");
+              }
+              // ... 
+          }
+        </code>
+      </content>
+    </section>
     <!-- Optional next steps info
     <nextSteps>
       <content><para>Next steps info goes here</para></content>
@@ -349,6 +418,7 @@
       <link xlink:href="7a08abe0-5cb5-414d-9644-1e856c8bebae">Resource Groups</link>
       <codeEntityReference qualifyHint="true">T:Alchemy4Tridion.Plugins.AlchemyApiController</codeEntityReference>
       <codeEntityReference qualifyHint="true">T:Alchemy4Tridion.Plugins.GUI.Configuration.ResourceGroup</codeEntityReference>
+      <codeEntityReference>T:Alchemy4Tridion.Plugins.Security.IUserService</codeEntityReference>
     </relatedTopics>
   </developerWalkthroughDocument>
 </topic>

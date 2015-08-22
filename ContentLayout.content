@@ -13,7 +13,8 @@
   <Topic id="c1dded74-cd52-4494-bad8-e2b895bc9cf5" visible="True" isExpanded="true" title="Plugin Anatomy">
     <Topic id="a155bb48-95ab-49c9-9b61-ebcc119dc2dd" visible="True" title="Custom Configuration Settings" />
     <Topic id="e0b2cb35-1944-426e-b9ce-9becacd452b2" visible="True" title="Static File Tokens" />
-    <Topic id="ac68b3d0-f4af-49b5-8a3e-32b4d4472b86" visible="True" isSelected="true" title="Web Services" />
+    <Topic id="ac68b3d0-f4af-49b5-8a3e-32b4d4472b86" visible="True" title="Web Services" />
+    <Topic id="2f09fca6-8acd-47df-be42-800a8dd88223" visible="True" isSelected="true" title="Visual Studio Configuration" />
   </Topic>
   <Topic id="e48e8917-e3ff-4190-80dc-3fb9096ffa87" visible="True" isExpanded="true" title="Plugin Types">
     <Topic id="a3ce173c-2569-4784-89d3-3f7e9d958a96" visible="True" isExpanded="true" title="GUI Extensions">
@@ -33,6 +34,7 @@
       </HelpKeywords>
     </Topic>
     <Topic id="fbc253d2-cb8d-4467-a987-b38be6411fa2" visible="True" title="Version 0.6" />
+    <Topic id="3c78955c-0d2c-4c4b-8d1b-0edaeb85d7b2" visible="True" title="Version 0.6.1" />
   </Topic>
   <Topic id="ebcfaa62-0ff1-4d4e-ad9e-fa730e4903e9" visible="True" apiParentMode="InsertBefore" />
 </Topics>

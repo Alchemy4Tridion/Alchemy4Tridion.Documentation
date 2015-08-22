@@ -56,7 +56,7 @@
     </DocumentationSources>
     <FeedbackEMailAddress>alchemy%40contentbloom.com</FeedbackEMailAddress>
     <CopyrightText>Copyright &amp;#169%3b 2015 Content Bloom</CopyrightText>
-    <CopyrightHref>http://www.alchemywebstore.com/</CopyrightHref>
+    <CopyrightHref>http://www.contentbloom.com/</CopyrightHref>
     <ProjectSummary>Welcome to the Alchemy4Tridion API documentation.  The following documentation and examples can be used by plugin authors to aid them in the development of plugins published to the Web Store.
 
 For plugin development, please check out information on Alchemy4Tridion.Plugins.
@@ -138,6 +138,7 @@ Note that the "-Pre" tag is used to pull the prerelease version.</NamespaceSumma
     <None Include="Content\PluginStructure\CustomConfiguration.aml" />
     <None Include="Content\PluginStructure\PluginAnatomy.aml" />
     <None Include="Content\PluginStructure\StaticFileParsedTokens.aml" />
+    <None Include="Content\PluginStructure\VisualStudioConfiguration.aml" />
     <None Include="Content\PluginStructure\WebServices.aml" />
     <None Include="Content\QuickStart\HelloWorldSample.aml" />
     <None Include="Content\QuickStart\StepByStepFromScratch.aml" />
@@ -145,6 +146,7 @@ Note that the "-Pre" tag is used to pull the prerelease version.</NamespaceSumma
     <None Include="Content\TroubleShooting\Troubleshooting.aml" />
     <None Include="Content\VersionHistory\v0.5.0.0.aml" />
     <None Include="Content\VersionHistory\v0.6.0.0.aml" />
+    <None Include="Content\VersionHistory\v0.6.1.0.aml" />
     <None Include="Content\VersionHistory\VersionHistory.aml" />
     <None Include="Content\Web Store\WebStore.aml" />
     <None Include="Content\Welcome.aml" />
