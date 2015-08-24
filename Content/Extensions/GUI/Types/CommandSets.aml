@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="ece37602-35dc-449e-a86b-e6b01fcbb0ad" revisionNumber="1">
+  <developerConceptualDocument
+    xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+
+    <introduction>
+      <!-- Uncomment this to generate an outline of the section and sub-section
+           titles.  Specify a numeric value as the inner text to limit it to
+           a specific number of sub-topics when creating the outline.  Specify
+           zero (0) to limit it to top-level sections only.  -->
+      <!-- <autoOutline /> -->
+
+      <para>
+        Command Sets are what actually registers an Anguilla JavaScript Command and ties that command name to a specific interface (that was given during the creation of the JavaScript command file). The command set is not a stand alone piece and must be added as a reference to the <codeEntityReference>T:Alchemy4Tridion.Plugins.GUI.Configuration.ResourceGroup</codeEntityReference> that contains the files for the commands in this set.
+      </para>
+      <autoOutline excludeRelatedTopics="false" />
+    </introduction>
+
+    <section address="CreatingCommandSets">
+      <title>Creating Command Sets</title>
+      <content>
+        <para>
+          Command Sets are added by creating a class within your plugin project that extends from <codeEntityReference qualifyHint="true">T:Alchemy4Tridion.Plugins.GUI.Configuration.CommandSet</codeEntityReference>. Within the constructor of your class, you can add commands to the command set with the <codeEntityReference qualifyHint="true">M:Alchemy4Tridion.Plugins.GUI.Configuration.CommandSet.AddCommand(System.String,System.String)</codeEntityReference> method. Note that if you use the <command>Alchemy.command</command> wrapper to create your JavaScript commands, or if you use the same namespace conventsions (ie Alchemy.Plugins.YourPluginName.Commands.YourCommandName) that Alchemy would use, you can then register your commands with just the command names.
+        </para>
+        <code language="c#" title="Registering commands with just the command name">
+          public class MyCommandSet : CommandSet
+          {
+              public MyCommandSet()
+              {
+                  AddCommand("JustTheCommandName");
+              }
+          }
+        </code>
+        <alert class="note">
+          <para>
+            Alchemy uses conventions to allow for developers to shorthand things like commands.  In the above example, the command is still being registered in the editor as <codeInline>
+              &lt;cfg:command name="JustTheCommandName" implementation="Alchemy.Plugins.MyPlugin.Commands.JustTheCommandName" /&gt;
+            </codeInline>.
+          </para>
+        </alert>
+        <para>
+          If you are using a non-Alchemy namespace for your command implementations, you'll need to use the two arguments for the <command>AddCommand</command> method.
+        </para>
+        <code language="c#" title="Registering commands with command name and implementation">
+          public class MyCommandSet : CommandSet
+          {
+              public MyCommandSet()
+              {
+                  AddCommand("NotJustTheCommandName", "MyPlugins.Commandos.NotJustTheCommandName");
+              }
+          }
+        </code>
+      </content>
+    </section>
+
+    <section address="AddingCommandSetsToResourceGroups">
+      <title>Adding Your Command Set to a Resource Groups</title>
+      <content>
+        <para>
+          As mentioned, creating command sets alone is not enough.  You'll also have to add them as a reference within a Resource Group. You can do this in the Resource Group's constructor using the <codeEntityReference>M:Alchemy4Tridion.Plugins.GUI.Configuration.ResourceGroup.AddFile``1</codeEntityReference> method.  You'll want to add it to the Resource Group that contains the actual files for the command set itself.
+        </para>
+        <code language="c#">
+          public MyCommandsGroup()
+          {
+              AddFile("MyCommandFile.js");
+              AddFile&lt;MyCommandSet&gt;(); // we just added a reference to our command set.
+              
+              Dependencies.AddAlchemyCore();
+          }
+        </code>
+      </content>
+    </section>
+
+    <section address="CommandSetDependencies">
+      <title>Command Set Dependencies</title>
+      <content>
+        <para>
+          It's possible to add dependencies to your Command Set so the dependent resource groups will automatically be included anywhere your Command Set is referenced.  This is done via the <codeEntityReference>P:Alchemy4Tridion.Plugins.GUI.Configuration.CommandSet.Dependencies</codeEntityReference> property, and works the same way as adding dependencies to your Resource Groups.
+        </para>
+        <alert class="note">
+          <para>
+            It's more typical to add dependencies to the Resource Group that references the Command Set rather than the Command Set itself.
+          </para>
+        </alert>
+      </content>
+    </section>
+
+    <section address="CommandSetNamespaceConvention">
+      <title>Command Set Namespace Convention</title>
+      <content>
+        <para>
+          When creating Command Sets with the zero argument base constructor, the generated <command>id</command> for your set is <environmentVariable>Alchemy.Plugins.YOUR_PLUGIN_NAME.Commands.CLASS_TYPE</environmentVariable>, where <command>YOUR_PLUGIN_NAME</command> is the name of your plugin (identified in the a4t.xml file) and <command>CLASS_TYPE</command> is the name of the class that you created representing your command set.
+        </para>
+      </content>
+    </section>
+
+    <relatedTopics>
+      <link xlink:href="a3ce173c-2569-4784-89d3-3f7e9d958a96"></link>
+      <link xlink:href="7a08abe0-5cb5-414d-9644-1e856c8bebae"></link>
+      <codeEntityReference qualifyHint="true">T:Alchemy4Tridion.Plugins.GUI.Configuration.CommandSet</codeEntityReference>
+      <codeEntityReference qualifyHint="true">T:Alchemy4Tridion.Plugins.GUI.Configuration.ResourceGroup</codeEntityReference>
+      <codeEntityReference qualifyHint="true">T:Alchemy4Tridion.Plugins.GUI.Configuration.Elements.Dependencies</codeEntityReference>
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>
