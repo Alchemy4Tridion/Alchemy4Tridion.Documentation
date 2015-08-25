@@ -19,7 +19,9 @@
   <Topic id="e48e8917-e3ff-4190-80dc-3fb9096ffa87" visible="True" isExpanded="true" title="Plugin Types">
     <Topic id="a3ce173c-2569-4784-89d3-3f7e9d958a96" visible="True" isExpanded="true" title="GUI Extensions">
       <Topic id="7a08abe0-5cb5-414d-9644-1e856c8bebae" visible="True" title="Resource Groups" />
-      <Topic id="12561a8f-a08c-44a3-833b-6463a3b59f41" visible="True" isSelected="true" title="Extension Groups" />
+      <Topic id="ece37602-35dc-449e-a86b-e6b01fcbb0ad" visible="True" title="Command Sets" />
+      <Topic id="12561a8f-a08c-44a3-833b-6463a3b59f41" visible="True" title="Extension Groups" />
+      <Topic id="652c048c-4dd5-4926-a77c-aeacfb825695" visible="True" isSelected="true" title="Context Menu Extensions" />
     </Topic>
     <Topic id="b709ff1d-f7f7-4fa2-8527-9c00c3793ea2" visible="True" title="Event System Extensions" />
     <Topic id="4a5e7880-b639-4039-8efc-8d4ff537c036" visible="True" title="Content Extensions" />

@@ -66,7 +66,7 @@
           <title>Adding CommandSet References</title>
           <content>
             <para>
-              If your plugin contains a command set, you can add a reference to it with the <codeEntityReference>M:Alchemy4Tridion.Plugins.GUI.Configuration.ResourceGroup.AddFile``1</codeEntityReference> method.
+              If your plugin contains a <codeEntityReference>T:Alchemy4Tridion.Plugins.GUI.Configuration.CommandSet</codeEntityReference>, you can add a reference to it with the <codeEntityReference>M:Alchemy4Tridion.Plugins.GUI.Configuration.ResourceGroup.AddFile``1</codeEntityReference> method.
             </para>
             <code language="c#">
               AddFile&lt;MyCommandSet&gt;();
@@ -121,6 +121,7 @@
     </section>
     
     <relatedTopics>
+      <link xlink:href="a3ce173c-2569-4784-89d3-3f7e9d958a96"></link>
       <codeEntityReference qualifyHint="true">T:Alchemy4Tridion.Plugins.GUI.Configuration.ResourceGroup</codeEntityReference>
       <codeEntityReference qualifyHint="true">T:Alchemy4Tridion.Plugins.GUI.Configuration.Elements.Dependencies</codeEntityReference>
     

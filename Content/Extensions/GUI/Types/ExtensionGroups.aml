@@ -57,6 +57,7 @@
     </section>
 
     <relatedTopics>
+      <link xlink:href="a3ce173c-2569-4784-89d3-3f7e9d958a96"></link>
       <link xlink:href="7a08abe0-5cb5-414d-9644-1e856c8bebae"></link>
       <codeEntityReference qualifyHint="true">T:Alchemy4Tridion.Plugins.GUI.Configuration.ExtensionGroup</codeEntityReference>
       <codeEntityReference qualifyHint="true">T:Alchemy4Tridion.Plugins.GUI.Configuration.ResourceGroup</codeEntityReference>
