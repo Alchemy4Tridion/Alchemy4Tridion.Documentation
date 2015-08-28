@@ -14,6 +14,11 @@
         <list class="bullet">
           <listItem>
             <para>
+              Get an instance of your plugin's <codeEntityReference qualifyHint="true">T:Alchemy4Tridion.Plugins.IAlchemyPlugin</codeEntityReference> reference via the <codeEntityReference qualifyHint="true">P:Alchemy4Tridion.Plugins.AlchemyApiController.Plugin</codeEntityReference> property.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
               AlchemyApiController now has a <command>Client</command> property which will laizily initiate a new SessionAwareCoreServiceClient.  This is actually an AlchemySessionAwareCoreServiceClient, which is a wrapper that safely implements IDisposable.  The AlchemyApiController's Dipose method will also automatically call the <command>Client</command>'s Dispose method, so developers are not required to manually dispose of this property's instance (but if they do it causes no harm as the code checks to see if its already been disposed).
             </para>
           </listItem>
@@ -22,7 +27,7 @@
               AlchemyApiController now has a <command>User</command> property which allows you to get information about the currently logged in Tridion user.  <codeInline>GetName()</codeInline> returns the account username (does not make a call to core service), <codeInline>GetData()</codeInline> gets the <codeInline>UserData</codeInline> object for the user, and <codeInline>IsSystemAdministrator()</codeInline> checks whether or not the user is a system admin.
             </para>
             <para>
-              See <codeEntityReference  qualifyHint="true">T:Alchemy4Tridion.Plugins.AlchemyApiController</codeEntityReference> for more details on the new User and Client properties.
+              See <codeEntityReference  qualifyHint="true">T:Alchemy4Tridion.Plugins.AlchemyApiController</codeEntityReference> for more details on the new Plugin, User and Client properties.
             </para>
           </listItem>
           <listItem>
@@ -33,6 +38,11 @@
           <listItem>
             <para>
               Fixed major issue with using the Static JavaScript Library feature where all the files in that library folder were coming out at 0kb.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              When building plugins, the version of A4T you built your plugin with is recorded and shown in the Webstore. If somene tries to install your plugin but is using an older version of A4T, they'll get an error message letting them know what version they have, which version you built with, and a recommendation to upgrade.
             </para>
           </listItem>
           <listItem>

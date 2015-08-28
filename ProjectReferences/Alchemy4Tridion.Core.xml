@@ -906,6 +906,11 @@
             </summary>
             <param name="pluginName">The name of the plugin to uninstall.</param>
         </member>
+        <member name="P:Alchemy4Tridion.Core.Plugins.IPluginLibrary.AlchemyVersion">
+            <summary>
+            Gets the version of Alchemy that is currently being ran.
+            </summary>
+        </member>
         <member name="P:Alchemy4Tridion.Core.Plugins.IPluginLibrary.ControllerTypes">
             <summary>
             Gets a list of webapi controller types that implement IAlchemyService.
@@ -1055,6 +1060,11 @@
             Represents a collection of plugins that are installed on Tridion as well as functionality to install and uninstall them.
             </summary>
         </member>
+        <member name="F:Alchemy4Tridion.Core.Plugins.PluginLibrary.alchemyVersion">
+            <summary>
+            The version of alchemy that is currently installed.
+            </summary>
+        </member>
         <member name="F:Alchemy4Tridion.Core.Plugins.PluginLibrary.catalog">
             <summary>
             The catalog that contains a collection of other catalog types.
@@ -1160,6 +1170,14 @@
             <summary>
             Loads dlls from all the plugin directories and adds the directory catalogs to the aggregate catalog.
             </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Core.Plugins.PluginLibrary.AlchemyVersion">
+            <summary>
+            Gets the current version of Alchemy that is being ran.
+            </summary>
+            <remarks>
+            Should make an IVersionService to the plugin framework, that gets version info about Tridion and A4T.
+            </remarks>
         </member>
         <member name="P:Alchemy4Tridion.Core.Plugins.PluginLibrary.ControllerTypes">
             <summary>

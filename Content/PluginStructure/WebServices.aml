@@ -340,6 +340,15 @@
       </sections>
     </section>
 
+    <section address="PluginInstance">
+      <title>Getting Your Plugin's Instance</title>
+      <content>
+        <para>
+          It may be desirable to get your plugin's <codeEntityReference>T:Alchemy4Tridion.Plugins.IAlchemyPlugin</codeEntityReference> instance (for example, to get your plugin's custom <codeEntityReference>T:Alchemy4Tridion.Plugins.Info.IPluginSettings</codeEntityReference> via the <codeEntityReference>P:Alchemy4Tridion.Plugins.IAlchemyPlugin.Settings</codeEntityReference> property. Your <command>AlchemyApiController</command> has a <codeEntityReference>P:Alchemy4Tridion.Plugins.AlchemyApiController.Plugin</codeEntityReference> property that will return the initialized plugin object used in the Plugin Library.
+        </para>
+      </content>
+    </section>
+    
     <section address="CoreService">
       <title>Using Tridion Core Services</title>
       <content>

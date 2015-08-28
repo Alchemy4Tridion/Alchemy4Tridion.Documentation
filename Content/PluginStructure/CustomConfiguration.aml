@@ -74,15 +74,22 @@
           Once you have the settings instance, you can use the various <codeEntityReference>Overload:Alchemy4Tridion.Plugins.Info.IPluginSettings.Get</codeEntityReference>
           methods to get values from your custom xml configuration.
         </para>
+        <para>
+          If accessing the settings from an AlchemyApiController, you can use the controller's <command>Plugin</command> property to get the settings.
+        </para>
         <code language="c#">
-          MyPlugin plugin = new MyPlugin();
-          IPluginSettings settings = plugin.Settings;
+          [HttpGet]
+          [Route("example/action")]
+          public void ExampleAction()
+          {
+              IPluginSettings settings = Plugin.Settings;
           
-          string someKey = settings.Get("SomeKey");
-          int someRandomNumber = settings.Get&lt;int&gt;("SomeRandomNumber");
-          bool isABoolean = settings.Get&lt;bool&gt;("IsABoolean");
-          string nope = settings.Get("DoesNotExist"); // value is null since our custom configuration above does not contain this key
-          string defaultValue = settings.Get("DoesNotExist", "ADefaultValue"); // value is now "ADefaultValue" as we provided 2nd argument
+              string someKey = settings.Get("SomeKey");
+              int someRandomNumber = settings.Get&lt;int&gt;("SomeRandomNumber");
+              bool isABoolean = settings.Get&lt;bool&gt;("IsABoolean");
+              string nope = settings.Get("DoesNotExist"); // value is null since our custom configuration above does not contain this key
+              string defaultValue = settings.Get("DoesNotExist", "ADefaultValue"); // value is now "ADefaultValue" as we provided 2nd argument
+          }
         </code>
       </content>
     </section>
@@ -160,7 +167,7 @@
               as a strongly typed object.
             </para>
             <code language="c#">
-              MyPluginSettings settings = plugin.Settings.Get&lt;MyPluginSettings&gt;();
+              MyPluginSettings settings = Plugin.Settings.Get&lt;MyPluginSettings&gt;();
             </code>
           </content>
         </section>
@@ -184,8 +191,8 @@
               ]]>
             </code>
             <code language="c#">
-              MyPluginSettings settings = plugin.Settings.Get&lt;MyPluginSettings&gt;("MyUser");
-              MyPluginSettings nope = plugin.Settings.Get&lt;MyPluginSettings&gt;("DoesNotExist"); // will be null as 'DoesNotExist' does not exist.
+              MyPluginSettings settings = Plugin.Settings.Get&lt;MyPluginSettings&gt;("MyUser");
+              MyPluginSettings nope = Plugin.Settings.Get&lt;MyPluginSettings&gt;("DoesNotExist"); // will be null as 'DoesNotExist' does not exist.
             </code>
             <alert class="note">
               <para>

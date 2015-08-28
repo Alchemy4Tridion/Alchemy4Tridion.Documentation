@@ -1212,6 +1212,11 @@
             Gets the description of the plugin.
             </summary>
         </member>
+        <member name="P:Alchemy4Tridion.Plugins.Info.IPluginInfo.FrameworkVersion">
+            <summary>
+            Gets the A4T plugin framework version that the plugin was built with.
+            </summary>
+        </member>
         <member name="P:Alchemy4Tridion.Plugins.Info.IPluginInfo.Id">
             <summary>
             Gets the unique identifier of this plugin used in the web store.
@@ -1431,6 +1436,11 @@
         <member name="P:Alchemy4Tridion.Plugins.Info.PluginInfo.Description">
             <summary>
             Gets or sets the description of the plugin.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Plugins.Info.PluginInfo.FrameworkVersion">
+            <summary>
+            Gets the Alchemy4Tridion Plugin framework version that this plugin was built with.
             </summary>
         </member>
         <member name="P:Alchemy4Tridion.Plugins.Info.PluginInfo.Id">
