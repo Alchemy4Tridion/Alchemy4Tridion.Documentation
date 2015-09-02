@@ -10,24 +10,27 @@
     <Topic id="d9c1d722-3006-4bf7-9a61-5a7bcb46fa86" visible="True" title="Step By Step From Alchemy4Tridion.Plugin Package" />
     <Topic id="4527f168-8e5c-4bfc-85f3-02cb8924d981" visible="True" title="Step By Step From Visual Studio &quot;Plugin Project&quot; Template" />
   </Topic>
-  <Topic id="c1dded74-cd52-4494-bad8-e2b895bc9cf5" visible="True" isExpanded="true" title="Plugin Anatomy">
+  <Topic id="e7c4b8d4-294c-418f-b897-b14b44974ed3" visible="True" noFile="true" isExpanded="true" title="Webstore">
+    <Topic id="78a9d3d7-b901-4114-8dcf-d99d4a12ffc2" visible="True" isSelected="true" title="Alchemy Approval System" />
+  </Topic>
+  <Topic id="c1dded74-cd52-4494-bad8-e2b895bc9cf5" visible="True" title="Plugin Anatomy">
     <Topic id="a155bb48-95ab-49c9-9b61-ebcc119dc2dd" visible="True" title="Custom Configuration Settings" />
     <Topic id="e0b2cb35-1944-426e-b9ce-9becacd452b2" visible="True" title="Static File Tokens" />
     <Topic id="ac68b3d0-f4af-49b5-8a3e-32b4d4472b86" visible="True" title="Web Services" />
     <Topic id="2f09fca6-8acd-47df-be42-800a8dd88223" visible="True" title="Visual Studio Configuration" />
   </Topic>
-  <Topic id="e48e8917-e3ff-4190-80dc-3fb9096ffa87" visible="True" isExpanded="true" title="Plugin Types">
+  <Topic id="e48e8917-e3ff-4190-80dc-3fb9096ffa87" visible="True" title="Plugin Types">
     <Topic id="a3ce173c-2569-4784-89d3-3f7e9d958a96" visible="True" isExpanded="true" title="GUI Extensions">
       <Topic id="7a08abe0-5cb5-414d-9644-1e856c8bebae" visible="True" title="Resource Groups" />
       <Topic id="ece37602-35dc-449e-a86b-e6b01fcbb0ad" visible="True" title="Command Sets" />
       <Topic id="12561a8f-a08c-44a3-833b-6463a3b59f41" visible="True" title="Extension Groups" />
-      <Topic id="652c048c-4dd5-4926-a77c-aeacfb825695" visible="True" isSelected="true" title="Context Menu Extensions" />
+      <Topic id="652c048c-4dd5-4926-a77c-aeacfb825695" visible="True" title="Context Menu Extensions" />
     </Topic>
     <Topic id="b709ff1d-f7f7-4fa2-8527-9c00c3793ea2" visible="True" title="Event System Extensions" />
     <Topic id="4a5e7880-b639-4039-8efc-8d4ff537c036" visible="True" title="Content Extensions" />
     <Topic id="397afef7-a7fd-4424-9d44-091f9b9c6acf" visible="True" title="DXA Extensions" />
   </Topic>
-  <Topic id="c6caa4cb-dd4a-4fa1-b919-f2d5ef947bec" visible="True" isExpanded="true" title="Version History">
+  <Topic id="c6caa4cb-dd4a-4fa1-b919-f2d5ef947bec" visible="True" title="Version History">
     <HelpKeywords>
       <HelpKeyword index="K" term="version, history" />
     </HelpKeywords>

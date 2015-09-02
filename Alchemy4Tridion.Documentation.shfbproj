@@ -150,6 +150,7 @@ Note that the "-Pre" tag is used to pull the prerelease version.</NamespaceSumma
     <None Include="Content\VersionHistory\v0.6.0.0.aml" />
     <None Include="Content\VersionHistory\v0.6.1.0.aml" />
     <None Include="Content\VersionHistory\VersionHistory.aml" />
+    <None Include="Content\Web Store\AlchemyApprovalSystem.aml" />
     <None Include="Content\Web Store\WebStore.aml" />
     <None Include="Content\Welcome.aml" />
   </ItemGroup>
