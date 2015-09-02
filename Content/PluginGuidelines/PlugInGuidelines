@@ -28,7 +28,7 @@ The aim of Alchemy Plugins is to enhance lives and add some cool stuff to SDL We
  - Aim to be consistent with the existing SDL interface theme
  - Don’t add additional stuff like personal information, company logos, client data, easter-eggs, tracking code, advertisements   etc. … I know it’s tempting
 
-Your Code
+**Your Code**
 
 We know that it’s not easy to catch all the bugs in any code, so our team of Alchemists also has your back. We review, then review again, all code before it is placed live into the Webstore.  But don’t think of us as your own personal testing team! If something’s clearly not been tested it won’t pass the first review.
 
