@@ -12,9 +12,16 @@ life of the project.</para>
 				<para>Select a version below to see a description of its changes.</para>
 
 				<list class="bullet">
-					<listItem>
-						<para><link xlink:href="36c1c045-3501-4593-ad09-7e73bc31f4ee" /></para>
-					</listItem>
+          <listItem>
+            <para>
+              <link xlink:href="a78d7637-97ac-4237-800f-f88a4da3faa9" />
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <link xlink:href="3c78955c-0d2c-4c4b-8d1b-0edaeb85d7b2" />
+            </para>
+          </listItem>
           <listItem>
             <para>
               <link xlink:href="fbc253d2-cb8d-4467-a987-b38be6411fa2" />
@@ -22,7 +29,7 @@ life of the project.</para>
           </listItem>
           <listItem>
             <para>
-              <link xlink:href="3c78955c-0d2c-4c4b-8d1b-0edaeb85d7b2" />
+              <link xlink:href="36c1c045-3501-4593-ad09-7e73bc31f4ee" />
             </para>
           </listItem>
 				</list>

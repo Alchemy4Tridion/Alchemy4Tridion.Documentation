@@ -439,6 +439,68 @@
             Gets or sets the full unique identifier of this command set (ie Alchemy.Plugins.PluginName.Commands.SetName).
             </summary>
         </member>
+        <member name="T:Alchemy4Tridion.Plugins.GUI.Configuration.ContextMenuDeclaration">
+            <summary>
+            Represents a context menu declaration (items within the &lt;contextmenus /&gt;).  This is used to declare new
+            context menus that can be used in custom views and not to extend existing context menus (see ContextMenuExtension
+            for ability to extend exisiting).
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Plugins.GUI.Configuration.ContextMenuDeclaration.items">
+            <summary>
+            The context menu items contained within this extension.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Plugins.GUI.Configuration.ContextMenuDeclaration.name">
+            <summary>
+            The uniquely defined name of the context menu.
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Plugins.GUI.Configuration.ContextMenuDeclaration.AddItem(System.String,System.String,System.String)">
+            <summary>
+            Adds a context menu item to the context menu.
+            </summary>
+            <param name="id">The unique identifier of this menu item. Becomes the id attribute of the html element.</param>
+            <param name="name">The name to display for this menu item.</param>
+            <param name="command">The command to execute when this menu item is clicked.</param>
+        </member>
+        <member name="M:Alchemy4Tridion.Plugins.GUI.Configuration.ContextMenuDeclaration.AddSeparator(System.String)">
+            <summary>
+            Adds a separator to the context menu.
+            </summary>
+            <param name="id">The unique identifier of this separator.  Becomes the id attribute of the html element.</param>
+        </member>
+        <member name="M:Alchemy4Tridion.Plugins.GUI.Configuration.ContextMenuDeclaration.AddSubMenu(System.String,System.String)">
+            <summary>
+            Adds a submenu section to the context menu. The submenu can contain its own items, separators, and submenus.
+            </summary>
+            <param name="id">The unique identifier of this submenu. Becomes the id attribute of the html element.</param>
+            <param name="name">The name to display for this submenu item.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Alchemy4Tridion.Plugins.GUI.Configuration.ContextMenuDeclaration.#ctor(System.String)">
+            <summary>
+            Creates a new context menu declaration using the optional unique defined name for the context menu. If
+            no name is provided, will use an auto generated name based off of the plugin's name plus the type.
+            </summary>
+            <param name="definedName"></param>
+        </member>
+        <member name="P:Alchemy4Tridion.Plugins.GUI.Configuration.ContextMenuDeclaration.Items">
+            <summary>
+            Gets the read only collection of context menu items that are contained within this extension.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Plugins.GUI.Configuration.ContextMenuDeclaration.Name">
+            <summary>
+            Gets or sets the defined name of the context menu. This should be a unique name to recognize it from other
+            context menus.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Plugins.GUI.Configuration.ContextMenuDeclaration.Plugin">
+            <summary>
+            Gets or sets the plugin that this context menu belongs to.
+            </summary>
+        </member>
         <member name="T:Alchemy4Tridion.Plugins.GUI.Configuration.ContextMenuExtension">
             <summary>
             Represents a context menu configuration piece within the editorextensions element.
@@ -766,6 +828,40 @@
             Gets or sets the type reference of insert after
             </summary>
         </member>
+        <member name="T:Alchemy4Tridion.Plugins.GUI.Configuration.ExtendedAreaExtension">
+            <summary>
+            Represents an extended area extension (ie &lt;ext:extendedareas /&gt;). Create a class that inherits from
+            ExtendedArea to create new extended area extensions.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Plugins.GUI.Configuration.ExtendedAreaExtension.control">
+            <summary>
+            The ascx user control that represents the page.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Plugins.GUI.Configuration.ExtendedAreaExtension.Control">
+            <summary>
+            Gets or sets the ASCX user control file that presents the page. Required for tab pages.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Plugins.GUI.Configuration.ExtendedAreaExtension.PageType">
+            <summary>
+            Gets or sets the page's definition of the client side name.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Plugins.GUI.Configuration.ExtendedAreaExtension.RenderInBlock">
+            <summary>
+            Gets or sets whether or not the tab page is rendered in block.
+            </summary>
+        </member>
+        <member name="P:Alchemy4Tridion.Plugins.GUI.Configuration.ExtendedAreaExtension.Width">
+            <summary>
+            Gets or sets the width property of the Page. It doesn't affect the actual width of the Page.
+            </summary>
+            <remarks>
+            Not actually sure how this one works.
+            </remarks>
+        </member>
         <member name="T:Alchemy4Tridion.Plugins.GUI.Configuration.ExtensionGroup">
             <summary>
             Represents an ExtensionGroup within the editor config.
@@ -1050,6 +1146,14 @@
             <param name="files">The files to add.</param>
             <returns></returns>
         </member>
+        <member name="M:Alchemy4Tridion.Plugins.GUI.Configuration.ResourceGroup.AttachToView(System.String,System.String)">
+            <summary>
+            Attaches the resource group to a specific view in this plugin.  That view page will automatically add
+            the this resource group as a dependency.
+            </summary>
+            <param name="filename"></param>
+            <param name="viewInherits">The base class that the view inherits from.</param>
+        </member>
         <member name="P:Alchemy4Tridion.Plugins.GUI.Configuration.ResourceGroup.Dependencies">
             <summary>
             Gets or sets the list of dependencies that this group depends on.
@@ -1105,6 +1209,66 @@
             <summary>
             Represents constants for string values contains within the Tridion GUI, like PageIds, GroupIds
             View names, context menu items, etc.
+            </summary>
+        </member>
+        <member name="T:Alchemy4Tridion.Plugins.GUI.Configuration.Constants.ContextMenuIds">
+            <summary>
+            Represents context menu items that you can target with the InsertBefore property.
+            </summary>
+        </member>
+        <member name="T:Alchemy4Tridion.Plugins.GUI.Configuration.Constants.ContextMenuIds.MainContextMenu">
+            <summary>
+            Represents the main context menu's items (the one seen on the dashboard view for example).
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Plugins.GUI.Configuration.Constants.ContextMenuIds.MainContextMenu.ClipboardSeparator0">
+            <summary>
+            The first (out of the box) separator within the clipboard commands, between Paste and Delete
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Plugins.GUI.Configuration.Constants.ContextMenuIds.MainContextMenu.Separator1">
+            <summary>
+            The first (out of the box) separator, between OpenWithWebDav and Versioning
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Plugins.GUI.Configuration.Constants.ContextMenuIds.MainContextMenu.Separator2">
+            <summary>
+            The second (out of the box) separator, between StartLocation and Preview
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Plugins.GUI.Configuration.Constants.ContextMenuIds.MainContextMenu.Separator3">
+            <summary>
+            The third (out of the box) separator, between Preview and EnableUser
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Plugins.GUI.Configuration.Constants.ContextMenuIds.MainContextMenu.Separator4">
+            <summary>
+            The fourth (out of the box) separator, between DisableUser and Cut.
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Plugins.GUI.Configuration.Constants.ContextMenuIds.MainContextMenu.Separator5">
+            <summary>
+            The fifth (out of the box) separator, between Delete and AddItemsToBundle
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Plugins.GUI.Configuration.Constants.ContextMenuIds.MainContextMenu.Separator6">
+            <summary>
+            The sixth (out of the box) separator, between RemoveSelectedItemsFromBundle and Properties
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Plugins.GUI.Configuration.Constants.ContextMenuIds.MainContextMenu.Separator7">
+            <summary>
+            The seventh (out of the box) separator, between WhereUsed and ForceFinishProcess
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Plugins.GUI.Configuration.Constants.ContextMenuIds.MainContextMenu.Separator8">
+            <summary>
+            The eighth (out of the box) separator, between RevertProcess and MoveUpListItems
+            </summary>
+        </member>
+        <member name="F:Alchemy4Tridion.Plugins.GUI.Configuration.Constants.ContextMenuIds.MainContextMenu.Separator9">
+            <summary>
+            The ninth (out of the box) separator, between MoveDownListItems and New
             </summary>
         </member>
         <member name="T:Alchemy4Tridion.Plugins.GUI.Configuration.Constants.GroupIds">
