@@ -134,6 +134,7 @@ Note that the "-Pre" tag is used to pull the prerelease version.</NamespaceSumma
     <None Include="Content\Extensions\GUI\GuiIndex.aml" />
     <None Include="Content\Extensions\GUI\Types\CommandSets.aml" />
     <None Include="Content\Extensions\GUI\Types\ContextMenuExtensions.aml" />
+    <None Include="Content\Extensions\GUI\Types\ExtendedAreas.aml" />
     <None Include="Content\Extensions\GUI\Types\ExtensionGroups.aml" />
     <None Include="Content\Extensions\GUI\Types\ResourceGroups.aml" />
     <None Include="Content\PluginStructure\Configuration.aml" />
@@ -150,6 +151,7 @@ Note that the "-Pre" tag is used to pull the prerelease version.</NamespaceSumma
     <None Include="Content\VersionHistory\v0.6.0.0.aml" />
     <None Include="Content\VersionHistory\v0.6.1.0.aml" />
     <None Include="Content\VersionHistory\v0.6.2.0.aml" />
+    <None Include="Content\VersionHistory\v0.7.0.0.aml" />
     <None Include="Content\VersionHistory\VersionHistory.aml" />
     <None Include="Content\Web Store\AlchemyApprovalSystem.aml" />
     <None Include="Content\Web Store\WebStore.aml" />

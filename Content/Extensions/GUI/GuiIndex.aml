@@ -218,7 +218,7 @@
     <section address="GuiExtensionTypes">
       <title>GUI Extension Types</title>
       <content>
-        <para>The following GUI Extension Types are currently supported by the Alchemy4Tridion framework.</para>
+        <para>The following GUI Extension Types are currently supported by the Alchemy4Tridion framework. Anything not listed below is not yet supported. Documentation to come on any section below without it...</para>
         <list class="nobullet">
           <listItem>
             <para>
@@ -247,12 +247,22 @@
           </listItem>
           <listItem>
             <para>
+              Context Menus (custom context menus, not to be confused with context menu extensions)
+            </para>
+          </listItem>
+          <listItem>
+            <para>
               Tab Page Extensions
             </para>
           </listItem>
           <listItem>
             <para>
               Command Extensions
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <link xlink:href="8d2687f9-346a-4874-9b39-56aa14d371e9">Extended Areas</link>  
             </para>
           </listItem>
         </list>

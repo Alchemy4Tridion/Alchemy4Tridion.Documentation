@@ -308,6 +308,25 @@
             Gets the summary of the plugin (from plugin info, uses summary if available, else the beginning of description).
             </summary>
         </member>
+        <member name="T:Alchemy4Tridion.Plugins.Controllers.IWindowsImpersonator">
+            <summary>
+            Interface for a utility to impersonate as a window's user.
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Plugins.Controllers.IWindowsImpersonator.Impersonate(System.Web.Http.Controllers.HttpActionContext)">
+            <summary>
+            Impersonates the request under the impersonated windows user.
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alchemy4Tridion.Plugins.Controllers.IWindowsImpersonator.AllowImpersonation(System.Web.Http.Controllers.HttpActionContext)">
+            <summary>
+            Gets whether or not the impersonation is allowed.
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
         <member name="T:Alchemy4Tridion.Plugins.Controllers.PluginControllerExtensions">
             <summary>
             Extenion methods for working with WebAPI Controllers specific for Alchemy.
@@ -319,6 +338,29 @@
             </summary>
             <param name="plugin">The plugin to get the types for.</param>
             <returns>A collection of web api types.</returns>
+        </member>
+        <member name="T:Alchemy4Tridion.Plugins.Controllers.RequiresWindowsImpersonationAttribute">
+            <summary>
+            Adding this attribute to a controller's action will attempt to impersonate as a windows user (vs running
+            as what's configured in IIS).  Windows Impersonation must be configured and the Tridion user must have
+            been granted permission in the Alchemy configuration to use this feature.  If the user does not
+            have permission, a popup should appear allowing the user to provide credentials to use (unless this
+            feature has been disabled completely).
+            </summary>
+        </member>
+        <member name="M:Alchemy4Tridion.Plugins.Controllers.RequiresWindowsImpersonationAttribute.OnActionExecuting(System.Web.Http.Controllers.HttpActionContext)">
+            <summary>
+            On action executing, checks if the windows impersonation is configured and if the user has 
+            permission to use the impersonation. If so, will impersonate and perform the rest of the action
+            under the context of the windows impersonated user.  If not, will return an exception in the
+            response.
+            </summary>
+            <param name="actionContext"></param>
+        </member>
+        <member name="P:Alchemy4Tridion.Plugins.Controllers.RequiresWindowsImpersonationAttribute.WindowsImpersonator">
+            <summary>
+            Gets the service that controls the impersonation
+            </summary>
         </member>
         <member name="T:Alchemy4Tridion.Plugins.GUI.Configuration.CommandExtension">
             <summary>

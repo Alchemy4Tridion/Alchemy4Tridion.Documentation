@@ -41,7 +41,8 @@
     </Topic>
     <Topic id="fbc253d2-cb8d-4467-a987-b38be6411fa2" visible="True" title="Version 0.6" />
     <Topic id="3c78955c-0d2c-4c4b-8d1b-0edaeb85d7b2" visible="True" title="Version 0.6.1" />
-    <Topic id="a78d7637-97ac-4237-800f-f88a4da3faa9" visible="True" isSelected="true" title="Version 0.6.2" />
+    <Topic id="a78d7637-97ac-4237-800f-f88a4da3faa9" visible="True" title="Version 0.6.2" />
+    <Topic id="7fd6aa5d-a30b-4a46-a4f1-4ee1f7cd8f75" visible="True" isSelected="true" title="Version 0.7.0" />
   </Topic>
   <Topic id="ebcfaa62-0ff1-4d4e-ad9e-fa730e4903e9" visible="True" apiParentMode="InsertBefore" />
 </Topics>

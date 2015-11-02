@@ -385,6 +385,15 @@
         </section>
       </sections>
     </section>
+
+    <section address="SettingsConfigUI">
+      <title>Custom Settings UI</title>
+      <content>
+        <para>
+          Custom settings can be configured from the <command>Plugins</command> area of the <application>A4T</application> setcion of the user interface.  Each installed plugin can be viewed and configured.
+        </para>
+      </content>
+    </section>
     
     <relatedTopics>
       <codeEntityReference qualifyHint="true" linkText="Alchemy4Tridion.Plugins.GUI.Configuration.ResourceGroup.AddWebApiProxy()">M:Alchemy4Tridion.Plugins.GUI.Configuration.ResourceGroup.AddWebApiProxy</codeEntityReference>
