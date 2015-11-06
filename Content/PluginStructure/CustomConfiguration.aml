@@ -86,7 +86,7 @@
           
               string someKey = settings.Get("SomeKey");
               int someRandomNumber = settings.Get&lt;int&gt;("SomeRandomNumber");
-              bool isABoolean c:type="bool"= settings.Get&lt;bool&gt;("IsABoolean c:type="bool"");
+              bool isABoolean = settings.Get&lt;bool&gt;("IsABoolean");
               string nope = settings.Get("DoesNotExist"); // value is null since our custom configuration above does not contain this key
               string defaultValue = settings.Get("DoesNotExist", "ADefaultValue"); // value is now "ADefaultValue" as we provided 2nd argument
           }
