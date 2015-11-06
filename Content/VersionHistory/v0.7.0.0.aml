@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="7fd6aa5d-a30b-4a46-a4f1-4ee1f7cd8f75" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <introduction>
+      <para>
+        Version 0.7.0 was released on October 31st, 2015.
+      </para>
+    </introduction>
+
+    <section>
+      <title>Major in This Release</title>
+      <content>
+
+        <list class="bullet">
+          <listItem>
+            <para>
+              New <command>Control Room</command> area within the A4T section of the GUI.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              Permissions and security for controlling who can install plugins (even ability to disable installing via uploading or from the webstore), who can uninstall plugins, and who can configure them.  These settings can be found within the Control Room.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              Utilities in the control room for clearing Tridion cache (incrementing the System.config modificaiton attribute), configuring the file monitoring, minificaiton settings, and more.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              Windows Impersonation has been revamped, WebAPI actions that require Windows Impersonation (so far only the Servicer plugin has needed them) can be decorated with a RequiresWindowsImpersonationAttribute.  Windows Impersonation can be configured through the Control Room, and permissions can be set to which users are allowed to use this feature.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <command>Logout of Tridion</command>! A button within the A4T section allows users to log out of their Tridion instance and sign in as another user.  A plugin can also be found in the Webstore that adds the logout button to the User's notification bar.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              Prototype for an Alchemy Update Patcher has been deployed with 0.7.  This patcher will allow for updating A4T versions straight from the GUI!  This feature does require the Windows Impersonation feature to be configured and for the user attempting to update to have permission to use the Windows Impersonation.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <application>Alchemy4Tridion Developer Pack</application> Visual Studio extension 0.7 has also been released.  This includes a reference to the 0.7 A4T version, item templates for command extensions, extended areas, and context menu declarations, and an all new startup plugin project template.  The extension is now also supported for Visual Studio Professional 2013 and 2015, Visual Studio Web Express 2013, and Visual Studio Community Edition 2015.  The developer pack can be downloaded at the <externalLink>
+                <linkText>Visual Studio Gallery</linkText>
+                <linkUri>https://visualstudiogallery.msdn.microsoft.com/7a86be6e-4e8a-46f2-85d0-b7ad0bc60c5b</linkUri>
+                <linkTarget>_blank</linkTarget>
+              </externalLink>.
+            </para>
+          </listItem>
+        </list>
+
+      </content>
+    </section>
+
+    <section>
+      <title>Full Change Log</title>
+      <content>
+        <para>
+          For a complete list of changes, view the complete changelog <externalLink>
+            <linkText>on the GitHub site</linkText>
+            <linkUri>https://github.com/Alchemy4Tridion/Alchemy4Tridion/issues?q=is%3Aclosed+milestone%3A0.7.0+</linkUri>
+            <linkTarget>_blank</linkTarget>
+          </externalLink>.
+        </para>
+      </content>
+    </section>
+
+    <relatedTopics>
+      <link xlink:href="c6caa4cb-dd4a-4fa1-b919-f2d5ef947bec" />
+    </relatedTopics>
+
+  </developerConceptualDocument>
+</topic>

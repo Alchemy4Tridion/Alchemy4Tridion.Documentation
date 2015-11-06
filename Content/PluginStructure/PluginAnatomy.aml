@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="c1dded74-cd52-4494-bad8-e2b895bc9cf5" revisionNumber="1">
+  <developerConceptualDocument
+    xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <!--
+    <summary>
+      <para>Optional summary abstract</para>
+    </summary>
+    -->
+
+    <introduction address="Introduction">
+      <autoOutline />
+      <para>
+        An Alchemy4Tridion plugin (aka plugin package) is a specially formatted file that contains everything
+        that your plugin needs including DLL's, static files (css, js, etc), and configuration.  A plugin has an
+        extension of <system>.a4t</system> when it is built using the <application>Alchemy4Tridion.Plugin</application>
+        NuGet package, and it is this file that can be uploaded to the <externalLink>
+          <linkText>Alchemy Webstore</linkText>
+          <linkUri>http://www.alchemywebstore.com/</linkUri>
+          <linkTarget>_blank</linkTarget>
+        </externalLink> or installed directly to Tridion via the Alchemy4Tridion extension.
+      </para>
+    </introduction>
+
+    
+    <section address="Configuration">
+      <title>Configuration (a4t.xml)</title>
+      <content>
+        <para>
+          At minimum, the a4t.xml file is the only real item in the plugin package that your plugin requires.  It would
+          be a dull plugin that didn't do anything, but you'd be able to install and list it.  This file contains all
+          the necessary info to let the framework know details about it.  Depending on the type of plugin you are
+          creating and the features you need, it can also contain extra settings.
+        </para>
+      </content>
+      <sections>
+        <section>
+          <title>Creation</title>
+          <content>
+            <para>
+              Depending on the type of NuGet package you installed, the a4t.xml file may have been added out of the box
+              to your class library project.  If not, then it'll automatically be created when you build your
+              project.
+            </para>
+          </content>
+        </section>
+        <section>
+          <title>A4T.xml Elements</title>
+          <content>
+            <definitionTable>
+              <definedTerm>id</definedTerm>
+              <definition>
+                <para>
+                  The Webstore's unique identifier for your plugin.
+                </para>
+                <alert class="warning">
+                  <para>
+                    This is automatically filled out when you upload your plugin to the WebStore, and should not
+                    be modified by you directly.
+                  </para>
+                </alert>
+              </definition>
+              <definedTerm>description</definedTerm>
+              <definition>
+                <para>
+                  This is the description of your plugin.
+                </para>
+                <alert class="note">
+                  <para>
+                    When uploading to the Webstore, if this is a new plugin or if your plugin on the Webstore does
+                    not yet have a description, it will use the value that is specified.
+                  </para>
+                </alert>
+                <alert class="note">
+                  <para>
+                    This field should use CDATA as descriptions can contains Github flavored markdown.
+                  </para>
+                </alert>
+              </definition>
+              <definedTerm>
+                name <legacyBold>*</legacyBold>
+              </definedTerm>
+              <definition>
+                <para>
+                  The (required) unique name of the element. In Alchemy4Tridion, this is your plugin's identifier. This is
+                  the only field that is absolutely required for you to fill out when creating a new plugin.
+                </para>
+              </definition>
+              <definedTerm>version</definedTerm>
+              <definition>
+                <para>The version number of this plugin (ie 1.1.0.0)</para>
+                <alert class="warning">
+                  <para>
+                    This is automatically filled out when you upload your plugin to the WebStore, and should not
+                    be modified by you directly.
+                  </para>
+                </alert>
+              </definition>
+              <definedTerm>versionId</definedTerm>
+              <definition>
+                <para>The Webstore's unique identifier for this version of the plugin.</para>
+                <alert class="warning">
+                  <para>
+                    This is automatically filled out when you upload your plugin to the WebStore, and should not
+                    be modified by you directly.
+                  </para>
+                </alert>
+              </definition>
+              <definedTerm>settings</definedTerm>
+              <definition>
+                <para>
+                  The <link xlink:href="a155bb48-95ab-49c9-9b61-ebcc119dc2dd">custom configuration settings</link> if your plugin requires them.
+                </para>
+              </definition>
+            </definitionTable>
+          </content>
+        </section>
+        <section>
+          <title>Custom Configuration Settings</title>
+          <content>
+            <para>
+              Alchemy4Tridion allows you to have custom configuration similar to a Tridion GUI Extension's customconfiguration.
+            </para>
+            <para>
+              Please see <link xlink:href="a155bb48-95ab-49c9-9b61-ebcc119dc2dd">this guide</link> for more information.
+            </para>
+          </content>
+        </section>
+      </sections>
+    </section>
+
+    <section address="StaticFiles">
+      <title>Static Files</title>
+      <content>
+        <para>
+          Static files are the StyleSheets, JavaScript, images, user controls (ascx), html pages, and aspx pages that
+          your plugins can utilize.
+        </para>
+      </content>
+      <sections>
+        <section address="AddingStaticFiles">
+          <title>Adding Static Files</title>
+          <content>
+            <para>
+              Static files MUST go in your project's "Static" or "Assets" folder (or combination of the two). You
+              can structure your static files any way you want within these files, but you'll have to keep in mind
+              that when you build the project, all the files get organized automatically in specific folders of
+              the plugin package.  For example, all JavaScript files will end up in the <localUri>/assets/js/</localUri>
+              folder of the project, all StyleSheets will end up in <localUri>/assets/css/</localUri>, and so on, regardless
+              of the folder structure you put them in.
+            </para>
+            <alert class="note">
+              <para>
+                This was a design decision to allow creation ease of adding files to your resource groups that allows
+                you to still organize the files the way you want in your project, but allowing filename only references
+                from your extension classes.
+              </para>
+              <para>
+                You will need to take care that you don't have any static files with the same filename.
+              </para>
+            </alert>
+            <para>
+              The exception to this rule is with JavaScript Libraries.
+            </para>
+          </content>
+        </section>
+        <section address="JavaScriptLibraries">
+          <title>JavaScript Libraries</title>
+          <content>
+            <para>
+              Some libraries contain multiple files and a folder structure that must be relative to the main JavaScript
+              file being loaded.  Alchemy4Tridion supports this by utilizing the "Libs" folder within your "Static"
+              or "Assets" folder.
+            </para>
+            <para>
+              Any folder within the "Libs" folder will be considered a Library Folder, and the files within it will
+              keep their structure intact. For example, if you have <localUri>/Static/Libs/AwesomeLib/(multiple files/folders/structure here)</localUri>,
+              then when built your plugin package will have <localUri>/assets/libs/AwesomeLib/(multiple files/folders/structure here)</localUri>.
+            </para>
+            <alert class="warning">
+              <para>
+                Library files should not be added to Resource Groups as Resource Groups will minify and bundle all items
+                into a single resource that Tridion utilizes, and the context of your library and location will be
+                gone. Library files can be referenced in your views with script tags.
+              </para>
+            </alert>
+            <code>
+              <![CDATA[
+              <script type="text/javascript" src="${LibsUrl}/AwesomeLib/awesome-lib.min.js"></script>
+              ]]>
+            </code>
+            <alert class="tip">
+              <para>
+                This feature can also be used if you also require a specific static file structure for your
+                plugin's own files.
+              </para>
+            </alert>
+          </content>
+        </section>
+        <section address="Tokens">
+          <title>Tokens Within Static Files</title>
+          <content>
+            <para>
+              Due to the nature of plugins, some details of your plugin may only be known once its installed via
+              the framework.  For this reason, Alchemy4Tridion contains special tokens that you can put into your
+              static files that will get parsed <legacyItalic>during plugin installation</legacyItalic>.
+            </para>
+            <para>
+              See the <link xlink:href="e0b2cb35-1944-426e-b9ce-9becacd452b2">parsed token list</link> for examples
+              and details of which tokens are available to you.
+            </para>
+          </content>
+        </section>
+      </sections>
+    </section>
+
+    <section address="WebServices">
+      <title>Web Services</title>
+      <content>
+        <para>
+          Traditional Tridion Extensions made use of WCF web services and a Model to proxy them into your domain so that
+          they could be called via JavaScript.  Alchemy4Tridion makes uses of WebAPI Controllers that you can add
+          to your class library so that you can provide back end services that your client code can communicate with,
+          as well as its own proxy so that you can call those services from your JavaScript without having to include
+          any additional library.
+        </para>
+        <para>
+          See the <link xlink:href="ac68b3d0-f4af-49b5-8a3e-32b4d4472b86">documentation on the Alchemy WebAPI Controllers</link> for more details.
+        </para>
+      </content>
+    </section>
+
+    <section address="PluginSpecifics">
+      <title>Plugin Specifics</title>
+      <content>
+        <para>
+          Depending on the type of plugin you are creating, the rest of your plugin architecture can really vary. Please
+          see the <link xlink:href="e48e8917-e3ff-4190-80dc-3fb9096ffa87">extensions page</link> for more details
+          on development of the type of plugin you are interested in.
+        </para>
+      </content>
+    </section>
+    
+    <relatedTopics>
+      <!-- One or more of the following:
+           - A local link
+           - An external link
+           - A code entity reference
+
+      <link xlink:href="Other Topic's ID">Link text</link>
+      <externalLink>
+          <linkText>Link text</linkText>
+          <linkAlternateText>Optional alternate link text</linkAlternateText>
+          <linkUri>URI</linkUri>
+      </externalLink>
+      <codeEntityReference>API member ID</codeEntityReference>
+
+      Examples:
+
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8278">Some other topic</link>
+
+      <externalLink>
+          <linkText>SHFB on GitHub</linkText>
+          <linkAlternateText>Go to GitHub</linkAlternateText>
+          <linkUri>https://GitHub.com/EWSoftware/SHFB</linkUri>
+      </externalLink>
+
+      <codeEntityReference>T:TestDoc.TestClass</codeEntityReference>
+      <codeEntityReference>P:TestDoc.TestClass.SomeProperty</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor(System.String,System.Int32)</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.ToString</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.FirstMethod</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.SecondMethod(System.Int32,System.String)</codeEntityReference>
+      -->
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>

@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="78a9d3d7-b901-4114-8dcf-d99d4a12ffc2" revisionNumber="1">
+  <developerConceptualDocument
+    xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <introduction>
+      <para>So, you’d like to create a plugin and share it with the world. We salute you! Grab yourself a nice large glass of whiskey and give yourself a pat on the back.</para>
+      <para>Before your plugin goes live into the Alchemy Webstore it goes through our team of Alchemists who approve and validate the work to ensure the plugin is of the highest quality and conforms to the following guidelines.</para>
+    </introduction>
+
+    <!-- Add one or more top-level section elements.  These are collapsible.
+         If using <autoOutline />, add an address attribute to identify it
+         and specify a title so that it can be jumped to with a hyperlink. -->
+    <section address="Section1">
+      <title>Webstore Submission</title>
+      <content>
+        <para>The Web Store is where a user will see and read about your plugin, so please help them learn as much as possible about it. Hustle that plugin, yo!</para>
+        <para>
+          You’ll need the following information and content ready:
+        </para>
+        <list class="bullet">
+          <listItem>
+            <para>
+              An icon image (210 x 210 pixels) - note this image will be scaled down in some instances, so bear that in mind
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              A minimum of 1 screen shot - there’s no size requirement here yet, but from personal experience the larger the better as we scale it down within the tool. Please ensure the image is optimized and less than 100kb per image
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              For the description, please give an explanation of how exactly the plugin works and what it does
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              It’s possible to link to videos and blog posts about your plugin. We love it when those are used to back up the information in a plugin, and it’s a nice way to plug your own website / blog :)
+            </para>
+          </listItem>
+        </list>
+      </content>
+    </section>
+    <section address="section2">
+      <title>Your Plugin</title>
+      <content>
+        <para>
+          The aim of Alchemy Plugins is to enhance lives and add some cool stuff to SDL Web.   Here are some guidelines:
+        </para>
+        <list class="bullet">
+          <listItem>
+            <para>
+              If you’re adding menus and items to the SDL interface, ensure these entries make sense, are clearly defined, and are hidden when necessary
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              Aim to be consistent with the existing SDL interface theme
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              Don’t add additional stuff like personal information, company logos, client data, easter-eggs, tracking code, advertisements   etc. … I know it’s tempting
+            </para>
+          </listItem>
+        </list>
+      </content>
+    </section>
+    <section address="section3">
+      <title>Your Code</title>
+      <content>
+        <para>
+          We know that it’s not easy to catch all the bugs in any code, so our team of Alchemists also has your back. We review, then review again, all code before it is placed live into the Webstore.  But don’t think of us as your own personal testing team! If something’s clearly not been tested it won’t pass the first review.
+        </para>
+        <para>
+          That’s about it for now; this is a learning process for us as well, so we’ll be updating these guidelines from time to time.
+        </para>
+        <para>
+          The Alchemy Team thanks you!
+        </para>
+      </content>
+    </section>
+    <relatedTopics>
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>

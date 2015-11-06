@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="2f09fca6-8acd-47df-be42-800a8dd88223" revisionNumber="1">
+  <developerConceptualDocument
+    xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <!--
+    <summary>
+      <para>Optional summary abstract</para>
+    </summary>
+    -->
+
+    <introduction>
+      <para>
+        Certain aspects of the Visual Studio project for an Alchemy Plugin is configurable.
+      </para>
+      <autoOutline excludeRelatedTopics="0" />
+    </introduction>
+    
+    <section address="UploadWebstoreDialog">
+      <title>Configuring the Upload to Webstore Dialog</title>
+      <content>
+        <alert class="important">
+          <para>
+            The feature was introduced in 0.6.0.
+          </para>
+        </alert>
+        <para>
+          When an Alchemy Plugin Project builds in Visual Studio, the user is presented with a dialog that allows the developer to immediately upload the plugin to the Webstore if they wish. Although this is handy as a quick way to get your plugin updates to the Webstore, it can be annoying when in active development of your plugin. For this reason, the control for how and when the dialog appears is totally configurable.
+        </para>
+        <para>
+          There are two ways to configure the Upload Dialog Form.
+        </para>
+        <list class="ordered">
+          <listItem>
+            <para>
+              Use the <command>AlchemyUploadDialog</command> property in the project's <command>.csproj</command> file. The value of this property can be a "0" or "false" to make the dialog never appear, a "1" or "true" to make the dialog always appear, or a pipe separated list of configuration targets.  For example, a value of <command>DEBUG|RELEASE</command> will have the dialog appear in both DEBUG and RELEASE build modes, while a value of <command>RELEASE</command> will have the dialog only appear when building for RELEASE.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              Define a DefineConstant with a name of <command>AlchemyUploadDialog_&lt;VALUE&gt;</command>, where &lt;VALUE&gt; should be the value of the option on how you want the dialog to appear. For example, defining a constant of <command>AlchemyUploadDialog_RELEASE</command> will make the dialog only appear after building for RELEASE mode.
+            </para>
+            <alert class="important">
+              <para>
+                The AlchemyUploadDialog_ Define Constant overrides any property value set in the project's .csproj file.
+              </para>
+            </alert>
+          </listItem>
+        </list>
+      </content>
+    </section>
+
+    <section address="OutputBuildFiles">
+      <title>Configuring the Output Build Files</title>
+      <content>
+        <para>
+          When an Alchemy Plugin Project builds, a special .a4t plugin package file is created in the output directory. To make it easier to find this package, all non-direct project files are automatically cleared from the output directory (only the .a4t, .dll, .pdb, and .xml files of the actual project will remain). Depending on your needs, this feature is also configurable.
+        </para>
+        <list class="ordered">
+          <listItem>
+            <para>
+              Use the <command>AlchemyRemoveBuildFiles</command> property of the project's <command>.csproj</command> file.  The value of this property can be <command>NonProjectAssembly</command> (the default which removes any file not directly output by the project), <command>None</command> (which will not clear any file at all), and <command>All</command> (which will delete everything except for the .a4t file, which was the default behavior prior to verison 0.6).
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              Define a DefineConstant with a name of <command>AlchemyRemoveBuildFiles_&lt;VALUE&gt;</command>, where &lt;VALUE&gt; should be the value of the option on how you want the build files removed.  For example, a defined constant of <command>AlchemyRemoveBuildFiles_All</command> will remove all files except for the .a4t package file on build.
+            </para>
+            <alert class="important">
+              <para>
+                The AlchemyRemoveBuildFiles_ Define Constant overrides any property value set in the project's .csproj file.
+              </para>
+            </alert>
+          </listItem>
+        </list>
+      </content>
+    </section>
+    <relatedTopics>
+      <!-- One or more of the following:
+           - A local link
+           - An external link
+           - A code entity reference
+
+      <link xlink:href="Other Topic's ID"/>
+      <link xlink:href="Other Topic's ID">Link inner text</link>
+
+      <externalLink>
+          <linkText>Link text</linkText>
+          <linkAlternateText>Optional alternate link text</linkAlternateText>
+          <linkUri>URI</linkUri>
+      </externalLink>
+
+      <codeEntityReference>API member ID</codeEntityReference>
+
+      Examples:
+
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8270" />
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8278">Some other topic</link>
+
+      <externalLink>
+          <linkText>SHFB on GitHub</linkText>
+          <linkAlternateText>Go to GitHub</linkAlternateText>
+          <linkUri>https://GitHub.com/EWSoftware/SHFB</linkUri>
+      </externalLink>
+
+      <codeEntityReference>T:TestDoc.TestClass</codeEntityReference>
+      <codeEntityReference>P:TestDoc.TestClass.SomeProperty</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor(System.String,System.Int32)</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.ToString</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.FirstMethod</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.SecondMethod(System.Int32,System.String)</codeEntityReference>
+      -->
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>

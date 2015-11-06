@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="e0b2cb35-1944-426e-b9ce-9becacd452b2" revisionNumber="1">
+  <developerConceptualDocument
+    xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <!--
+    <summary>
+      <para>Optional summary abstract</para>
+    </summary>
+    -->
+
+    <introduction>
+      <!-- Uncomment this to generate an outline of the section and sub-section
+           titles.  Specify a numeric value as the inner text to limit it to
+           a specific number of sub-topics when creating the outline.  Specify
+           zero (0) to limit it to top-level sections only.  -->
+      <!-- <autoOutline /> -->
+
+      <para>
+        Due to the nature of plugins, some details of your plugin may only be known once its installed via
+        the framework.  For this reason, Alchemy4Tridion contains special tokens that you can put into your
+        static files that will get parsed <legacyItalic>during plugin installation</legacyItalic>.
+      </para>
+    </introduction>
+
+    <!-- Add one or more top-level section elements.  These are collapsible.
+         If using <autoOutline />, add an address attribute to identify it
+         and specify a title so that it can be jumped to with a hyperlink. -->
+    <section>
+      <title>Available Tokens</title>
+      <content>
+        <definitionTable>
+          <definedTerm>${AppUrl}</definedTerm>
+          <definition>
+            <para>
+              The url of your plugin in relation to the Alchemy4Tridion application. ie <localUri>/Alchemy/YourPluginName/</localUri>.
+            </para>
+            <alert class="note">
+              <para>
+                The Alchemy application url is usually only referenced in relation to Web Services (WebAPI Controllers).
+              </para>
+            </alert>
+          </definition>
+          <definedTerm>${AssetsUrl}</definedTerm>
+          <definition>
+            <para>The url of your plugin's assets folder.</para>
+          </definition>
+          <definedTerm>${ControlsUrl}</definedTerm>
+          <definition>
+            <para>The url of your plugin's controls folder. This is the folder where all of your .ascx files go.</para>
+          </definition>
+          <definedTerm>${CssUrl}</definedTerm>
+          <definition>
+            <para>The url of your plugin's StyleSheet folder. This is the folder where all of your .css files go.</para>
+          </definition>
+          <definedTerm>${EditorUrl}</definedTerm>
+          <definition>
+            <para>The url of your plugin in relation to the Alchemy4Tridion extension. ie <localUri>/WebUI/Editors/Alchemy/YourPluginName/</localUri>
+          </para>
+            <alert class="note">
+              <para>
+                The editor url is used in relation to Tridion GUI Extensions, and view pages that require Tridion
+                dependencies should use this url rather than the Application Url.
+              </para>
+            </alert>
+          </definition>
+          <definedTerm>${ImgUrl}</definedTerm>
+          <definition>
+            <para>The url of your plugin's image folder. All images will end up in this folder.</para>
+          </definition>
+          <definedTerm>${JsUrl}</definedTerm>
+          <definition>
+            <para>The url of your plugin's JavaScript folder. All of your .js files will go to this folder.</para>
+          </definition>
+          <definedTerm>${LibsUrl}</definedTerm>
+          <definition>
+            <para>The url of your plugin's libs folder. All of your JavaScript Library folders that are in the
+            special "Libs" folder will be put at this location.</para>
+          </definition>
+          <definedTerm>${Namespace}</definedTerm>
+          <definition>
+            <para>The namespace of your plugin. ie <application>Alchemy.Plugins.YourPluginName</application>
+          </para>
+          </definition>
+          <definedTerm>${PluginName}</definedTerm>
+          <definition>
+            <para>The name of your plugin.</para>
+          </definition>
+          <definedTerm>${PluginPath}</definedTerm>
+          <definition>
+            <para>The absolute physical path to the file location of your plugin. ie <localUri>C:\Tridion\Alchemy\Plugins\YourPluginName\</localUri>
+          </para>
+          </definition>
+          <definedTerm>${StaticUrl}</definedTerm>
+          <definition>
+            <para>The url of your plugin's assets folder. Alias for ${AssetsUrl}.</para>
+          </definition>
+          <definedTerm>${ViewsUrl}</definedTerm>
+          <definition>
+            <para>
+              The url of your plugin's views folder. This is the folder where your .aspx and .html files will go.
+            </para>
+          </definition>
+        </definitionTable>
+        <alert class="tip">
+          <para>
+            Tokens are case insensitive. <codeInline>${CssUrl}</codeInline> and <codeInline>${cssurl}</codeInline>
+            will parse to the same value.
+          </para>
+        </alert>
+        <alert class="tip">
+          <para>
+            Tokens that parse to URL's will always end in a "/" so that its safe whether you concatenate with
+            a leading slash or not.
+          </para>
+        </alert>
+        <alert class="important">
+          <para>
+            Tokens are parsed during plugin installation.  This means that after a plugin is installed,
+            the tokens will no longer exist in the static file.
+          </para>
+        </alert>
+      </content>
+    </section>
+    
+
+    <relatedTopics>
+      <link xlink:href="c1dded74-cd52-4494-bad8-e2b895bc9cf5#JavaScriptLibraries">JavaScript Libraries</link>
+      <!-- One or more of the following:
+           - A local link
+           - An external link
+           - A code entity reference
+
+      <link xlink:href="Other Topic's ID"/>
+      <link xlink:href="Other Topic's ID">Link inner text</link>
+
+      <externalLink>
+          <linkText>Link text</linkText>
+          <linkAlternateText>Optional alternate link text</linkAlternateText>
+          <linkUri>URI</linkUri>
+      </externalLink>
+
+      <codeEntityReference>API member ID</codeEntityReference>
+
+      Examples:
+
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8270" />
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8278">Some other topic</link>
+
+      <externalLink>
+          <linkText>SHFB on GitHub</linkText>
+          <linkAlternateText>Go to GitHub</linkAlternateText>
+          <linkUri>https://GitHub.com/EWSoftware/SHFB</linkUri>
+      </externalLink>
+
+      <codeEntityReference>T:TestDoc.TestClass</codeEntityReference>
+      <codeEntityReference>P:TestDoc.TestClass.SomeProperty</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor(System.String,System.Int32)</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.ToString</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.FirstMethod</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.SecondMethod(System.Int32,System.String)</codeEntityReference>
+      -->
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>

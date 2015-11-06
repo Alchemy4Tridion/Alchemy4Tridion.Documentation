@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="7a08abe0-5cb5-414d-9644-1e856c8bebae" revisionNumber="1">
+  <developerConceptualDocument
+    xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <!--
+    <summary>
+      <para>Optional summary abstract</para>
+    </summary>
+    -->
+
+    <introduction>
+      <para>
+        Resource Groups (hereforth called "groups" within the context of this page) are a collection of JavaScript files, Stylesheets, CommandSet references, and dependencies to other groups.  Groups contain a unique name that identifies it from all other groups, whether they be from the core Tridion groups or groups within other extensions or plugins.  Groups can be assigned to Extensions, so that when a specific extension is applied to a given page, Tridion ensures that the necessary references and dependencies are included for that page.  Groups can also be used directly on Views.
+      </para>
+      <para>
+        Your plugin can contain 0 or more resource groups.
+      </para>
+    </introduction>
+
+    <section address="AddingResourceGroups">
+      <title>Adding Resource Groups</title>
+      <content>
+        <para>
+          Traditional groups were added via the <codeInline>&lt;cfg:group /&gt;</codeInline> element within an editor configuration.  In A4T, you'll add a class to your project that inherits from <codeEntityReference qualifyHint="true">T:Alchemy4Tridion.Plugins.GUI.Configuration.ResourceGroup</codeEntityReference>.  If using the <application>Alchemy4Tridion Developer Pack</application>, you'll be able to select the <codeInline>Resource Group</codeInline> Item Template from the <command>Add New Item</command> menu in Visual Studio (it will be under "A4T/GUI").
+        </para>
+        <code>
+          using Alchemy4Tridion.Plugins.GUI.Configuration;
+          using Alchemy4Tridion.Plugins.GUI.Configuration.Elements;
+
+          namespace MyPlugin
+          {
+          public class MyResourceGroup : ResourceGroup
+          {
+          public MyResourceGroup()
+          {
+          
+          }
+          }
+          }
+        </code>
+      </content>
+      <sections>
+        <section>
+          <title>Adding Files</title>
+          <content>
+            <para>
+              JavaScript and Stylesheet files contained within your static folder can be added by their filenames directly (remember that even though you can organize your static files any way you chose, your JS and CSS will all end up in specific folders) using the <codeEntityReference>M:Alchemy4Tridion.Plugins.GUI.Configuration.ResourceGroup.AddFile(System.String)</codeEntityReference> method.
+            </para>
+            <code language="c#">
+              public MyResourceGroup()
+              {
+                  AddFile("MyCommand.js");
+                  AddFile("MyStyles.css");
+              }
+            </code>
+            <alert class="tip">
+              <para>
+                Order matters! If you have a file that depends on another one of your files, make sure to include that other one first!
+              </para>
+            </alert>
+          </content>
+        </section>
+        <section>
+          <title>Adding CommandSet References</title>
+          <content>
+            <para>
+              If your plugin contains a <codeEntityReference>T:Alchemy4Tridion.Plugins.GUI.Configuration.CommandSet</codeEntityReference>, you can add a reference to it with the <codeEntityReference>M:Alchemy4Tridion.Plugins.GUI.Configuration.ResourceGroup.AddFile``1</codeEntityReference> method.
+            </para>
+            <code language="c#">
+              AddFile&lt;MyCommandSet&gt;();
+            </code>
+          </content>
+        </section>
+        <section>
+          <title>Adding Dependencies</title>
+          <content>
+            <para>
+              Dependencies are added to your group via the <codeEntityReference>P:Alchemy4Tridion.Plugins.GUI.Configuration.ResourceGroup.Dependencies</codeEntityReference> property. The dependencies you add will vary on the requirements of your plugin.  The <codeInline>Dependencies.AddAlchemyCore();</codeInline> method will add the core script. If using some of the out of the box libraries that ships with Alchemy, you can use the <codeInline>Dependencies.AddLibrary...();</codeInline> methods.  Note that when using these extra libraries, they automatically include the core Alchemy script so there is no need to call <codeInline>AddAlchemyCore</codeInline>.
+            </para>
+          </content>
+        </section>
+        <section address="WebApiProxy">
+          <title>Adding the WebApi JavaScript Proxy</title>
+          <content>
+            <para>
+              If your plugin uses web services via the ApiControllers, you can add an automatically generated JavaScript proxy to your group by calling the <codeEntityReference>M:Alchemy4Tridion.Plugins.GUI.Configuration.ResourceGroup.AddWebApiProxy</codeEntityReference> method.  This acts very similarly as adding <codeInline>AddFile(...)</codeInline> as it adds a file that points to the automatically generated file.
+            </para>
+            <alert class="tip">
+              <para>
+                Unlike normal <codeInline>AddFile</codeInline> calls, the <codeInline>AddWebApiProxy</codeInline> can be called anywhere within your constructor.  The automatically generated JavaScript file will <legacyBold>always</legacyBold> be added as the first item in your group so that your other files can utilize it.
+              </para>
+            </alert>
+          </content>
+        </section>
+      </sections>
+    </section>
+
+    <section address="UniqueNames">
+      <title>Unique Names</title>
+      <content>
+        <para>
+          By default, A4T will use your plugin's name and the class' name to generate a unique identifier for the group.  For example, if you plugin's name is <legacyItalic>MyPlugin</legacyItalic> and you create <codeInline>MyResourceGroup</codeInline> which inherits <codeEntityReference qualifyHint="true">T:Alchemy4Tridion.Plugins.GUI.Configuration.ResourceGroup</codeEntityReference>, the auto generated name for you group will be <quoteInline>"Alchemy.Plugins.MyPlugin.Resources.MyResourceGroup"</quoteInline>.
+        </para>
+      </content>
+    </section>
+
+    <section address="ReferencingResourceGroups">
+      <title>Referencing Your Resource Groups</title>
+      <content>
+        <para>
+          Your extensions (and groups) can reference your created groups via the generic <codeEntityReference>M:Alchemy4Tridion.Plugins.GUI.Configuration.Elements.Dependencies.Add``1</codeEntityReference> method.  You can also use the fully qualified group name as the parameter, which is useful for when adding groups that are not built by you or are the core Tridion groups.
+        </para>
+        <code language="c#">
+          Dependencies.Add&lt;MyResourceGroup&gt;();
+          Dependencies.Add("Alchemy.Plugins.MyPlugin.Resources.MyResourceGroup");
+          Dependencies.Add("Tridion.Web.UI.Editors.CME.commands");
+        </code>
+      </content>
+    </section>
+    
+    <relatedTopics>
+      <link xlink:href="a3ce173c-2569-4784-89d3-3f7e9d958a96"></link>
+      <codeEntityReference qualifyHint="true">T:Alchemy4Tridion.Plugins.GUI.Configuration.ResourceGroup</codeEntityReference>
+      <codeEntityReference qualifyHint="true">T:Alchemy4Tridion.Plugins.GUI.Configuration.Elements.Dependencies</codeEntityReference>
+    
+      <externalLink>
+        <linkText>Hello World Plugin Sample</linkText>
+        <linkUri>https://github.com/Alchemy4Tridion/Alchemy4Tridion.Plugins.Sample.HelloWorld</linkUri>
+        <linkTarget>_blank</linkTarget>
+      </externalLink>
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>

@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="652c048c-4dd5-4926-a77c-aeacfb825695" revisionNumber="1">
+  <developerConceptualDocument
+    xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+    <introduction>
+      <!-- Uncomment this to generate an outline of the section and sub-section
+           titles.  Specify a numeric value as the inner text to limit it to
+           a specific number of sub-topics when creating the outline.  Specify
+           zero (0) to limit it to top-level sections only.  -->
+      <!-- <autoOutline /> -->
+
+      <para>
+        <application>Context Menu Extensions</application> are GUI Extensions that allow you to extend an existing context menu (the Tridion ones, like when you right click an item from a list).  A Context Menu Extension can insert one or more new nodes into the existing menu, either at the end or at any point within the menu by referencing an existing node.  Context menu items that can be added are <command>Menu Items</command> (items that execute a command when clicked on), <command>Sub Menu Items</command> (items that expand to display more menu items), and <command>Separators</command> (lines that separate groups of menu items).
+      </para>
+      <autoOutline excludeRelatedTopics="true"></autoOutline>
+    </introduction>
+
+    <section address="ContextMenuExtensionCreation">
+      <title>Creating Context Menu Extensions</title>
+      <content>
+        <para>
+          To add a context menu extension to your plugin project, create a new class that extends from <codeEntityReference qualifyHint="true">T:Alchemy4Tridion.Plugins.GUI.Configuration.ContextMenuExtension</codeEntityReference>. Within your class' constructor, you can use the various <command>AddItem</command>, <command>AddSubMenu</command>, and <command>AddSeparator</command> to add the different kinds of context menu items.  Any calls to these methods from your constructor inserts the items as first level items of the context menu.
+        </para>
+        <autoOutline />
+      </content>
+      <sections>
+          <section address="MinimumProperties">
+            <title>Minimum Properties</title>
+            <content>
+              <para>
+                At minimum, your constructor should set the <command>AssignId</command> and <command>Name</command> properties. Typically these are used for element id's and display labels, but for context menu extensions they are just used for the required attributes in the Editor Config and reflect meaning for the actual context menu extension.  The labels and element identifiers are established with the methods for adding items (mentioned below).
+              </para>
+              <code language="c#">
+                AssignId = "MyContextMenuId";
+                Name = "My Context Menu";
+              </code>
+              <alert class="note">
+                <para>
+                  I need to verify if we can actually create the context menu extensions without these properties as these aren't really used for the context menu extensions. At the very least if Anguilla requires them, we should autopopulate with Alchemy so developers don't have to set anything. 
+                </para>
+              </alert>
+            </content>
+          </section>
+        <section address="MenuItemPositioning">
+          <title>Positioning Within Existing Context Menu - InsertBefore Property</title>
+          <content>
+            <para>
+              You can control where your menu items are positioned within the target context menu by setting the <codeEntityReference>P:Alchemy4Tridion.Plugins.GUI.Configuration.Extensions.ExtensionConfigBase.InsertBefore</codeEntityReference> property. This should be the string value of an identifier of a node that you want to insert your items before (for example, "cm_refresh" would insert your items before the Refresh button).
+            </para>
+            <code language="c#">
+              InsertBefore = "cm_refresh";
+            </code>
+          </content>
+        </section>
+          <section address="AddingMenuItems">
+              <title>Adding Menu Items</title>
+              <content>
+                  <para>
+                    To add menu items, use the <command>AddItem</command> method with three arguments: 1.) the id of menu item's html element that will be created (you can use this id to target with JavaScript and CSS) 2.) the label that is displayed and 3.) the <command>command name</command> to execute when this item is clicked.
+                  </para>
+                <code language="c#">
+                  public MyContextMenu()
+                  {
+                      ...
+                      
+                      AddItem("my_html_element_id", "Label To Display", "MyCommandName");
+                      
+                      ...
+                  }
+                </code>
+              </content>
+          </section>
+          <section address="AddingSubMenus">
+              <title>Adding Sub Menu Items</title>
+              <content>
+                <para>
+                    To add sub menus, the <command>AddSubMenu</command> method can be called with two arguments, the first being the id of the html element that will be created for the node (you can use this to target with js/css) and the second being the label to display for the menu node.
+                </para>
+                <code language="c#">
+                  AddSubMenu("my_html_element_id", "Label To Display")
+                      .AddItem("sub_menu_id", "Sub Menu Item Label", "SubCommandName");
+                </code>
+                <alert class="note">
+                  <para>
+                    The <command>AddSubMenu</command> method returns an instance of <codeEntityReference qualifyHint="true">T:Alchemy4Tridion.Plugins.GUI.Configuration.Elements.ContextMenuItem</codeEntityReference>, which just like from your <application>ContextMenuExtension</application>, you can call <command>AddItem</command>, <command>AddSubMenu</command>, and <command>AddSeparator</command>.
+                  </para>
+                </alert>
+              </content>
+          </section>
+        <section address="AddingSeparators">
+          <title>Adding Separators</title>
+          <content>
+            <para>
+              To add a separator, you can call the <command>AddSeparator</command> method, which takes one argument that is used as the identifier of the html element created for the separator (used to target with your css and js).
+            </para>
+            <code language="c#">
+              AddSeparator("my-separator-id");
+            </code>
+          </content>
+        </section>
+        <section address="ContextMenuDependencies">
+          <title>Adding Dependencies</title>
+          <content>
+            <para>
+              This context menu extension class is not a stand alone system, and will require that you reference your Resource Group(s) that contains the scripts, styles, and CommandSet references.  You can use the <codeEntityReference>P:Alchemy4Tridion.Plugins.GUI.Configuration.ContextMenuExtension.Dependencies</codeEntityReference> property of the ContextMenuExtension to do so.
+            </para>
+            <code language="c#">
+              Dependencies.Add&lt;MyResourceGroup&gt;();
+            </code>
+          </content>
+        </section>
+        <section address="ApplyingToView">
+          <title>Applying Extension to a View</title>
+          <content>
+            <para>
+              The last step of creating the ContextMenuExtension class is to apply it to a view.  This is can be done with the property and calling the <command>ToView</command> method. You can use the <codeEntityReference qualifyHint="true">T:Alchemy4Tridion.Plugins.GUI.Configuration.Constants.Views</codeEntityReference> static class to pick from which views to apply to, or you can just type in the name of the view as a string.  One of the most common areas for context menu extension is the "DashboardView".
+            </para>
+            <code language="c#">
+              Apply.ToView(Constants.Views.DashboardView);
+            </code>
+          </content>
+        </section>
+      </sections>
+    </section>
+
+    <section address="ContextMenuExtensionStyling">
+      <title>Context Menu Extension Styling</title>
+      <content>
+        <para>
+          You can use a stylesheet (attached to the Resource Group used by your extension) to add icons to your context menu items.
+        </para>
+        <para>
+          Documentation to come...
+        </para>
+      </content>
+    </section>
+
+    <section address="StepByStep">
+      <title>Context Menu Extension - Step by Step</title>
+      <content>
+        <list class="ordered">
+          <listItem>
+            <para>
+              Create the JavaScript commands to be used by the context menu items (commands for when you click on the items).
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              (OPTIONAL) Create an optional stylesheet if you want to add any icons to your items.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              Create a <link xlink:href="ece37602-35dc-449e-a86b-e6b01fcbb0ad">Command Set</link> to register your JavaScript commands.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              Create a <link xlink:href="7a08abe0-5cb5-414d-9644-1e856c8bebae">Resource Group</link> that at adds the JavaScript file(s), StyleSheet(s), and Command Set.  If your commands are using an <link xlink:href="ac68b3d0-f4af-49b5-8a3e-32b4d4472b86">Alchemy Webservice</link>, make sure to use <codeInline>AddWebApiProxy()</codeInline> in your Resource Group so that the proxy JavaScript will be added.  Also don't forget to add any dependencies, like <codeInline>Dependencies.AddAlchemyCore()</codeInline> or any other library files.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              Create the <link xlink:href="#ContextMenuExtensionCreation">Context Menu Extension class</link>. Make sure to add the Resource Group created in the previous step as a dependency to that extension.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              Build and deploy!
+            </para>
+          </listItem>
+        </list>
+      </content>
+    </section>
+    <relatedTopics>
+      <link xlink:href="a3ce173c-2569-4784-89d3-3f7e9d958a96"></link>
+      <codeEntityReference qualifyHint="true">T:Alchemy4Tridion.Plugins.GUI.Configuration.ContextMenuExtension</codeEntityReference>
+      <codeEntityReference qualifyHint="true">T:Alchemy4Tridion.Plugins.GUI.Configuration.Extensions.ExtensionConfigBase</codeEntityReference>
+      <codeEntityReference qualifyHint="true">T:Alchemy4Tridion.Plugins.GUI.Configuration.Extensions.Apply</codeEntityReference>
+      <codeEntityReference qualifyHint="true">T:Alchemy4Tridion.Plugins.GUI.Configuration.Elements.Dependencies</codeEntityReference>
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>

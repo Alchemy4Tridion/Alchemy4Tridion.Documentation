@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="3c78955c-0d2c-4c4b-8d1b-0edaeb85d7b2" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <introduction>
+      <para>
+        Version 0.6.1 was released on August 28th, 2015.
+      </para>
+    </introduction>
+
+    <section>
+      <title>Major in This Release</title>
+      <content>
+
+        <list class="bullet">
+          <listItem>
+            <para>
+              Get an instance of your plugin's <codeEntityReference qualifyHint="true">T:Alchemy4Tridion.Plugins.IAlchemyPlugin</codeEntityReference> reference via the <codeEntityReference qualifyHint="true">P:Alchemy4Tridion.Plugins.AlchemyApiController.Plugin</codeEntityReference> property.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              AlchemyApiController now has a <command>Client</command> property which will laizily initiate a new SessionAwareCoreServiceClient.  This is actually an AlchemySessionAwareCoreServiceClient, which is a wrapper that safely implements IDisposable.  The AlchemyApiController's Dipose method will also automatically call the <command>Client</command>'s Dispose method, so developers are not required to manually dispose of this property's instance (but if they do it causes no harm as the code checks to see if its already been disposed).
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              AlchemyApiController now has a <command>User</command> property which allows you to get information about the currently logged in Tridion user.  <codeInline>GetName()</codeInline> returns the account username (does not make a call to core service), <codeInline>GetData()</codeInline> gets the <codeInline>UserData</codeInline> object for the user, and <codeInline>IsSystemAdministrator()</codeInline> checks whether or not the user is a system admin.
+            </para>
+            <para>
+              See <codeEntityReference  qualifyHint="true">T:Alchemy4Tridion.Plugins.AlchemyApiController</codeEntityReference> for more details on the new Plugin, User and Client properties.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              The upload dialog form in Visual Studio actually stays in the front of Visual Studio now!
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              Fixed major issue with using the Static JavaScript Library feature where all the files in that library folder were coming out at 0kb.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              When building plugins, the version of A4T you built your plugin with is recorded and shown in the Webstore. If somene tries to install your plugin but is using an older version of A4T, they'll get an error message letting them know what version they have, which version you built with, and a recommendation to upgrade.
+            </para>
+          </listItem>
+          <listItem>
+            <para>Other bug fixes and webstore updates!</para>
+          </listItem>
+        </list>
+
+      </content>
+    </section>
+
+    <section>
+      <title>Full Change Log</title>
+      <content>
+        <para>
+          For a complete list of changes, view the complete changelog <externalLink>
+            <linkText>on the GitHub site</linkText>
+            <linkUri>https://github.com/Alchemy4Tridion/Alchemy4Tridion/issues?q=is%3Aclosed+milestone%3A0.6.1+</linkUri>
+            <linkTarget>_blank</linkTarget>
+          </externalLink>.
+        </para>
+      </content>
+    </section>
+
+    <relatedTopics>
+      <link xlink:href="c6caa4cb-dd4a-4fa1-b919-f2d5ef947bec" />
+    </relatedTopics>
+
+  </developerConceptualDocument>
+</topic>

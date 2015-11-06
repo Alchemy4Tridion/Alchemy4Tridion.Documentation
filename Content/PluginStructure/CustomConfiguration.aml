@@ -1,0 +1,435 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="a155bb48-95ab-49c9-9b61-ebcc119dc2dd" revisionNumber="1">
+  <developerSampleDocument
+    xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <!--
+    <summary>
+      <para>Optional summary abstract</para>
+    </summary>
+    -->
+
+    <introduction>
+      <!-- Uncomment this to generate an outline of the section and sub-section
+           titles.  Specify a numeric value as the inner text to limit it to
+           a specific number of sub-topics when creating the outline.  Specify
+           zero (0) to limit it to top-level sections only.  -->
+      <autoOutline />
+
+      <para>Similar to custom configuration on good old fashioned GUI Extensions, Alchemy4Tridion allows your plugin
+      to have its own custom configuration elements via the <codeInline>&lt;settings /&gt;</codeInline> element in
+      the <application>a4t.xml</application> file of your plugin package (if this file is not present in the
+      NuGet package you selected to build your plugin with, it'll automatically be created as soon as you build
+      the project).
+    </para>
+    </introduction>
+
+    <!-- <procedure>Optional procedures.  See How To document for procedure layout example.</procedure> -->
+    <!-- <requirements>Optional requirements section</requirements> -->
+    <!-- <demonstrates>Optional info about what is demonstrated</demonstrates> -->
+    <!-- <codeExample>Optional code example</codeExample> -->
+
+    <!-- Add one or more top-level section elements.  These are collapsible.
+         If using <autoOutline />, add an address attribute to identify it
+         and specify a title so that it can be jumped to with a hyperlink. -->
+    <section address="Adding">
+      <title>Adding Custom Configuration to the a4t.xml File</title>
+      <content>
+        <!-- Uncomment this to create a sub-section outline
+        <autoOutline /> -->
+        <para>
+          To add custom configuration for your plugin, you can include a <codeInline>&lt;settings /&gt;</codeInline> element
+          inside of your a4t.xml file. Within this element you can have any structure of Xml that you wish, with the exception
+          of <codeInline>&lt;client /&gt;</codeInline> and <codeInline>&lt;encrypt /&gt;</codeInline> which are
+          reserved for special meaning (see below).  At its simplest form, each Xml Element's name represents the
+          key to a setting, and the text within the element represents that setting's value.
+        </para>
+        <code language="xml" title="Basic Usage">
+          <![CDATA[
+          <plugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.alchemywebstore.com/">
+            <name>YourPluginName</name>
+            <settings>
+              <SomeKey>Some Value</SomeKey>
+              <SomeRandomNumber>42</SomeRandomNumber>
+              <IsABoolean>true</IsABoolean>
+            </settings>
+          </plugin>
+          ]]>
+        </code>
+      </content>
+    </section>
+
+    <section address="Retrieval">
+      <title>Basic Retrieval of Settings</title>
+      <content>
+        <para>
+          The plugin instance has a <codeEntityReference>P:Alchemy4Tridion.Plugins.IAlchemyPlugin.Settings</codeEntityReference> property which is a getter that returns a new
+          instance of <codeEntityReference>T:Alchemy4Tridion.Plugins.Info.IPluginSettings</codeEntityReference>.  It's important to note that the <codeInline>IPluginSettings</codeInline>
+          is not cached and will return a new instance every time you call the plugin's <codeInline>Settings</codeInline>
+          property.  If you are making a lot of calls to the Settings, it would be wise to store the instance in a local
+          variable as you work with it.
+        </para>
+        <para>
+          Once you have the settings instance, you can use the various <codeEntityReference>Overload:Alchemy4Tridion.Plugins.Info.IPluginSettings.Get</codeEntityReference>
+          methods to get values from your custom xml configuration.
+        </para>
+        <para>
+          If accessing the settings from an AlchemyApiController, you can use the controller's <command>Plugin</command> property to get the settings.
+        </para>
+        <code language="c#">
+          [HttpGet]
+          [Route("example/action")]
+          public void ExampleAction()
+          {
+              IPluginSettings settings = Plugin.Settings;
+          
+              string someKey = settings.Get("SomeKey");
+              int someRandomNumber = settings.Get&lt;int&gt;("SomeRandomNumber");
+              bool isABoolean = settings.Get&lt;bool&gt;("IsABoolean");
+              string nope = settings.Get("DoesNotExist"); // value is null since our custom configuration above does not contain this key
+              string defaultValue = settings.Get("DoesNotExist", "ADefaultValue"); // value is now "ADefaultValue" as we provided 2nd argument
+          }
+        </code>
+      </content>
+    </section>
+
+    <section address="NestedSettings">
+      <title>Nested Settings</title>
+      <content>
+        <para>
+          As the custom configuration settings allow for nested elements, you can use the <codeInline>GetNestedSettings</codeInline>
+          method to return an instance of <codeInline>IPluginSettings</codeInline> that represents the layer of nested
+          elements.
+        </para>
+        <code language="xml">
+          <![CDATA[
+          <settings>
+            <SomeKey>
+              <SomeNestedKey>SomeNestedValue</SomeNestedKey>
+              <SomeNestedInt>42</SomeNestedInt>
+            </SomeKey>
+          <settings>
+          ]]>
+        </code>
+        <code language="c#">
+          IPluginSettings nestedSettings = settings.GetNestedSettings("SomeKey");
+          string someKey = nestedSettings.Get("SomeNestedKey");
+          int someInt = nestedSettings.Get&lt;int&gt;("SomeNestedInt");
+          int notFoundInt = nestedSettings.Get&lt;int&gt;("DoesNotExist"); // will be default 0 as this is default for int
+          int defaultInt = nestedSettings.Get&lt;int&gt;("DoesNotExist", 100); // will be 100 as we provided a default value
+        </code>
+      </content>
+    </section>
+
+    <section address="Deserialization">
+      <title>Deserialization of Settings</title>
+      <content>
+        <para>
+          Using the <codeInline>Get</codeInline>'s generic method, we also use it to deserialize the settings into
+          a strongly typed object.
+        </para>
+        <alert class="note">
+          <para>
+            Settings deserializtion uses <externalLink>
+              <linkText>Microsoft's Xml Serialization</linkText>
+              <linkUri>https://msdn.microsoft.com/en-us/library/182eeyhh(v=vs.110).aspx</linkUri>
+              <linkTarget>_blank</linkTarget>
+            </externalLink> by default.  You will need to follow naming conventions as they apply to the serialization
+            rules.  You can also use Attributes as well to further control how your xml will be deserialized.
+          </para>
+        </alert>
+        <code language="xml">
+          <![CDATA[
+          <settings>
+              <Name>Alchemy Dude</Name>
+              <Age>70</Age>
+              <IsAlchemyLover>true</IsAlchemyLover>
+          <settings>
+          ]]>
+        </code>
+        <code language="c#">
+          // your class that you will deserialize as
+          public class MyPluginSettings
+          {
+              public string Name { get; set; }
+              public int Age { get; set; }
+              public bool IsAlchemyLover { get; set; }
+          }
+        </code>
+      </content>
+      <sections>
+        <section address="DeserializingEntireSettings">
+          <title>Deserializing Entire Settings</title>
+          <content>
+            <para>
+              You can use the zero argument <codeInline>Get</codeInline> method to deserialize the entire settings
+              as a strongly typed object.
+            </para>
+            <code language="c#">
+              MyPluginSettings settings = Plugin.Settings.Get&lt;MyPluginSettings&gt;();
+            </code>
+          </content>
+        </section>
+        <section address="DeserializingNestedSettings">
+          <title>Deserializing Nested Settings</title>
+          <content>
+            <para>
+              You may have a configuration setup where you only need to deserialize a nested section of your settings. In
+              this example, we have our MyPluginSettings representing a nested section of our settings.
+            </para>
+            <code language="xml">
+              <![CDATA[
+              <settings>
+                <SomeKey>SomeValue</SomeKey>
+                <MyUser>
+                  <Name>Alchemy Dude</Name>
+                  <Age>70</Age>
+                  <IsAlchemyLover>true</IsAlchemyLover>
+                </MyUser>
+              <settings>
+              ]]>
+            </code>
+            <code language="c#">
+              MyPluginSettings settings = Plugin.Settings.Get&lt;MyPluginSettings&gt;("MyUser");
+              MyPluginSettings nope = Plugin.Settings.Get&lt;MyPluginSettings&gt;("DoesNotExist"); // will be null as 'DoesNotExist' does not exist.
+            </code>
+            <alert class="note">
+              <para>
+                You probably noticed that we used <codeInline>&lt;MyUser /&gt;</codeInline> as our element root name
+                rather than <codeInline>&lt;MyPluginSettings /&gt;</codeInline> as the Xml Serializer would expect by
+                default out of the box.  This is because the Alchemy API automatically changes the element name
+                and adds appropriate namespaces behind the scenes for you prior to performing deserialization.
+              </para>
+            </alert>
+          </content>
+        </section>
+      </sections>
+    </section>
+    
+    <section address="ClientSettings">
+      <title>Client Settings</title>
+      <content>
+        <para>
+          So far in our custom configuration settings we've had what are considered to be server side config values. But
+          what if we want settings that can be read easily from the client side as well?  Alchemy4Tridion provides
+          a JS proxy that will grab settings that are considered to be "client" settings.
+        </para>
+        <code language="xml" title="Basic Usage">
+          <![CDATA[
+          <plugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.alchemywebstore.com/">
+            <name>YourPluginName</name>
+            <settings>
+              <SomeServerKey>Some Server Value</SomeServerKey>
+              <SomeClientKey client="true">Some Client Value</SomeClientKey>
+              <client>
+                <SomeKey>Some Value</SomeKey>
+                <SomeRandomNumber>42</SomeRandomNumber>
+                <IsABoolean>true</IsABoolean>
+              </client>
+            </settings>
+          </plugin>
+          ]]>
+        </code>
+        <para>
+          The above example shows two ways of enabling a custom configuration element to be able to be read by the client API.
+          The first is by adding the attribute "client" to any element with a value of "true".  The second is by using
+          the special <codeInline>&lt;client /&gt;</codeInline> element.  The "client" element itself is not considered
+          to be a "key", but rather any child elements within it act as if they have the <codeInline>client="true"</codeInline> 
+          attribute.
+        </para>
+        <para>
+          To be able to grab the client configuration from your plugin's JavaScript, you'll have to add the call to 
+          <codeEntityReference autoUpgrade="true">M:Alchemy4Tridion.Plugins.GUI.Configuration.ResourceGroup.AddWebApiProxy</codeEntityReference> 
+          from your
+          <codeEntityReference>T:Alchemy4Tridion.Plugins.GUI.Configuration.ResourceGroup</codeEntityReference>'s constructor.
+          If you've already read / developed with Alchemy's API Controllers, you'll notice that this method also
+          is responsible for generating the JavaScript proxy to communicate with your controllers.
+        </para>
+        <code language="c#">
+          public class MyResourceGroup : ResourceGroup
+          {
+              public ServicerCommandFilesGroup()
+                  : base("CommandFiles")
+              {
+                  AddWebApiProxy();
+                  AddFile("SomeCommand.js");
+              }
+          }
+        </code>
+        <para>
+          This will allow you to make the following call in your JavaScript:
+        </para>
+        <code language="js">
+          Alchemy.Plugins.MyPluginName.Api.getSettings()
+              .success(function (settings) {
+                  console.log(settings.SomeServerKey);
+                  console.log(settings.IsABoolean);
+              })
+              .error(function (error) {
+              
+              });
+        </code>
+        <alert class="tip">
+          <para>
+            It's important to note that when settings are returned like this, the keys are case sensitive and will
+            match the casing of your element names.  Also the values will all be strings. If you wish to have
+            more control over the value types, please refer to the section on strongly typed client settings.
+          </para>
+        </alert>
+        <alert class="tip">
+          <para>
+            Client settings are not ignored when getting settings with <codeEntityReference>T:Alchemy4Tridion.Plugins.Info.IPluginSettings</codeEntityReference>.
+            The flag is only used when grabbing settings via the client API.
+          </para>
+        </alert>
+      </content>
+    </section>
+
+    <section address="StronglyTypedClientSettings">
+      <title>Strongly Typed Client Settings</title>
+      <content>
+        <para>
+          In the previous example, all values were returned as string types.  Alchemy4Tridion allows you to configure
+          your plugin so that it provides a strongly typed client settings object.
+        </para>
+        <code language="c#">
+          public class MyClientSettings
+          {
+              public string SomeClientKey { get; set; }
+              public string SomeKey { get; set; }
+              public int SomeRandomNumber { get; set; }
+              public bool IsABoolean { get; set; }
+          }
+        </code>
+        <para>
+          To enable the deserialization of this type, in your plugin's 
+          <codeEntityReference autoUpgrade="true">M:Alchemy4Tridion.Plugins.IAlchemyPlugin.Configure</codeEntityReference> 
+          method you can include the type.
+        </para>
+        <code language="c#">
+          public override void Configure(IPluginServiceLocator services)
+          {
+              services.SettingsDeserialization.ClientSettingsType = typeof(MyClientSettings);
+          }
+        </code>
+        <para>
+          Using the <codeInline>getSettings()</codeInline> client call in this way will return the values as their
+          JSON equivalent types.
+        </para>
+      </content>
+    </section>
+    
+    <section address="EncryptedSettings">
+      <title>Encrypted Settings</title>
+      <content>
+        <para>
+          There may be instances where you want to encrypt the values of a particular setting, such as for
+          passwords that you may have users store. You can do this by providing either a <codeInline>encrypt="true"</codeInline>
+          attribute on the element setting you wish to encrypt, or by adding the settings in the
+          <codeInline>&lt;encrypt /&gt;</codeInline> special element.
+        </para>
+        <code language="xml">
+          <![CDATA[
+              <settings>
+                <NonEncryptedKey>SomeValue</SomeKey>
+                <SomeEncryptedKey encrypt="true">Some Encrypted Value</SomeEncryptedValue>
+                <encrypt>
+                  <AlsoEncrypted>Another Encrypted Value</AlsoEncrypted>
+                </encrypt>
+              <settings>
+              ]]>
+        </code>
+      </content>
+      <sections>
+        <section address="EncryptionKey">
+          <title>Providing an Encryption Key</title>
+          <content>
+            <para>
+              Plugins use a default encryption key to encrypt the settings with.  For extra security, you
+              can provide a custom key via your plugin's <codeEntityReference autoUpgrade="true">M:Alchemy4Tridion.Plugins.IAlchemyPlugin.Configure</codeEntityReference>
+              method.
+          </para>
+            <code language="c#">
+              public override void Configure(IPluginServiceLocator services)
+              {
+                  services.SettingsEncryptor.EncryptionKey = "SomeSecretEncryptionKey";
+              }
+            </code>
+          </content>
+        </section>
+        <section address="Decrypting">
+          <title>Decrypting Values</title>
+          <content>
+            <para>
+              Using the <codeEntityReference>Overload:Alchemy4Tridion.Plugins.Info.IPluginSettings.Get</codeEntityReference> methods
+              by default will return the encrypted values.  To retrieve your decrypted settings, you will have
+              to call the <codeEntityReference>M:Alchemy4Tridion.Plugins.Info.IPluginSettings.Decrypt(System.String)</codeEntityReference> method
+              on your <codeEntityReference linkText="Settings">T:Alchemy4Tridion.Plugins.Info.IPluginSettings</codeEntityReference> instance.
+            </para>
+            <code language="c#">
+              string value = settings.Get("SomeEncryptedKey"); // wrong, will return the encrypted string
+
+              settings.Decrypt("SomeSecretEncryptionKey");
+              value = settings.Get("SomeEncryptedKey"); // will now return 'Some Encrypted Value'
+            </code>
+            <para>
+              If you did not supply your own encryption key, you can just call <codeInline>Decrypt</codeInline>
+              without any parameters.
+            </para>
+            <code language="c#">
+              settings.Decrypt();
+              value = settings.Get("SomeEncryptedKey");
+            </code>
+          </content>
+        </section>
+      </sections>
+    </section>
+
+    <section address="SettingsConfigUI">
+      <title>Custom Settings UI</title>
+      <content>
+        <para>
+          Custom settings can be configured from the <command>Plugins</command> area of the <application>A4T</application> setcion of the user interface.  Each installed plugin can be viewed and configured.
+        </para>
+      </content>
+    </section>
+    
+    <relatedTopics>
+      <codeEntityReference qualifyHint="true" linkText="Alchemy4Tridion.Plugins.GUI.Configuration.ResourceGroup.AddWebApiProxy()">M:Alchemy4Tridion.Plugins.GUI.Configuration.ResourceGroup.AddWebApiProxy</codeEntityReference>
+      <codeEntityReference qualifyHint="true">T:Alchemy4Tridion.Plugins.Info.IPluginSettings</codeEntityReference>
+      <codeEntityReference qualifyHint="true">T:Alchemy4Tridion.Plugins.Info.PluginSettings</codeEntityReference>
+      <!-- One or more of the following:
+           - A local link
+           - An external link
+           - A code entity reference
+
+      <link xlink:href="Other Topic's ID">Link text</link>
+      <externalLink>
+          <linkText>Link text</linkText>
+          <linkAlternateText>Optional alternate link text</linkAlternateText>
+          <linkUri>URI</linkUri>
+      </externalLink>
+      <codeEntityReference>API member ID</codeEntityReference>
+
+      Examples:
+
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8278">Some other topic</link>
+
+      <externalLink>
+          <linkText>SHFB on GitHub</linkText>
+          <linkAlternateText>Go to GitHub</linkAlternateText>
+          <linkUri>https://GitHub.com/EWSoftware/SHFB</linkUri>
+      </externalLink>
+
+      <codeEntityReference>T:TestDoc.TestClass</codeEntityReference>
+      <codeEntityReference>P:TestDoc.TestClass.SomeProperty</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor(System.String,System.Int32)</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.ToString</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.FirstMethod</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.SecondMethod(System.Int32,System.String)</codeEntityReference>
+      -->
+    </relatedTopics>
+  </developerSampleDocument>
+</topic>

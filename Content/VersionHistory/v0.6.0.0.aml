@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="fbc253d2-cb8d-4467-a987-b38be6411fa2" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <introduction>
+      <para>
+        Version 0.6 was released on July 22nd, 2015.
+      </para>
+    </introduction>
+
+    <section>
+      <title>Major in This Release</title>
+      <content>
+
+        <list class="bullet">
+          <listItem>
+            <para>
+              The Alchemy4Tridion Developer Pack Visual Studio Extension has been released with this version!
+              You can download the extension from the Visual Studio Gallery by searching for "Alchemy4Tridion"
+              or by downloading it <externalLink>
+                <linkText>here</linkText>
+                <linkUri>https://visualstudiogallery.msdn.microsoft.com/7a86be6e-4e8a-46f2-85d0-b7ad0bc60c5b</linkUri>
+                <linkTarget>_blank</linkTarget>
+              </externalLink>. The extension currently includes Project Templates for new plugin projects and
+              for converting an existing GUI Extension (currently experimental and not all items are converted),
+              as well as various Item Templates for the different components your plugin can contain.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              Project properties <codeInline>AlchemyRemoveBuildFiles</codeInline> and <codeInline>AlchemyUploadDialog</codeInline>
+              to help control what files are automatically cleaned up when you build your plugin project and
+              when the <quoteInline>Upload to Webstore</quoteInline> should appear (all the time, never, only
+              under specific configurations, etc).
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              Constants for 'GroupIds' for your Ribbon Toolbar Extensions.
+            </para>
+            <code language="c#" title="Using Statement:">
+              using Alchemy4Tridion.Plugins.GUI.Configuration;
+            </code>
+            <code language="c#" title="Code Example within Ribbon Toolbar Extension">
+              // Add your extension to the Publish group on the Home tab
+              GroupId = Constants.GroupIds.HomePage.PublishGroup;
+            </code>
+          </listItem>
+          <listItem>
+            <para>
+              Auto created NuGet package classes gone!
+            </para>
+            <alert class="warning">
+              <para>
+                The <codeInline>Alchemy4Tridion.Plugin</codeInline> package no longer contains automatically
+                created classes that inherit from AlchemyPluginBase and AlchemyApiController.  Having a class
+                that inherits AlchemyPluginBase is mandatory so its a must that you add one yourself now, and you'll have to add a controller if you
+                want to use web services.
+              </para>
+            </alert>
+            <para>
+              This was done as during updates the automatically added classes would be prompted to get overwritten.
+              The Visual Studio Project Templates from the Alchemy4Tridion Developer Pack still contains
+              these automatically added items though, so you should use those if you desire to have them.
+            </para>
+          </listItem>
+          <listItem>
+            Various bug fixes!
+          </listItem>
+        </list>
+
+      </content>
+    </section>
+
+    <section>
+      <title>Full Change Log</title>
+      <content>
+        <para>
+          For a complete list of changes, view the complete changelog <externalLink>
+            <linkText>on the GitHub site</linkText>
+            <linkUri>https://github.com/Alchemy4Tridion/Alchemy4Tridion/issues?q=is%3Aclosed+milestone%3A0.6.0+</linkUri>
+            <linkTarget>_blank</linkTarget>
+          </externalLink>.
+        </para>
+      </content>
+    </section>
+
+    <relatedTopics>
+      <link xlink:href="c6caa4cb-dd4a-4fa1-b919-f2d5ef947bec" />
+    </relatedTopics>
+
+  </developerConceptualDocument>
+</topic>
