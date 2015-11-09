@@ -217,15 +217,15 @@
         </para>
         <code language="xml" title="Basic Usage">
           <![CDATA[
-          <plugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.alchemywebstore.com/">
-            <name>YourPluginName</name>
+          <plugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.alchemywebstore.com/" xmlns:c="http://www.alchemywebstore.com/configuration/definitions">
+           <name>YourPluginName</name>
             <settings>
               <SomeServerKey>Some Server Value</SomeServerKey>
               <SomeClientKey client="true">Some Client Value</SomeClientKey>
               <client>
                 <SomeKey>Some Value</SomeKey>
                 <SomeRandomNumber>42</SomeRandomNumber>
-                <IsABoolean>true</IsABoolean>
+                <IsABoolean c:type="bool">true</IsABoolean>
               </client>
             </settings>
           </plugin>
